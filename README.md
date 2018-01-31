@@ -1,13 +1,14 @@
 # HACKEAM Hackathon - 2018 Report
 
-##  Title :-  Creating Progressive Websites for Events and Connecting its Participants.
+
+##  Title - Creating Progressive Websites for Events and Connecting its Participants.
 
 ##  Authors :- 	
-	* Rohan Wadhawan
-	* Tanuj Drall 
-	* Arjun Dhawan
+   * #### [Rohan Wadhawan](https://github.com/rohan598 "Github profile")
+   * #### [Tanuj](https://github.com/Tanuj9043 "Github profile") 
+   * #### Arjun Dhawan
 
-##  Team Name :- NativITy
+##  Team Name - NativITy
 
 ##  Abstract :- 
 The motivation behind our idea is making creation of event websites a ‘Cakewalk’ and spreading awareness about them. This can be achieved through understanding the key concepts namely  Event Marketing Timeline, Online Community Building and Progressive Web Application. Finally, who doesn’t want to create a website on the fly without learning the required coding skills.
@@ -43,7 +44,7 @@ Like a customer is to business, a participant is to an event. Once a participant
 ## Progressive Web Application :-
 The Progressive Web Application or simply the PWA is new in the context of web development. It was launched by the Google a couple of years ago (in 2015). It was released and brought into the market with the intention of providing unmatched quality services as far as the mobile apps are concerned.
 
-### Benefits:- 
+#### Benefits:- 
   * One of the biggest advantages that PWA offers is low friction because it is a web based product. This means you don’t have to open the web page and the app separately. 
 
   * The installation procedure is simple and you can add it into your home screen. It has greater potentiality to draw customers and therefore, is used by a number of corporate houses, like Alibaba’s PWA, Flipkart’s PWA, etc.
@@ -56,7 +57,10 @@ The Progressive Web Application or simply the PWA is new in the context of web d
 ## BIBLIOGRAPHY :-
 
 For graphs : https://www.augustash.com/our-blog/mobile-friendly-websites-2017
+
 For PWA vs Native  Application : https://www.mindinventory.com/blog/native-apps-vs-progressive-web-apps/
+
 For Event Marketing Timeline : https://www.eventbrite.co.uk/blog/event-marketing-strategy-ds00/
+
 For PWA examples : https://www.tigren.com/examples-progressive-web-apps-pwa/
 
