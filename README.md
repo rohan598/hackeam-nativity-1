@@ -24,7 +24,6 @@ An interactive mobile website is a good proposition, but how about a website whi
 Personally I, Rohan Wadhawan, was a part of the organising committee of an event called ‘Art of the Start’, organised by the Finance and Economics Society of NSIT (FES) as part of Consilium 2017. Although the event was a success, but it would have been even better if we had some more thought provoking ideas pitched on that day. The key element missing was awareness. Moreover, I have visited several society meets in our college, but unfortunately I have missed quite a few because of lack of notification. Social media platforms like Whatsapp groups or Facebook pages are indeed helpful in spreading awareness but their coverage is limited. Through our website, we want to overcome this issue as every user signed up with us will know about each event irrespective of his or her stream, who knows what might interest someone.This way every willing participant will get a chance to win and not be forced to take a seat in the audience.
 The following are some photos from The Placement Talk and Java Bootcamp organised by IEEE.
 
-
 ## Problem Identified :-	
 We are targeting three main problems, they are :
       
