@@ -6,7 +6,7 @@
 ##  Authors :- 	
    * #### [Rohan Wadhawan](https://github.com/rohan598 "Github profile")
    * #### [Tanuj](https://github.com/Tanuj9043 "Github profile") 
-   * #### Arjun Dhawan
+   * #### [Arjun Dhawan](https://github.com/arjundhawan05 "Github profile")
 
 ##  Team Name - NativITy
 
