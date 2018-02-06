@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CSI</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
@@ -12,10 +13,8 @@
     button{
         cursor: pointer;
     }
-    body > div{
-        position: absolute;
-        z-index: 1200;
-    }
+
+    /*============================NAVBAR============================*/
     nav{
       padding: 5px !important;
       position: absolute;
@@ -38,8 +37,57 @@
       border-bottom: 3px solid #44b2e2;
       transition: border-bottom 0.5s;
     }
-    @media only screen and (min-width: 420px){
 
+    /*============================PAGE============================*/
+    .mainpage{
+        position: absolute;
+        z-index: 1400;
+    }
+
+    /*============================FOOTER============================*/
+    #contact{
+        background-color: transparent;
+    }
+    .bottom1{
+        width: 60%;
+    }
+    .bottom2{
+        width: 40%;
+    }
+    .bottom1text, .copytext{
+        font-family: 'Raleway', sans-serif;
+        font-size: 0.3rem;
+    }
+    .bottom1head{
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.6rem;
+    }
+    .bottom2head, .bottom2text{
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.6rem;
+    }
+    .footlinks{
+        list-style: none;
+        display: flex;
+    }
+    .footlinks > li{
+        margin: auto;
+        margin-right: 5px;
+    }
+    @media only screen and (min-width: 420px){
+        .bottom1text, .copytext{
+            font-size: 0.5rem;
+        }
+        .bottom1head{
+            font-size: 0.9rem;
+        }
+        .bottom2head, .bottom2text{
+            font-size: 0.9rem;
+        }
+        .copytext{
+            margin-top: 1rem;
+            padding-top: 1rem;
+        }
     }
     @media only screen and (min-width: 768px){
         .navbar-nav{
@@ -49,16 +97,36 @@
             float: right !important;
         }
         .mainMenu > li{
-            font-size: 0.9rem;
+            font-size: 0.7rem;
+        }
+        .bottom1text, .copytext{
+            font-size: 0.80rem;
+        }
+        .bottom1head{
+            font-size: 1.3rem;
+        }
+        .bottom2head, .bottom2text{
+            font-size: 1.3rem;
         }
     }
     @media only screen and (min-width: 1020px){
-
+        .bottom1text, .copytext{
+            font-size: 0.9rem;
+        }
+        .bottom1head{
+            font-size: 1.6rem;
+        }
+        .bottom2head, .bottom2text{
+            font-size: 1.6rem;
+        }
     }
   </style>
 </head>
 <body>
-    <img src="wp.png" class="img-fluid" style="position: absolute; top: 0px; width: 100%; height: 100%; z-index: 0"></img>
+    <!--============================BACKGROUND============================-->
+    <img src="bg.png" class="img-fluid bg" style="position: absolute; top: 0px; width: 100%; height: 100%; z-index: 0"></img>
+
+    <!--============================NAVBAR============================-->
     <nav class="navbar fixed-top navbar-expand-md navbar-dark" style="z-index: 1500">
         <a class="navbar-brand" href="#" style="margin-left: 5px; padding: 0px;">
             <img src="csi.png" class="img-fluid" alt="Responsive image">
@@ -70,7 +138,7 @@
             <div class="container-fluid">
                 <ul class="navbar-nav mainMenu float-left">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="scrollto(''home)">Home</a>
+                        <a class="nav-link" href="#" onclick="scrollto('home')">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="scrollto('about')">About</a>
@@ -85,17 +153,63 @@
                         <a class="nav-link" href="#" onclick="scrollto('team')">Team</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="scrollto('Contact')">Contact</a>
+                        <a class="nav-link" href="#" onclick="scrollto('contact')">Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container mt-3 pt-3 mb-2 pb-3" style="height: 200px">
-    </div>
-    <div class="container mt-3 pt-3 mb-2 pb-3" style="height: 1500px; background-color: gray;">
-    </div>
-    <div class="container mt-3 pt-3 mb-2 pb-3" style="height: 200px">
+
+    <!--============================PAGE============================-->
+    <div class="container-fluid mainpage p-0">
+        <div class="container mt-3 pt-3 mb-2 pb-3" style="height: 200px">
+        </div>
+        <div class="container mt-3 pt-3 mb-2 pb-3" style="height: 1500px; background-color: gray;">
+        </div>
+        <div class="container mt-3 pt-3 mb-2 pb-3" style="height: 200px">
+        </div>
+
+        <!--============================FOOTER============================-->
+        <div class="container-fluid d-flex mt-3 pt-3" id="contact">
+    		<div class="container bottom1 m-auto">
+    			<p class="card-text h3 bottom1head" style="color: gray;">Check out our other events from given links.</p>
+    			<p class="h6 bottom1text">You are heartly welcomed in the event. You would have
+    				a wonderful experience. Share with your friends and feel free to mail us any suggestions you have. Thanks for visiting.</p>
+    		</div>
+    		<div class="container bottom2">
+    			<div class="container-fluid text-center" style="padding: 0px">
+    				<p class="card-text h2 bottom2head" style="color: gray; font-weight: bold;">Contact Us</p>
+    				<div class="container-fluid bottom2text" style="padding: 0px;">
+                        <ul class="footlinks float-center" style="padding: 0px;">
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+
+                        </ul>
+    				</div>
+    			</div>
+    			<p class="backquote-footer text-right copytext" style="color: gray;">&copy; All copyrights reserved.&nbsp; Website made using
+                    <a class="navbar-brand" href="#" style="padding: 0px;">
+                        <img src="ewac.png" class="img-fluid" alt="Responsive image">
+                    </a>
+                </p>
+    		</div>
+    	</div>
     </div>
 
     <script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
