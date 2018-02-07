@@ -82,7 +82,7 @@
         background-color: blue;
     }
     .bar3{
-        background-color: red;
+        background-color: brown;
     }
     .bar4{
         width: 60%;
@@ -185,9 +185,12 @@
         font-family: 'Quicksand', sans-serif;
         font-size: 0.7rem;
     }
-    .bottom2head, .bottom2text{
+    .bottom2head, .bottom2text, {
         font-family: 'Quicksand', sans-serif;
         font-size: 0.8rem;
+    }
+    .bottom2text{
+        width: 50%;
     }
     .footlinks{
         list-style: none;
@@ -197,6 +200,13 @@
         margin: auto;
         margin-right: 5px;
     }
+    .fa-map-marker-alt{
+        cursor: pointer;
+        font-size: 0.8rem;
+    }
+    .fa-map-marker-alt:hover{
+        color: red;
+    }
     @media only screen and (min-width: 420px){
         .bottom1text, .copytext{
             font-size: 0.6rem;
@@ -204,7 +214,7 @@
         .bottom1head{
             font-size: 0.9rem;
         }
-        .bottom2head, .bottom2text{
+        .bottom2head, .bottom2text, .fa-map-marker-alt{
             font-size: 0.9rem;
         }
         .copytext{
@@ -259,8 +269,11 @@
         .bottom1head{
             font-size: 1.3rem;
         }
-        .bottom2head, .bottom2text{
+        .bottom2head, .bottom2text, .fa-map-marker-alt{
             font-size: 1.3rem;
+        }
+        .bottom2text{
+            width: 40%;
         }
         .event{
             width: 500px;
@@ -299,13 +312,16 @@
         }
     }
     @media only screen and (min-width: 1020px){
+        .mainMenu > li{
+            font-size: 1.1rem;
+        }
         .bottom1text, .copytext{
             font-size: 0.9rem;
         }
         .bottom1head{
             font-size: 1.6rem;
         }
-        .bottom2head, .bottom2text{
+        .bottom2head, .bottom2text, .fa-map-marker-alt{
             font-size: 1.6rem;
         }
         .event{
@@ -482,45 +498,55 @@
     	</div>
 
         <!--============================CONTACT US============================-->
-        <div class="container-fluid d-flex mt-3 pt-4 pb-3" id="contact">
-    		<div class="container bottom1 m-auto">
-    			<p class="card-text h3 bottom1head" style="color: gray;">Check out our other events from given links.</p>
-    			<p class="h6 bottom1text">You are heartly welcomed in the event. You would have
-    				a wonderful experience. Share with your friends and feel free to mail us any suggestions you have. Thanks for visiting.</p>
-    		</div>
-    		<div class="container bottom2">
-    			<div class="container-fluid text-center" style="padding: 0px">
-    				<p class="card-text h2 bottom2head" style="color: gray; font-weight: bold;">Contact Us</p>
-    				<div class="container-fluid bottom2text mt-3" style="padding: 0px;">
-                        <ul class="footlinks float-center" style="padding: 0px;">
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
-                            </li>
-
-                        </ul>
-    				</div>
-    			</div>
-    			<p class="backquote-footer text-right copytext" style="color: gray;">&copy; All copyrights reserved.&nbsp; Website made using
-                    <a class="navbar-brand" href="#" style="padding: 0px;">
-                        <img src="ewac.png" class="img-fluid" alt="Responsive image">
-                    </a>
-                </p>
-    		</div>
+        <div class="container-fluid mt-3 pt-5 pb-3" id="contact">
+            <div class="container-fluid d-flex">
+        		<div class="container bottom1 m-auto">
+        			<p class="card-text h3 bottom1head mb-3" style="color: gray;">Check out our other events from given links.</p>
+        			<p class="h6 bottom1text mt-3" style="color: dimgray">You are heartly welcomed in the event. You would have
+        				a wonderful experience. Share with your friends and feel free to mail us any suggestions you have.
+                        Keep in touch for more exciting events in the future. Thanks for visiting and best of luck for your future.
+                    </p>
+        		</div>
+        		<div class="container bottom2">
+        			<div class="container-fluid text-center" style="padding: 0px">
+        				<p class="card-text h3 bottom1head" style="color: gray; font-weight: bold; margin: 0 5px 10px 5px;">Contact Us</p>
+                        <p style="margin: 10px 5px 10px 5px;"><a href="" target="_blank"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></a></p>
+                        <div class="container-fluid">
+        		            <p class="card-text h3 bottom1text" style="color: dimgray;">
+                                <span>Azad Hind Fauz Marg, Sector 3, Dwarka, New Delhi, Delhi 110078</span>
+                            </p>
+                            <p class="card-text h3 bottom1text" style="color: dimgray;">Contact No. : 123456789, 987654321</p>
+                        </div>
+                    </div>
+        		</div>
+            </div>
+            <div class="container bottom2text mt-5" style="padding: 0px;">
+                <ul class="footlinks float-center" style="padding: 0px;">
+                    <li>
+                        <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <p class="backquote-footer text-right copytext pt-0" style="color: gray;">&copy; All copyrights reserved.&nbsp; Website made using
+                <a class="navbar-brand" href="#" style="padding: 0px;">
+                    <img src="ewac.png" class="img-fluid" alt="Responsive image">
+                </a>
+            </p>
     	</div>
     </div>
 
