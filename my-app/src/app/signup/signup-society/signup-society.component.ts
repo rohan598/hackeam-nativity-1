@@ -37,18 +37,18 @@ export class SignupSocietyComponent implements OnInit {
     this.societySignupForm =  new FormGroup({
       'important': new FormGroup({
         'username': new FormControl(null,Validators.required),
-        'email': new FormControl(null,[Validators.required,Validators.email]),
-        'password': new FormControl(null,Validators.required)
+        'email': new FormControl(null,[Validators.required,Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')]),
+        'password': new FormControl(null,[Validators.required,this.passwordValidator])
       }),
       'additional': new FormGroup({
           'name': new FormControl(null,Validators.required),
           'description': new FormControl(null)
         }),
-        'logo': new FormControl(null,Validators.required),
-      'contactDetails':new FormGroup({
-          'address': new FormControl(null),
-          'telephone':new FormControl(null)
-      })
+        'logo': new FormControl(null,Validators.required)
+      // 'contactDetails':new FormGroup({
+      //     'address': new FormControl(null),
+      //     'telephone':new FormControl(null)
+      // })
     });
     //set google maps defaults
     this.zoom = 4;
@@ -139,7 +139,13 @@ export class SignupSocietyComponent implements OnInit {
       });
     }
   }
-
+  passwordValidator(control: FormControl):{[s: string]: boolean} {
+    if (control.value === null || control.value.match('/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,100}$/')) {
+        return null;
+    } else {
+        return { 'invalidPassword': true };
+    }
+}
   onSubmit(){
     console.log(this.societySignupForm);
   }

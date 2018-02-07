@@ -8,8 +8,7 @@
             <div class="form-group" [ngClass]="{'has-success':emailIsValid,'has-danger':!emailIsValid}">
               <label for="exampleInputEmail1">Email address</label>
               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="events@example.com"
-              formControlName = "email"
-              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+              formControlName = "email">
               <p class="help-block"
               *ngIf="userSigninForm.get('email').touched && !emailIsValid">
                 <span *ngIf="emailVal ; else elsePart">

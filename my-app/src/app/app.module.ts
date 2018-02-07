@@ -20,6 +20,8 @@ import { CreateFormComponent } from './create-form/create-form.component';
 
 import {} from '@types/googlemaps';
 import {AppRoutingModule } from './app-routes.module';
+import { UserComponent } from './user/user.component';
+import { SocietyComponent } from './society/society.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {AppRoutingModule } from './app-routes.module';
     SigninComponent,
     SigninUserComponent,
     SigninSocietyComponent,
-    CreateFormComponent
+    CreateFormComponent,
+    UserComponent,
+    SocietyComponent
   ],
   imports: [
     BrowserModule,
