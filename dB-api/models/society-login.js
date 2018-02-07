@@ -9,8 +9,9 @@ const SocietySchema = new Schema({
   logo:String,
   description:String,
   member: [user.userSchema],
-  contact: [contact.contactSchema]
+  contact: [contact.contactSchema],
   // member:[UserSchema]
+  websites:[String]
 });
 
 const society = mongoose.model('society',SocietySchema);
