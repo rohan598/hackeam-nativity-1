@@ -6,7 +6,7 @@ function scrollto(id) {
 
 $(document).ready(function(){
     $(document).on('scroll', function () {
-        $('.navbar').css('background-color', `rgba(0, 0, 0, ${$(document).scrollTop() / 1000})`);
+        $('.navbar').css('background-color', `rgba(0, 0, 0, ${$(document).scrollTop() / 800})`);
         let a = $(document).scrollTop() + $(window).height();
         let b = $('#contact')[0].scrollHeight;
         let c = $('.mainpage')[0].scrollHeight;
