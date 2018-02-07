@@ -5,8 +5,9 @@ const ProfileSchema = require('./profile-link');
 const UserSchema = new Schema({
   name:String,
   email:String,
-  profile:[ProfileSchema],
-  imgsrc:String
+  password:String,
+  imgsrc:String,
+  profile:[ProfileSchema]
 });
 
 // const user = mongoose.model('user',UserSchema);
