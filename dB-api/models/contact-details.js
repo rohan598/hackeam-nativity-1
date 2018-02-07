@@ -2,18 +2,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ContactSchema = new Schema({
-  address:{
-    buildingNumber:String,
-    streetName:String,
-    neighbourhood:String,
-    city:String,
-    zipCode:String
-  },
-  email:String,
-  telephone:[String],
-  description:String
+  address: String,
+  // address:{
+  //   country:String,
+  //   state:String,
+  //   pincode:String,
+  //   city:String,
+  //   street:String,
+  //   country: String
+  // },
+  telephone:[String]
 });
 
-const contact = mongoose.model('contact',ContactSchema);
-
-module.exports = contact;
+module.exports = {
+  contact: mongoose.model('contact',ContactSchema),
+  contactSchema:ContactSchema
+};

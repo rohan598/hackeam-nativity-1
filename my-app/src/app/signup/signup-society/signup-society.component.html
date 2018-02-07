@@ -1,0 +1,143 @@
+<!-- <head>
+  <script src="http://maps.googleapis.com/maps/api/js?key=[YOUR_API_KEY]"></script>
+</head> -->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+
+      <form [formGroup]="societySignupForm" (ngSubmit)="onSubmit()">
+
+        <div formGroupName="important">
+
+          <div class="form-group" [ngClass]="{'has-success':usernameIsValid,'has-danger':!usernameIsValid}">
+            <label for="inputSuccess1">Society username</label>
+            <input type="text" class="form-control" id="inputSuccess1" placeholder="Pick a username" formControlName="username">
+            <p class="help-block" *ngIf="societySignupForm.get('important.username').touched && !usernameVal">
+                  This field cannot be left empty
+            </p>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-success':emailIsValid,'has-danger':!emailIsValid}">
+            <label for="exampleInputEmail1">Primary Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="events@example.com" formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+            <p class="help-block" *ngIf="societySignupForm.get('important.email').touched && !emailIsValid">
+              <span *ngIf="emailVal ; else elsePart">
+                  This field cannot be left empty
+                </span>
+              <ng-template #elsePart>
+                <span *ngIf="societySignupForm.get('important.email').errors.pattern">
+                                Please enter a valid email address
+                  </span>
+              </ng-template>
+            </p>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-success':passwordIsValid,'has-danger':!passwordIsValid}">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password">
+            <p class="help-block" *ngIf="societySignupForm.get('important.password').touched && !passwordVal">
+              <!-- <span *ngIf="passwordVal"> -->
+                  This field cannot be left empty
+                <!-- </span> -->
+            </p>
+          </div>
+        </div>
+
+        <div formGroupName="additional">
+
+          <div class="form-group" [ngClass]="{'has-success':nameIsValid,'has-danger':!nameIsValid}">
+            <label for="">Society name</label>
+            <input type="text" class="form-control" placeholder="Tell us your name" formControlName="name">
+            <p class="help-block" *ngIf="societySignupForm.get('important.name').touched && !nameVal">
+              <!-- <span *ngIf="nameVal"> -->
+                  This field cannot be left empty
+                <!-- </span> -->
+            </p>
+          </div>
+
+
+          <div class="form-group">
+            <label for="exampleTextarea">Description</label>
+            <textarea class="form-control" id="exampleTextarea" rows="5" formControlName="description"></textarea>
+            <small id="fileHelp" class="form-text text-muted">A little something about you.</small>
+          </div>
+        </div>
+
+        <div formGroupName="contactDetails">
+
+          <div class="form-group">
+            <label for="maps">Address</label>
+            <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search formControl="address" id="maps">
+          </div>
+
+          <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+          </agm-map>
+          <!--
+                <div class="form-group">
+                  <label for="inputAddress">Address 1</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"
+                  formControlName = "address1">
+                </div>
+
+                <div class="form-group">
+                  <label for="inputAddress2">Address 2</label>
+                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"
+                  formControlName = "address2">
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" id="inputCity"
+                    formControlName = "city">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputState">State</label>
+                    <select id="inputState" class="form-control"
+                    formControlName = "state">
+                      <option selected>Choose...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" id="inputZip"
+                    formControlName = "zip">
+                  </div>
+
+                </div> -->
+
+          <div class="form-group row">
+            <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
+            <div class="col-10">
+              <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input" formControlName="telephone">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputFile">Society Logo</label>
+          <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" formControlName="logo">
+        </div>
+
+
+        <!-- <div id="googleMap" style="width:500px;height:380px;"></div> -->
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--
+<span *ngIf="societySignupForm.get('important.username').value !== ''; else #elsePart">
+  Help text here.
+</span>
+<ng-template #elsePart>
+
+</ng-template> -->
