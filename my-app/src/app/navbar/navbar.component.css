@@ -1,5 +1,6 @@
 nav{
     padding: 5px !important;
+    width: 100%;
     z-index: 1500;
     position: relative;
     background-color: papayawhip;
@@ -34,4 +35,10 @@ nav{
     .mainMenu > li{
         font-size: 1.1rem;
     }
+}
+.container{
+  width: 100%;
+  padding: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
 }

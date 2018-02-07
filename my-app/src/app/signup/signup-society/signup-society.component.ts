@@ -4,11 +4,11 @@ import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
 
 @Component({
-  selector: 'app-login-society',
-  templateUrl: './login-society.component.html',
-  styleUrls: ['./login-society.component.css']
+  selector: 'app-signup-society',
+  templateUrl: './signup-society.component.html',
+  styleUrls: ['./signup-society.component.css']
 })
-export class LoginSocietyComponent implements OnInit {
+export class SignupSocietyComponent implements OnInit {
 
   societySignupForm: FormGroup;
   usernameIsValid: boolean;
