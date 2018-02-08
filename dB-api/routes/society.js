@@ -6,7 +6,7 @@ router.post('/', function (req, res, next) {
     var newSociety = new society({
       name:req.body.username,
       email:req.body.email,
-      password:bcrypt.hashsync(req.body.password,10),
+      password:bcrypt.hashSync(req.body.password,10),
       description:req.body.description
     });
     newSociety.save((error,result)=>{

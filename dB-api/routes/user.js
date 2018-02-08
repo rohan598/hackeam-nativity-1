@@ -3,10 +3,10 @@ var router = express.Router();
 var user = require('../models/user');
 var bcrypt = require('bcryptjs');
 router.post('/', function (req, res, next) {
-    var newUser = new user({
+    var newUser = new user.user({
       name:req.body.username,
       email:req.body.email,
-      password:bcrypt.hashsync(req.body.password,10)
+      password:bcrypt.hashSync(req.body.password,10)
     });
     newUser.save((error,result)=>{
       if(error){
