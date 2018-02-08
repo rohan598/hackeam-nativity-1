@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -22,6 +23,7 @@ import {} from '@types/googlemaps';
 import {AppRoutingModule } from './app-routes.module';
 import { UserComponent } from './user/user.component';
 import { SocietyComponent } from './society/society.component';
+import { AuthService } from './shared/auth.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { SocietyComponent } from './society/society.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpModule,
     FormsModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
@@ -50,7 +53,7 @@ import { SocietyComponent } from './society/society.component';
       libraries:["places"]
     })
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

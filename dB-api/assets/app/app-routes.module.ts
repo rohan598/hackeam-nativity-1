@@ -12,6 +12,8 @@ import { SignupSocietyComponent } from './signup/signup-society/signup-society.c
 import { SigninComponent } from './signin/signin.component';
 import { SigninUserComponent } from './signin/signin-user/signin-user.component';
 import { SigninSocietyComponent } from './signin/signin-society/signin-society.component';
+import { SocietyComponent } from './society/society.component';
+import { UserComponent } from './user/user.component';
 // import { CreateFormComponent } from './create-form/create-form.component';
 
 const appRoutes :Routes = [
@@ -24,7 +26,8 @@ const appRoutes :Routes = [
     { path: 'society/new' , component:SignupSocietyComponent},
     { path: 'user/new' , component:SignupUserComponent}
   ]},
-
+  { path: 'user' , component:UserComponent},
+  { path: 'society' , component:SocietyComponent},
   { path: 'signin',component:SigninComponent, children:[
     { path: 'society/:id' , component:SigninSocietyComponent},
     { path: 'user/:id' , component:SigninUserComponent}

@@ -1,5 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../shared/auth.service';
+import { User } from '../../user/users.model';
 // import { } from 'googlemaps';
 // import { MapsAPILoader } from '@agm/core';
 
@@ -22,7 +24,7 @@ export class SignupUserComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private authService:AuthService) { }
 
   ngOnInit() {
     this.userSignupForm = new FormGroup({
@@ -77,7 +79,14 @@ export class SignupUserComponent implements OnInit {
 }
 
   onSubmit() {
-    console.log(this.userSignupForm);
+    const user = new User(
+      this.userSignupForm.get('important.username').value,
+      this.userSignupForm.get('important.email').value,
+      this.userSignupForm.get('important.password').value
+    );
+    console.log(this.userSignupForm + "\n");
+    this.authService.signup(user)
+      .subscribe();
     this.userSignupForm.reset();
   }
 }

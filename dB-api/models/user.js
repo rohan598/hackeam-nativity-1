@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const ProfileSchema = require('./profile-link');
 
 const UserSchema = new Schema({
-  name:String,
+  username:String,
   email:String,
   password:String,
   imgsrc:String,

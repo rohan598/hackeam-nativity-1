@@ -1,14 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var user = require('../models/user');
+var society = require('../models/society');
 var bcrypt = require('bcryptjs');
 router.post('/', function (req, res, next) {
-    var newUser = new user({
+    var newSociety = new society({
       name:req.body.username,
       email:req.body.email,
-      password:bcrypt.hashsync(req.body.password,10)
+      password:bcrypt.hashsync(req.body.password,10),
+      description:req.body.description
     });
-    newUser.save((error,result)=>{
+    newSociety.save((error,result)=>{
       if(error){
         return res.status(500).json({
           title: 'An error occured',
@@ -16,7 +17,7 @@ router.post('/', function (req, res, next) {
         });
       }else{
         res.status(201).json({
-          message:'User successfully saved to db',
+          message:'Society successfully saved to db',
           obj: result
         });
       }

@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var appRoutes = require('./routes/app');
+var userRoutes = require('./routes/user');
+var societyRoutes = require('./routes/society');
 
 var app = express();
 
@@ -27,7 +29,8 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
     next();
 });
-
+app.use('/user',userRoutes);
+app.use('/society',societyRoutes);
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler
