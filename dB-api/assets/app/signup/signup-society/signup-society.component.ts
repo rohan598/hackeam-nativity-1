@@ -1,7 +1,7 @@
 import { Component,ElementRef, NgZone, OnInit, ViewChild  } from '@angular/core';
 import { FormControl, FormGroup,Validators } from '@angular/forms'
-import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
+import {} from '@types/googlemaps';
 
 @Component({
   selector: 'app-signup-society',
@@ -38,7 +38,7 @@ export class SignupSocietyComponent implements OnInit {
       'important': new FormGroup({
         'username': new FormControl(null,Validators.required),
         'email': new FormControl(null,[Validators.required,Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')]),
-        'password': new FormControl(null,[Validators.required,this.passwordValidator])
+        'password': new FormControl(null,Validators.required)
       }),
       'additional': new FormGroup({
           'name': new FormControl(null,Validators.required),

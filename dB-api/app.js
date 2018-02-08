@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var appRoutes = require('./routes/app');
 var userRoutes = require('./routes/user');
@@ -11,6 +12,10 @@ var societyRoutes = require('./routes/society');
 
 var app = express();
 
+mongoose.connect("mongodb://localhost/nativityDB");
+mongoose.connection.once('open',()=>{
+  console.log('connection estblished');
+}).on('error',error=>console.log(error));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
