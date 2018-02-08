@@ -5,6 +5,7 @@ function scrollto(id) {
 }
 
 $(document).ready(function(){
+    window.scrollTo(0,0);
     $(document).on('scroll', function () {
         $('.navbar').css('background-color', `rgba(0, 0, 0, ${$(document).scrollTop() / 800})`);
         let a = $(document).scrollTop() + $(window).height();
@@ -14,4 +15,14 @@ $(document).ready(function(){
         $('#contact').css('background-color', `rgba(0, 0, 0, ${x})`);
         $('.bg').css('top', $(document).scrollTop());
     });
+
+    for (let i=1; i<=5; i++){
+        $('.speakerimg'+i)
+            .mouseenter(function(){
+                $('.speakeroverlay'+i).slideDown(300);
+            })
+            .mouseleave(function(){
+                $('.speakeroverlay'+i).slideUp(300);
+        });
+    }
 });
