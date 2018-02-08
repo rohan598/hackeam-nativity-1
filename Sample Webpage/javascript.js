@@ -25,4 +25,14 @@ $(document).ready(function(){
                 $('.speakeroverlay'+i).slideUp(300);
         });
     }
+
+    for (let i=1; i<=6; i++){
+        $('.memberimg'+i)
+            .mouseenter(function(){
+                $('.memberoverlay'+i).slideDown(300);
+            })
+            .mouseleave(function(){
+                $('.memberoverlay'+i).slideUp(300);
+        });
+    }
 });
