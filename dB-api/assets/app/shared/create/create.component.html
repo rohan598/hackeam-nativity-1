@@ -2,18 +2,10 @@
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
 
         <div formGroupName="pg1">
-            <div class="form-group" [ngClass]="{'has-success':societyNameIsValid,'has-danger':!societyNameIsValid}">
-                <label for="sname">Society name</label>
-                <input type="text" id="sname" class="form-control" placeholder="Society Name" formControlName="societyName">
-                <p class="help-block" *ngIf="createForm.get('important.societyName').touched && !societyNameVal">
-                      This field cannot be left empty
-                </p>
-            </div>
-
             <div class="form-group" [ngClass]="{'has-success':eventNameIsValid,'has-danger':!eventNameIsValid}">
                 <label for="ename">Event name</label>
                 <input type="text" id="ename" class="form-control" placeholder="Event Name" formControlName="eventName">
-                <p class="help-block" *ngIf="createForm.get('important.eventName').touched && !eventNameVal">
+                <p class="help-block" *ngIf="createForm.get('pg1.eventName').touched && !eventNameVal">
                       This field cannot be left empty
                 </p>
             </div>
@@ -23,31 +15,24 @@
                 <div class="form-group" [ngClass]="{'has-success':eventDateFromIsValid,'has-danger':!eventDateFromIsValid}">
                     <label for="datefrom">From</label>
                     <input type="date" id="datefrom" class="form-control" formControlName="eventDateFrom">
-                    <p class="help-block" *ngIf="createForm.get('important.eventDateFrom').touched && !eventDateFromVal">
+                    <p class="help-block" *ngIf="createForm.get('pg1.eventDateFrom').touched && !eventDateFromVal">
                           This field cannot be left empty
                     </p>
                 </div>
                 <div class="form-group" [ngClass]="{'has-success':eventDateToIsValid,'has-danger':!eventDateToIsValid}">
                     <label for="dateto">To</label>
                     <input type="date" id="dateto" class="form-control" formControlName="eventDateTo">
-                    <p class="help-block" *ngIf="createForm.get('important.eventDateTo').touched && !eventDateToVal">
+                    <p class="help-block" *ngIf="createForm.get('pg1.eventDateTo').touched && !eventDateToVal">
                           This field cannot be left empty
                     </p>
                 </div>
             </div>
 
-            <div class="form-group" [ngClass]="{'has-success':eventIdeaIsValid,'has-danger':!eventIdeaIsValid}">
-                <label for="eidea">Event Idea</label>
-                <input type="text" id="eidea" class="form-control" placeholder="Event Idea" formControlName="eventIdea">
-                <p class="help-block" *ngIf="createForm.get('important.eventIdea').touched && !eventIdeaVal">
-                      This field cannot be left empty
-                </p>
-            </div>
 
-            <div class="form-group" [ngClass]="{'has-success':aboutEventIsValid,'has-danger':!aboutEventIsValid}">
+            <div class="form-group" [ngClass]="{'has-success':descriptionValid,'has-danger':!descriptionIsValid}">
                 <label for="aboutevent">About Event</label>
-                <textarea class="form-control" id="aboutevent" rows="5" formControlName="aboutEvent"></textarea>
-                <p class="help-block" *ngIf="createForm.get('important.aboutEvent').touched && !aboutEventVal">
+                <textarea class="form-control" id="aboutevent" rows="5" formControlName="description"></textarea>
+                <p class="help-block" *ngIf="createForm.get('pg1.description').touched && !descriptionVal">
                       This field cannot be left empty
                 </p>
             </div>
@@ -67,41 +52,48 @@
               <input type="text" id="hashtags" class="form-control" placeholder="#Hackathon#2018" formControlName="hashtags">
           </div>
 
-          <div class="form-group" >
-              <label for="ename">Event name</label>
-              <input type="text" id="ename" class="form-control" placeholder="Event Name" formControlName="name">
-          </div>
+          <div formArrayName="events">
+            <h3>Events</h3>
+            <button class="btn btn-primary" type="button"(click)="onAddEvents()">Add event</button>
+                <div class="form-group"  *ngFor="let eventGroup of createForm.get('pg2.events').controls; let i = index">
+                  <div [formGroupName]="i">
+                    <div class="form-group" >
+                        <label for="ename">Event name</label>
+                        <input type="text" id="ename" class="form-control" placeholder="Event Name" formControlName="name">
+                    </div>
 
-          <div class="d-flex">
-              <p class="px-3 mx-3">Event Time</p>
-              <div class="form-group" >
-                  <label for="from">From</label>
-                  <input type="time" id="from" class="form-control" formControlName="from">
-              </div>
-              <div class="form-group">
-                  <label for="to">To</label>
-                  <input type="time" id="to" class="form-control" formControlName="to">
-              </div>
-          </div>
+                    <div class="d-flex">
+                        <p class="px-3 mx-3">Event Time</p>
+                        <div class="form-group" >
+                            <label for="from">From</label>
+                            <input type="time" id="from" class="form-control" formControlName="from">
+                        </div>
+                        <div class="form-group">
+                            <label for="to">To</label>
+                            <input type="time" id="to" class="form-control" formControlName="to">
+                        </div>
+                    </div>
 
-          <div class="form-group">
-              <label for="venue">Venue</label>
-              <input type="text" id="venue" class="form-control" placeholder="Venue" formControlName="venue">
-          </div>
+                    <div class="form-group">
+                        <label for="venue">Venue</label>
+                        <input type="text" id="venue" class="form-control" placeholder="Venue" formControlName="venue">
+                    </div>
 
-          <div class="form-group" >
-              <label for="edescription">Description</label>
-              <textarea class="form-control" id="edescription" rows="5" formControlName="description"></textarea>
+                    <div class="form-group" >
+                        <label for="edescription">Description</label>
+                        <textarea class="form-control" id="edescription" rows="5" formControlName="description"></textarea>
+                    </div>
+                  </div>
+                </div>
           </div>
         </div>
 
         <div formGroupName="pg3">
+          <div class="form-group">
+              <label for="rlink">Registration Link</label>
+              <input type="url" id="rlink" class="form-control" placeholder="e.g google form" formControlName="register">
+          </div>
           <div formGroupName="links">
-              <div class="form-group">
-                  <label for="rlink">Registration Link</label>
-                  <input type="url" id="rlink" class="form-control" placeholder="e.g google form" formControlName="register">
-              </div>
-
               <div class="d-flex mx-3 px-3">
                   <p style="width: 20%;">Profile Links</p>
                   <div style="width: 80%">
@@ -148,71 +140,83 @@
         </div>
     </div>
         <div formGroupName="pg4">
-          <div formGroupName="speakers">
-            <div class="form-group">
-                <label for="sname">Speaker name</label>
-                <input type="text" id="sname" class="form-control" placeholder="Speaker's Name" formControlName="name">
-            </div>
-
-            <div class="form-group" >
-                <label for="description">Description</label>
-                <input type="text" id="description" class="form-control" placeholder="A little about the speaker" formControlName="description">
-            </div>
-
-            <div class="form-group">
-                <label for="avatar">Speaker's Photo</label>
-                <input type="url" class="form-control-text" id="avatar" aria-describedby="fileHelp" formControlName="avatar">
-            </div>
-            <div formGroupName="links">
-
-                <div class="d-flex mx-3 px-3">
-                    <p style="width: 20%;">Profile Links</p>
-                    <div style="width: 80%">
-                        <table class="table table-hover">
-                            <tr>
-                                <th scope="row">Github</th>
-                                <td class="form-group">
-                                    <input type="url" class="form-control" placeholder="Github link" formControlName="github">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Google+</th>
-                                <td class="form-group">
-                                    <input type="url" class="form-control" placeholder="Google+ link" formControlName="googlep">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Facebook</th>
-                                <td class="form-group">
-                                    <input type="url" class="form-control" placeholder="Facebook link" formControlName="facebook">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Twitter</th>
-                                <td class="form-group">
-                                    <input type="url" class="form-control" placeholder="Twitter link" formControlName="twitter">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Linkedin</th>
-                                <td class="form-group">
-                                    <input type="url" class="form-control" placeholder="Linkedin link" formControlName="linkedin">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Instagram</th>
-                                <td class="form-group">
-                                    <input type="url" class="form-control" placeholder="Instagram link" formControlName="instagram">
-                                </td>
-                            </tr>
-                        </table>
+          <div formArrayName="speakers">
+            <h3>Sponsors</h3>
+            <button class="btn btn-primary" type="button"(click)="onAddSpeakers()">Add event</button>
+                <div class="form-group"  *ngFor="let speakerGroup of createForm.get('pg4.speakers').controls; let i = index">
+                  <div [formGroupName]="i">
+                    <div class="form-group">
+                        <label for="sname">Speaker name</label>
+                        <input type="text" id="sname" class="form-control" placeholder="Speaker's Name" formControlName="name">
                     </div>
+
+                    <div class="form-group" >
+                        <label for="description">Description</label>
+                        <input type="text" id="description" class="form-control" placeholder="A little about the speaker" formControlName="description">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="avatar">Speaker's Photo</label>
+                        <input type="url" class="form-control-text" id="avatar" aria-describedby="fileHelp" formControlName="avatar">
+                    </div>
+                    <div formGroupName="links">
+
+                        <div class="d-flex mx-3 px-3">
+                            <p style="width: 20%;">Profile Links</p>
+                            <div style="width: 80%">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th scope="row">Github</th>
+                                        <td class="form-group">
+                                            <input type="url" class="form-control" placeholder="Github link" formControlName="github">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Google+</th>
+                                        <td class="form-group">
+                                            <input type="url" class="form-control" placeholder="Google+ link" formControlName="googlep">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Facebook</th>
+                                        <td class="form-group">
+                                            <input type="url" class="form-control" placeholder="Facebook link" formControlName="facebook">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Twitter</th>
+                                        <td class="form-group">
+                                            <input type="url" class="form-control" placeholder="Twitter link" formControlName="twitter">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Linkedin</th>
+                                        <td class="form-group">
+                                            <input type="url" class="form-control" placeholder="Linkedin link" formControlName="linkedin">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Instagram</th>
+                                        <td class="form-group">
+                                            <input type="url" class="form-control" placeholder="Instagram link" formControlName="instagram">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                  </div>
+                </div>
+
+
                 </div>
           </div>
         </div>
     </div>
         <div formGroupName="pg5">
-          <div formGroupName="sponsors">
+          <div formArrayName="sponsors">
+            <h3>Sponsors</h3>
+            <button class="btn btn-primary" type="button"(click)="onAddSponsors()">Add event</button>
+                <div class="form-group"  *ngFor="let sponsorGroup of createForm.get('pg5.sponsors').controls; let i = index">
+                  <div [formGroupName]="i">
             <div class="form-group">
                 <label for="logo">Sponsor's Logo</label>
                 <input type="url" class="form-control" id="logo" aria-describedby="fileHelp" formControlName="logo">
@@ -223,8 +227,9 @@
             </div>
           </div>
         </div>
-
-        <button type="submit" class="btn btn-primary"[disabled]="!societySignupForm.valid">Submit</button>
+        </div>
+</div>
+        <button type="submit" class="btn btn-primary"[disabled]="!createForm.valid">Submit</button>
 
     </form>
   </div>

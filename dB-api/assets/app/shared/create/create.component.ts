@@ -1,8 +1,10 @@
 
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms'
+import { FormControl, FormGroup, Validators, FormArray ,FormBuilder} from '@angular/forms'
 import { CustomValidators } from 'ng2-validation';
 import { DatePipe } from '@angular/common';
+import { CreateService } from '../create.service';
+import { Create } from './create.model';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -12,135 +14,145 @@ import { DatePipe } from '@angular/common';
 export class CreateComponent implements OnInit {
 
   pageNum: number;
+
   createForm: FormGroup;
-  societyNameIsValid: boolean;
-  societyNameVal: boolean;
   eventNameIsValid: boolean;
   eventNameVal: boolean;
   eventDateFromIsValid: boolean;
   eventDateFromVal: boolean;
   eventDateToIsValid: boolean;
   eventDateToVal: boolean;
-  eventIdeaIsValid: boolean;
-  eventIdeaVal: boolean;
-  aboutEventIsValid: boolean;
-  aboutEventVal: boolean;
+  descriptionValid: boolean;
+  descriptionVal: boolean;
   min: string;
   max: string;
   date: Date;
-  constructor(private datePipe: DatePipe) { }
-  transformDate(date) {
-    this.date = new Date(Date.now());
-    this.date.setDate(this.date.getDate() + 7);
-    this.min = this.datePipe.transform(Date.now(), 'yyyy-MM-dd');
-    this.date.setDate(this.date.getDate() + 113);
-    this.max = this.datePipe.transform(Date.now(), 'yyyy-MM-dd');
-  }
+  constructor(private datePipe: DatePipe,private fb:FormBuilder,private createService:CreateService) { }
+  // transformDate(date) {
+  //   this.date = new Date(Date.now());
+  //   this.date.setDate(this.date.getDate() + 7);
+  //   this.min = this.datePipe.transform(Date.now(),'yyyy-MM-dd');
+  //   this.date.setDate(this.date.getDate() + 113);
+  //   this.max = this.datePipe.transform(Date.now(), 'yyyy-MM-dd');
+  // }
   ngOnInit() {
 
-    this.createForm = new FormGroup({
-      'pg1':new FormGroup({
-        'societyName': new FormControl(null, Validators.required),
-        'eventName': new FormControl(null, Validators.required),
-        'eventDateFrom': new FormControl(null, [Validators.required, CustomValidators.minDate(this.min), CustomValidators.maxDate(this.max)]),
-        'eventDateTo': new FormControl(null, [Validators.required, CustomValidators.minDate(this.min), CustomValidators.maxDate(this.max)]),
-        'aboutEvent': new FormControl(null, Validators.required),
-        'background': new FormControl(null, [Validators.required, CustomValidators.url])
+    this.createForm = this.fb.group({
+      'pg1': this.fb.group({
+
+        'eventName': ['', Validators.required],
+        'eventDateFrom': ['',Validators.required],
+        'eventDateTo':['', Validators.required],
+        'description': ['',Validators.required],
+        'background': ['',[Validators.required, CustomValidators.url]]
+      }),
+        'pg2':this.fb.group({
+        'hashtags': [''],
+        'events': this.fb.array([])
       }),
 
-      'pg2': new FormGroup({
-        'hastags': new FormControl(null),
-        'events': new FormArray([])
-      }),
 
-      'pg3': new FormGroup({
-        'register': new FormControl(null, CustomValidators.url),
-        'links': new FormGroup({
-          'github': new FormControl(null, CustomValidators.url),
-          'googlep': new FormControl(null, CustomValidators.url),
-          'facebook': new FormControl(null, CustomValidators.url),
-          'twitter': new FormControl(null, CustomValidators.url),
-          'linkedin': new FormControl(null, CustomValidators.url),
-          'instagram': new FormControl(null, CustomValidators.url)
+      'pg3': this.fb.group({
+        'register': ['',CustomValidators.url],
+        'links': this.fb.group({
+          'github': ['',CustomValidators.url],
+          'googlep': ['',CustomValidators.url],
+          'facebook': ['',CustomValidators.url],
+          'twitter': ['',CustomValidators.url],
+          'linkedin': ['',CustomValidators.url],
+          'instagram': ['',CustomValidators.url]
         })
       }),
 
-      'pg4':new FormGroup({
-        'speakers': new FormArray([])
+      'pg4':this.fb.group({
+        'speakers': this.fb.array([])
       }),
-      'pg5': new FormGroup({
-          'sponsors': new FormArray([])
+      'pg5': this.fb.group({
+          'sponsors': this.fb.array([])
       })
   });
 
-    this.createForm.get('important.societyName').statusChanges.subscribe((status) => {
-      this.societyNameIsValid = (status === 'VALID' ? true : false);
-    });
-    this.createForm.get('important.eventName').statusChanges.subscribe((status) => {
+    this.createForm.get('pg1.eventName').statusChanges.subscribe((status) => {
       this.eventNameIsValid = (status === 'VALID' ? true : false);
     });
 
-    this.createForm.get('important.societyName').valueChanges.subscribe((value) => {
-      this.societyNameVal = (value === '' || value === null) ? false : true;
-    });
-    this.createForm.get('important.eventName').valueChanges.subscribe((value) => {
+    this.createForm.get('pg1.eventName').valueChanges.subscribe((value) => {
       this.eventNameVal = (value === '' || value === null) ? false : true;
     });
-    this.createForm.get('important.eventDateFrom').valueChanges.subscribe((value) => {
+    this.createForm.get('pg1.eventDateFrom').valueChanges.subscribe((value) => {
       this.eventDateFromVal = (value === '' || value === null) ? false : true;
     });
-    this.createForm.get('important.eventDateTo').valueChanges.subscribe((value) => {
+    this.createForm.get('pg1.eventDateTo').valueChanges.subscribe((value) => {
       this.eventDateToVal = (value === '' || value === null) ? false : true;
     });
-    this.createForm.get('important.eventIdea').valueChanges.subscribe((value) => {
-      this.eventIdeaVal = (value === '' || value === null) ? false : true;
+    this.createForm.get('pg1.description').valueChanges.subscribe((value) => {
+      this.descriptionVal = (value === '' || value === null) ? false : true;
     });
-    this.createForm.get('important.aboutEvent').valueChanges.subscribe((value) => {
-      this.aboutEventVal = (value === '' || value === null) ? false : true;
-    });
+
   }
 
+
   onAddEvents(){
-    const group = new FormGroup({
-      'name': new FormControl(null, Validators.required),
-      'from': new FormControl(null, Validators.required),
-      'to': new FormControl(null, Validators.required),
-      'venue': new FormControl(null, Validators.required),
-      'decription': new FormControl(null, Validators.required)
+    const group = this.fb.group({
+      'name': ['',Validators.required],
+      'from': ['',Validators.required],
+      'to': ['',Validators.required],
+      'venue': ['',Validators.required],
+      'description': ['',Validators.required]
     });
-    (<FormArray>this.createForm.get('events')).push(group);
+    (<FormArray>this.createForm.get('pg2.events')).push(group);
   }
 
   onAddSpeakers(){
-      const group = new FormGroup({
-        'name': new FormControl(null),
-        'description': new FormControl(null),
-        'avatar': new FormControl(null, CustomValidators.url),
+      const group = this.fb.group({
+        'name': [''],
+        'description': [''],
+        'avatar': ['',CustomValidators.url],
 
-        'links': new FormGroup({
-          'github': new FormControl(null, CustomValidators.url),
-          'googlep': new FormControl(null, CustomValidators.url),
-          'facebook': new FormControl(null, CustomValidators.url),
-          'twitter': new FormControl(null, CustomValidators.url),
-          'linkedin': new FormControl(null, CustomValidators.url),
-          'instagram': new FormControl(null, CustomValidators.url)
+        'links': this.fb.group({
+          'github': ['',CustomValidators.url],
+          'googlep': ['',CustomValidators.url],
+          'facebook': ['',CustomValidators.url],
+          'twitter': ['',CustomValidators.url],
+          'linkedin': ['',CustomValidators.url],
+          'instagram': ['',CustomValidators.url]
         })
       });
-      (<FormArray>this.createForm.get('events')).push(group);
+      (<FormArray>this.createForm.get('pg4.speakers')).push(group);
   }
 
   onAddSponsors(){
-      const group = new FormGroup({
-        'logo': new FormControl(null, CustomValidators.url),
-        'link': new FormControl(null, CustomValidators.url)
+      const group = this.fb.group({
+        'logo': ['',CustomValidators.url],
+        'link': ['',CustomValidators.url]
       });
-      (<FormArray>this.createForm.get('events')).push(group);
+      (<FormArray>this.createForm.get('pg5.sponsors')).push(group);
   }
 
   toggleNext(){
 
   }
+
   onSubmit() {
-    console.log(this.createForm);
+    const create = new Create(
+      this.createForm.get('pg1.eventName').value,
+      this.createForm.get('pg1.eventDateFrom').value,
+      this.createForm.get('pg1.eventDateTo').value,
+      this.createForm.get('pg1.description').value,
+      this.createForm.get('pg1.background').value,
+      this.createForm.get('pg2.hashtags').value,
+      (<FormArray>this.createForm.get('pg2.events')).value,
+      this.createForm.get('pg3.register').value,
+      this.createForm.get('pg3.links').value,
+      (<FormArray>this.createForm.get('pg4.speakers')).value,
+      (<FormArray>this.createForm.get('pg5.sponsors')).value
+    );
+    console.log(this.createForm.value + "\n");
+    this.createService.createEvent(create)
+      .subscribe(
+        data => console.log(data),
+        error => console.error(error)
+      );
+    this.createForm.reset();
   }
 }
