@@ -20,6 +20,7 @@ import { HowToUseComponent } from './howtouse/howtouse.component';
 import { AboutUsComponent } from './aboutus/aboutus.component';
 import { CreateComponent } from './shared/create/create.component';
 import { UpcomingEventsComponent } from './shared/upcoming-events/upcoming-events.component';
+import { EventsComponent } from './shared/upcoming-events/events/events.component';
 
 // user
 import { UserComponent } from './user/user.component';
@@ -74,6 +75,7 @@ import { CustomFormsModule } from 'ng2-validation';
     SideBarSocietyComponent,
     MyEventsSocietyComponent,
     UpcomingEventsComponent,
+    EventsComponent,
     SignupComponent,
     SignupUserComponent,
     SignupSocietyComponent,
