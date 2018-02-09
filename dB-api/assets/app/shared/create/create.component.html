@@ -1,3 +1,128 @@
-<p>
-  create-form works!
-</p>
+<div class="container">
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+
+        <div formGroupName="images">
+
+            <div class="form-group">
+                <label for="societylogo">Society Logo (5:1 logo with society name)</label>
+                <input type="file" class="form-control-file" id="societylogo" aria-describedby="fileHelp" formControlName="logo">
+            </div>
+
+            <div class="form-group">
+                <label for="background">Background Image (1600x1200)</label>
+                <input type="file" class="form-control-file" id="background" aria-describedby="fileHelp" formControlName="background">
+            </div>
+
+        </div>
+
+        <div formGroupName="important">
+
+            <div class="form-group" [ngClass]="{'has-success':societyNameIsValid,'has-danger':!societyNameIsValid}">
+                <label for="sname">Society name</label>
+                <input type="text" id="sname" class="form-control" placeholder="Society Name" formControlName="societyName">
+                <p class="help-block" *ngIf="createForm.get('important.societyName').touched && !societyNameVal">
+                      This field cannot be left empty
+                </p>
+            </div>
+
+            <div class="form-group" [ngClass]="{'has-success':eventNameIsValid,'has-danger':!eventNameIsValid}">
+                <label for="ename">Event name</label>
+                <input type="text" id="ename" class="form-control" placeholder="Event Name" formControlName="eventName">
+                <p class="help-block" *ngIf="createForm.get('important.eventName').touched && !eventNameVal">
+                      This field cannot be left empty
+                </p>
+            </div>
+
+            <div class="d-flex">
+                <p class="px-3 mx-3">Event Date</p>
+                <div class="form-group" [ngClass]="{'has-success':eventDateFromIsValid,'has-danger':!eventDateFromIsValid}">
+                    <label for="datefrom">From</label>
+                    <input type="date" id="datefrom" class="form-control" formControlName="eventDateFrom">
+                    <p class="help-block" *ngIf="createForm.get('important.eventDateFrom').touched && !eventDateFromVal">
+                          This field cannot be left empty
+                    </p>
+                </div>
+                <div class="form-group" [ngClass]="{'has-success':eventDateToIsValid,'has-danger':!eventDateToIsValid}">
+                    <label for="dateto">To</label>
+                    <input type="date" id="dateto" class="form-control" formControlName="eventDateTo">
+                    <p class="help-block" *ngIf="createForm.get('important.eventDateTo').touched && !eventDateToVal">
+                          This field cannot be left empty
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group" [ngClass]="{'has-success':eventIdeaIsValid,'has-danger':!eventIdeaIsValid}">
+                <label for="eidea">Event Idea</label>
+                <input type="text" id="eidea" class="form-control" placeholder="Event Idea" formControlName="eventIdea">
+                <p class="help-block" *ngIf="createForm.get('important.eventIdea').touched && !eventIdeaVal">
+                      This field cannot be left empty
+                </p>
+            </div>
+
+            <div class="form-group" [ngClass]="{'has-success':aboutEventIsValid,'has-danger':!aboutEventIsValid}">
+                <label for="aboutevent">About Event</label>
+                <textarea class="form-control" id="aboutevent" rows="5" formControlName="aboutEvent"></textarea>
+                <p class="help-block" *ngIf="createForm.get('important.aboutEvent').touched && !aboutEventVal">
+                      This field cannot be left empty
+                </p>
+            </div>
+
+        </div>
+
+        <div formGroupName="links">
+
+            <div class="form-group">
+                <label for="rlink">Registration Link</label>
+                <input type="text" id="rlink" class="form-control" placeholder="e.g google form" formControlName="register">
+            </div>
+
+            <div class="d-flex mx-3 px-3">
+                <p style="width: 20%;">Profile Links</p>
+                <div style="width: 80%">
+                    <table class="table table-hover">
+                        <tr>
+                            <th scope="row">Github</th>
+                            <td class="form-group">
+                                <input type="text" class="form-control" placeholder="Github link" formControlName="github">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Google+</th>
+                            <td class="form-group">
+                                <input type="text" class="form-control" placeholder="Google+ link" formControlName="googlep">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Facebook</th>
+                            <td class="form-group">
+                                <input type="text" class="form-control" placeholder="Facebook link" formControlName="facebook">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Twitter</th>
+                            <td class="form-group">
+                                <input type="text" class="form-control" placeholder="Twitter link" formControlName="twitter">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Linkedin</th>
+                            <td class="form-group">
+                                <input type="text" class="form-control" placeholder="Linkedin link" formControlName="linkedin">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Instagram</th>
+                            <td class="form-group">
+                                <input type="text" class="form-control" placeholder="Instagram link" formControlName="instagram">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary"[disabled]="!societySignupForm.valid">Submit</button>
+
+    </form>
+</div>

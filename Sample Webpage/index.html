@@ -48,6 +48,7 @@
     .event{
         margin: auto;
         background-color: rgba(255, 0, 0, 0.5);
+        color: black;
         margin-top: 7rem! important;
         margin-bottom: 9rem !important;
     }
@@ -143,9 +144,12 @@
     }
     .tilehead{
         font-weight: bold;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         color: cornflowerblue;
         font-family: 'Quicksand', sans-serif;
+    }
+    .subhead{
+        font-size: 0.85rem;
     }
     .timeline::before{
         position: absolute;
@@ -165,6 +169,104 @@
     .timeline{
         position: relative;
         list-style: none;
+    }
+
+    /*============================SPEAKERS============================*/
+    #speakers{
+        background-color: rgba(255,255,255,0.8);
+    }
+    .speakerhead{
+        font-family: 'Quicksand', sans-serif;
+        font-size: 2rem;
+        font-weight: bold;
+        color: gray;
+    }
+    .speaker{
+        width: 100%;
+        margin: auto;
+    }
+    .speakeroverlay{
+        position: absolute;
+        top: 0px;
+        height: 270px;
+        width: 270px;
+        left: 10px;
+        right: 10px;
+        display: none;
+        background-color : rgba(0, 0, 0, 0.5)
+    }
+    .speakerlinks{
+        list-style: none;
+        display: flex;
+        height: 100%;
+    }
+    .speakerlinks > li{
+        margin: auto;
+        font-size: 1.5rem;
+    }
+    .speakername{
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.7rem;
+        font-weight: bold;
+    }
+    .speakerstatus{
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: gray;
+    }
+    .speakerabout{
+        font-family: 'Raleway', sans-serif;
+        font-size: 0.8rem;
+    }
+
+    /*============================TEAM============================*/
+    #team{
+        background-color: rgba(255,255,255,0.8);
+    }
+    .teamhead{
+        font-family: 'Quicksand', sans-serif;
+        font-size: 2rem;
+        font-weight: bold;
+        color: gray;
+    }
+    .teammember{
+        width: 100%;
+        margin: auto;
+    }
+    .memberoverlay{
+        position: absolute;
+        top: 0px;
+        height: 270px;
+        width: 270px;
+        left: 0px;
+        right: 0px;
+        display: none;
+        background-color : rgba(0, 0, 0, 0.5)
+    }
+    .memberlinks{
+        list-style: none;
+        display: flex;
+        height: 100%;
+    }
+    .memberlinks > li{
+        margin: auto;
+        font-size: 1.5rem;
+    }
+    .memberinfo{
+        width: 270px;
+        background-color: white;
+    }
+    .membername{
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+    .memberstatus{
+        font-family: 'Quicksand', sans-serif;
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: gray;
     }
 
     /*============================CONTACT US============================*/
@@ -207,6 +309,11 @@
     .fa-map-marker-alt:hover{
         color: red;
     }
+    .ewacimg{
+        height: 16px;
+        width: 16px;
+    }
+
     @media only screen and (min-width: 420px){
         .bottom1text, .copytext{
             font-size: 0.6rem;
@@ -221,10 +328,14 @@
             margin-top: 1rem;
             padding-top: 1rem;
         }
+        .ewacimg{
+            height: 20px;
+            width: 20px;
+        }
         .event{
             width: 400px;
         }
-        .eventname, .abouthead, .schedulehead{
+        .eventname, .abouthead, .schedulehead, .speakerhead, .teamhead{
             font-size: 2.5rem;
         }
         .eventdate{
@@ -249,8 +360,14 @@
         .listitem::before{
             top: 9px;
         }
-        .titlehead{
-            font-size: 1.6rem;
+        .speakername{
+            font-size: 2rem;
+        }
+        .membername{
+            font-size: 1.8rem;
+        }
+        .speakerstatus, .speakerinfo, .memberstatus{
+            font-size: 0.9rem;
         }
     }
     @media only screen and (min-width: 768px){
@@ -275,10 +392,14 @@
         .bottom2text{
             width: 40%;
         }
+        .ewacimg{
+            height: 25px;
+            width: 25px;
+        }
         .event{
             width: 500px;
         }
-        .eventname, .abouthead, .schedulehead{
+        .eventname, .abouthead, .schedulehead, .speakerhead, .teamhead{
             font-size: 3rem;
         }
         .eventdate{
@@ -307,8 +428,32 @@
         .listitem::before{
             top: 12px;
         }
-        .titlehead{
-            font-size: 1.8rem;
+        .speaker{
+            display: flex;
+        }
+        .speakeroverlay{
+            left: auto;
+            right: auto;
+            height: 100%;
+            width: 100%;
+        }
+        .speakerinfo{
+            width: 100%;
+        }
+        .speakername{
+            font-size: 2.2rem;
+        }
+        .speakerstatus, .speakerinfo{
+            font-size: 0.9rem;
+        }
+        #team{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .teammember{
+            width: 50%;
+            margin-right: 0px;
+            margin-left: 0px;
         }
     }
     @media only screen and (min-width: 1020px){
@@ -324,10 +469,14 @@
         .bottom2head, .bottom2text, .fa-map-marker-alt{
             font-size: 1.6rem;
         }
+        .ewacimg{
+            height: 32px;
+            width: 32px;
+        }
         .event{
             width: 600px;
         }
-        .eventname, .abouthead, .schedulehead{
+        .eventname, .abouthead, .schedulehead, .speakerhead, .teamhead{
             font-size: 3.5rem;
         }
         .eventdate{
@@ -355,8 +504,39 @@
         .cont{
             font-size: 1.85rem;
         }
-        .titlehead{
-            font-size: 2rem;
+        #speakers{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .speaker{
+            width: 50%;
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+        .speakerinfo{
+            width: 100%;
+            text-align: left;
+            margin-left: 0px;
+            margin-right: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        .speakername, .membername{
+            font-size: 1.4rem;
+        }
+        .speakerstatus, .speakerabout{
+            font-size: 0.8rem;
+        }
+        .teammember{
+            width: 33.33%;
+        }
+        .memberstatus{
+            font-size: 0.8rem;
+        }
+    }
+    @media only screen and (min-width: 1200px){
+        .teammember{
+            width: 25%;
         }
     }
   </style>
@@ -497,8 +677,306 @@
     		</div>
     	</div>
 
+        <!--============================SPEAKERS============================-->
+        <div class="container-fluid mt-5 mb-5 pt-2 pb-2" id="speakers">
+            <div class="container text-center mt-3 mb-5 speakerhead">SPEAKERS</div>
+            <div class="container mt-3 mb-3 pt-1 pb-1 speaker text-center">
+                <div class="speakerimg speakerimg1" style="position: relative;">
+                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
+                    <div class="container-fluid speakeroverlay speakeroverlay1">
+                        <ul class="speakerlinks float-center" style="padding:0; margin:auto">
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container-fluid speakerinfo">
+                    <div class="container speakername">Chris Aniszczyk</div>
+                    <p class="container speakerstatus">Cloud Native Computing Foundation</p>
+                    <p class="container-fluid speakerabout">Chris is currently a VP at the Linux Foundation focused on developer relations and running the Open Container
+                    Initiative (OCI) / Cloud Native Computing Foundation (CNCF). Furthermore, he's a partner at Capital Factory where
+                    he focuses on mentoring, advising and investing in open source and infrastructure focused startups.</p>
+                </div>
+            </div>
+            <div class="container mt-3 mb-3 pt-1 pb-1 speaker text-center">
+                <div class="speakerimg speakerimg2" style="position: relative;">
+                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
+                    <div class="container-fluid speakeroverlay speakeroverlay2">
+                        <ul class="speakerlinks float-center" style="padding:0; margin:auto">
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container-fluid speakerinfo">
+                    <div class="container speakername">Chris Aniszczyk</div>
+                    <p class="container speakerstatus">Cloud Native Computing Foundation</p>
+                    <p class="container-fluid speakerabout">Chris is currently a VP at the Linux Foundation focused on developer relations and running the Open Container
+                    Initiative (OCI) / Cloud Native Computing Foundation (CNCF). Furthermore, he's a partner at Capital Factory where
+                    he focuses on mentoring, advising and investing in open source and infrastructure focused startups.</p>
+                </div>
+            </div>
+            <div class="container mt-3 mb-3 pt-1 pb-1 speaker text-center">
+                <div class="speakerimg speakerimg3" style="position: relative;">
+                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
+                    <div class="container-fluid speakeroverlay speakeroverlay3">
+                        <ul class="speakerlinks float-center" style="padding:0; margin:auto">
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container-fluid speakerinfo">
+                    <div class="container speakername">Chris Aniszczyk</div>
+                    <p class="container speakerstatus">Cloud Native Computing Foundation</p>
+                    <p class="container-fluid speakerabout">Chris is currently a VP at the Linux Foundation focused on developer relations and running the Open Container
+                    Initiative (OCI) / Cloud Native Computing Foundation (CNCF). Furthermore, he's a partner at Capital Factory where
+                    he focuses on mentoring, advising and investing in open source and infrastructure focused startups.</p>
+                </div>
+            </div>
+        </div>
+
+        <!--============================TEAM============================-->
+        <div class="container-fluid mt-5 mb-5 pt-2 pb-2" id="team">
+            <div class="container text-center mt-3 mb-5 teamhead">TEAM MEMBERS</div>
+            <div class="container mt-3 mb-3 pt-1 pb-1 teammember text-center">
+                <div class="memberimg memberimg1" style="position: relative;">
+                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
+                    <div class="container-fluid memberoverlay memberoverlay1">
+                        <ul class="memberlinks float-center" style="padding:0; margin:auto">
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container-fluid memberinfo">
+                    <div class="container membername">Chris Aniszczyk</div>
+                    <p class="container memberstatus">Cloud Native Computing Foundation</p>
+                </div>
+            </div>
+            <div class="container mt-3 mb-3 pt-1 pb-1 teammember text-center">
+                <div class="memberimg memberimg2" style="position: relative;">
+                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
+                    <div class="container-fluid memberoverlay memberoverlay2">
+                        <ul class="memberlinks float-center" style="padding:0; margin:auto">
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container-fluid memberinfo">
+                    <div class="container membername">Chris Aniszczyk</div>
+                    <p class="container memberstatus">Cloud Native Computing Foundation</p>
+                </div>
+            </div>
+            <div class="container mt-3 mb-3 pt-1 pb-1 teammember text-center">
+                <div class="memberimg memberimg3" style="position: relative;">
+                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
+                    <div class="container-fluid memberoverlay memberoverlay3">
+                        <ul class="memberlinks float-center" style="padding:0; margin:auto">
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container-fluid memberinfo">
+                    <div class="container membername">Chris Aniszczyk</div>
+                    <p class="container memberstatus">Cloud Native Computing Foundation</p>
+                </div>
+            </div>
+            <div class="container mt-3 mb-3 pt-1 pb-1 teammember text-center">
+                <div class="memberimg memberimg4" style="position: relative;">
+                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
+                    <div class="container-fluid memberoverlay memberoverlay4">
+                        <ul class="memberlinks float-center" style="padding:0; margin:auto">
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container-fluid memberinfo">
+                    <div class="container membername">Chris Aniszczyk</div>
+                    <p class="container memberstatus">Cloud Native Computing Foundation</p>
+                </div>
+            </div>
+            <div class="container mt-3 mb-3 pt-1 pb-1 teammember text-center">
+                <div class="memberimg memberimg5" style="position: relative;">
+                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
+                    <div class="container-fluid memberoverlay memberoverlay5">
+                        <ul class="memberlinks float-center" style="padding:0; margin:auto">
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container-fluid memberinfo">
+                    <div class="container membername">Chris Aniszczyk</div>
+                    <p class="container memberstatus">Cloud Native Computing Foundation</p>
+                </div>
+            </div>
+            <div class="container mt-3 mb-3 pt-1 pb-1 teammember text-center">
+                <div class="memberimg memberimg6" style="position: relative;">
+                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
+                    <div class="container-fluid memberoverlay memberoverlay6">
+                        <ul class="memberlinks float-center" style="padding:0; margin:auto">
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container-fluid memberinfo">
+                    <div class="container membername">Chris Aniszczyk</div>
+                    <p class="container memberstatus">Cloud Native Computing Foundation</p>
+                </div>
+            </div>
+        </div>
+
         <!--============================CONTACT US============================-->
-        <div class="container-fluid mt-3 pt-5 pb-3" id="contact">
+        <div class="container-fluid mt-1 pt-5 pb-1" id="contact">
             <div class="container-fluid d-flex">
         		<div class="container bottom1 m-auto">
         			<p class="card-text h3 bottom1head mb-3" style="color: gray;">Check out our other events from given links.</p>
@@ -544,7 +1022,7 @@
             </div>
             <p class="backquote-footer text-right copytext pt-0" style="color: gray;">&copy; All copyrights reserved.&nbsp; Website made using
                 <a class="navbar-brand" href="#" style="padding: 0px;">
-                    <img src="ewac.png" class="img-fluid" alt="Responsive image">
+                    <img src="ewac.png" class="img-fluid ewacimg" alt="Responsive image">
                 </a>
             </p>
     	</div>
