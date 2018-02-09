@@ -22,7 +22,7 @@
 
 
 .has-warning .form-control.ng-touched{
-  border-color: #d9534f;
+  border-color: #ebf25e;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23f0ad4e' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: 99%;
@@ -35,10 +35,12 @@
 } */
 
 
-.help-block{
+.has-danger .help-block{
     color: #d9534f;
 }
-
+.has-warning .help-block{
+    color:  #ebf25e;
+}
 .has-danger .form-control.ng-touched{
   border-color: #d9534f;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");

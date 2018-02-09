@@ -1,40 +1,37 @@
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
 
-      <form [formGroup]="userSigninForm" (ngSubmit) ="onSubmit()">
+      <form [formGroup]="userSigninForm" (ngSubmit)="onSubmit()">
 
-            <div class="form-group" [ngClass]="{'has-success':emailIsValid,'has-danger':!emailIsValid}">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="events@example.com"
-              formControlName = "email">
-              <p class="help-block"
-              *ngIf="userSigninForm.get('email').touched && !emailIsValid">
-                <span *ngIf="emailVal ; else elsePart">
+        <div class="form-group" [ngClass]="{'has-success':emailIsValid,'has-danger':!emailIsValid}">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="events@example.com" formControlName="email">
+          <p class="help-block" *ngIf="userSigninForm.get('email').touched && !emailIsValid">
+            <span *ngIf="emailVal ; else elsePart">
                   This field cannot be left empty
                 </span>
-                <ng-template #elsePart>
-                  <span *ngIf="userSigninForm.get('email').errors.pattern">
+            <ng-template #elsePart>
+              <span *ngIf="userSigninForm.get('email').errors.pattern">
                                 Please enter a valid email address
                   </span>
-                </ng-template>
-              </p>
-            </div>
+            </ng-template>
+          </p>
+        </div>
 
-            <div class="form-group"[ngClass]="{'has-success':passwordIsValid,'has-danger':!passwordIsValid}">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
-              formControlName = "password">
-              <p class="help-block" *ngIf="userSigninForm.get('password').touched">
-                <span *ngIf="passwordVal">
+        <div class="form-group" [ngClass]="{'has-success':passwordIsValid,'has-danger':!passwordIsValid}">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password">
+          <p class="help-block" *ngIf="userSigninForm.get('password').touched">
+            <span *ngIf="passwordVal">
                   This field cannot be left empty
                 </span>
-              </p>
-            </div>
+          </p>
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
 
       </form>
+      <button class="btn btn-primary" type="button" (click)="toggle.falsifyIn()">Back</button>
     </div>
   </div>
 </div>

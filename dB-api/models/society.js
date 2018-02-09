@@ -1,20 +1,23 @@
 const mongoose = require('mongoose');
+const mongooseUniqueValidator = require('mongoose-unique-validator');
+
 const user = require("./user");
 const contact = require('./contact-details');
+
 const Schema = mongoose.Schema;
 
 const SocietySchema = new Schema({
-  name:String,
-  email:String,
+  societyname:String,
+  email:{type:String,unique:true},
   password:String,
   description:String,
   logo:String,
-  member: [user.userSchema],
   contact: [contact.contactSchema],
-  // member:[UserSchema]
-  websites:[String]
+  users: [{type: Schema.Types.ObjectId}],
+  websites:[{type: Schema.Types.ObjectId}]
 });
 
 const society = mongoose.model('society',SocietySchema);
 
+SocietySchema.plugin(mongooseUniqueValidator);
 module.exports = society;

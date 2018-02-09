@@ -1,6 +1,8 @@
 import { Component,OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../shared/auth.service';
+import { ToggleService } from '../../shared/toggle.service';
 import { User } from '../../user/users.model';
 // import { } from 'googlemaps';
 // import { MapsAPILoader } from '@agm/core';
@@ -24,7 +26,7 @@ export class SignupUserComponent implements OnInit {
 
 
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService,private router:Router,private toggle: ToggleService) { }
 
   ngOnInit() {
     this.userSignupForm = new FormGroup({
@@ -85,11 +87,15 @@ export class SignupUserComponent implements OnInit {
       this.userSignupForm.get('important.password').value
     );
     console.log(this.userSignupForm + "\n");
-    this.authService.signup(user)
+    this.authService.signupUser(user)
       .subscribe(
         data => console.log(data),
         error => console.error(error)
       );
     this.userSignupForm.reset();
+  }
+
+  goBack(){
+      this.router.navigate(['/signup']);
   }
 }

@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router} from '@angular/router';
+
+import { ToggleService } from '../../shared/toggle.service';
+import { AuthService } from '../../shared/auth.service';
+import { Society } from '../../society/societies.model';
+
 @Component({
   selector: 'app-signin-society',
   templateUrl: './signin-society.component.html',
@@ -16,7 +22,8 @@ export class SigninSocietyComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private authService: AuthService,private router: Router,private toggle: ToggleService) { }
+
 
   ngOnInit() {
     this.societySigninForm = new FormGroup({
@@ -50,4 +57,28 @@ export class SigninSocietyComponent implements OnInit {
 
   }
 
+  onSubmit() {
+    const society = new Society(
+      '',
+      this.societySigninForm.get('email').value,
+      this.societySigninForm.get('password').value,
+      ''
+    );
+    console.log(this.societySigninForm + "\n");
+    this.authService.signinSociety(society)
+      .subscribe(
+        (data) => {
+        localStorage.setItem('token',data.token);
+        localStorage.setItem('societyId',data.societyId);
+        this.router.navigate(['/society']);
+        },
+        error => console.error(error),
+        ()=> {this.authService.truthySociety();}
+      );
+    this.societySigninForm.reset();
+  }
+
+      goBack(){
+          this.router.navigate(['/signin']);
+      }
 }
