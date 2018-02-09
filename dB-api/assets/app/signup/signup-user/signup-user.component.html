@@ -39,6 +39,11 @@
             </p>
           </div>
         </div>
+        <div class="form-group">
+          <label for="avatar"></label>
+          <input type="file" class="form-control" id="avatar" placeholder="../../placeholder-avatar.png" formControlName="avatar" (change)="onFileChange($event)" #fileInput>
+          <!-- <p class="help-block">Help text here.</p> -->
+        </div>
         <button type="submit" class="btn btn-primary" [disabled]="!userSignupForm.valid">Submit</button>
       </form>
       <button class="btn btn-primary" type="button" (click)="toggle.falsifyUp()">Back</button>

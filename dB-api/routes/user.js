@@ -21,7 +21,8 @@ router.post('/', function (req, res, next) {
     var newUser = new user.user({
       name:req.body.username,
       email:req.body.email,
-      password:bcrypt.hashSync(req.body.password,10)
+      password:bcrypt.hashSync(req.body.password,10),
+      avatar:req.body.avatar
     });
     newUser.save((error,result)=>{
       if(error){

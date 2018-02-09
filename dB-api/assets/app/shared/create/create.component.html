@@ -1,22 +1,7 @@
 <div class="container">
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
 
-        <div formGroupName="images">
-
-            <div class="form-group">
-                <label for="societylogo">Society Logo (5:1 logo with society name)</label>
-                <input type="file" class="form-control-file" id="societylogo" aria-describedby="fileHelp" formControlName="logo">
-            </div>
-
-            <div class="form-group">
-                <label for="background">Background Image (1600x1200)</label>
-                <input type="file" class="form-control-file" id="background" aria-describedby="fileHelp" formControlName="background">
-            </div>
-
-        </div>
-
-        <div formGroupName="important">
-
+        <div formGroupName="pg1">
             <div class="form-group" [ngClass]="{'has-success':societyNameIsValid,'has-danger':!societyNameIsValid}">
                 <label for="sname">Society name</label>
                 <input type="text" id="sname" class="form-control" placeholder="Society Name" formControlName="societyName">
@@ -67,62 +52,179 @@
                 </p>
             </div>
 
+            <div class="form-group">
+                <label for="background">Background Image (1600x1200)</label>
+                <input type="url" class="form-control" id="background" aria-describedby="fileHelp" formControlName="background">
+            </div>
+
         </div>
 
-        <div formGroupName="links">
+
+        <div formGroupName="pg2">
+
+          <div class="form-group" >
+              <label for="hashtags">Event Hashtags</label>
+              <input type="text" id="hashtags" class="form-control" placeholder="#Hackathon#2018" formControlName="hashtags">
+          </div>
+
+          <div class="form-group" >
+              <label for="ename">Event name</label>
+              <input type="text" id="ename" class="form-control" placeholder="Event Name" formControlName="name">
+          </div>
+
+          <div class="d-flex">
+              <p class="px-3 mx-3">Event Time</p>
+              <div class="form-group" >
+                  <label for="from">From</label>
+                  <input type="time" id="from" class="form-control" formControlName="from">
+              </div>
+              <div class="form-group">
+                  <label for="to">To</label>
+                  <input type="time" id="to" class="form-control" formControlName="to">
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="venue">Venue</label>
+              <input type="text" id="venue" class="form-control" placeholder="Venue" formControlName="venue">
+          </div>
+
+          <div class="form-group" >
+              <label for="edescription">Description</label>
+              <textarea class="form-control" id="edescription" rows="5" formControlName="description"></textarea>
+          </div>
+        </div>
+
+        <div formGroupName="pg3">
+          <div formGroupName="links">
+              <div class="form-group">
+                  <label for="rlink">Registration Link</label>
+                  <input type="url" id="rlink" class="form-control" placeholder="e.g google form" formControlName="register">
+              </div>
+
+              <div class="d-flex mx-3 px-3">
+                  <p style="width: 20%;">Profile Links</p>
+                  <div style="width: 80%">
+                      <table class="table table-hover">
+                          <tr>
+                              <th scope="row">Github</th>
+                              <td class="form-group">
+                                  <input type="url" class="form-control" placeholder="Github link" formControlName="github">
+                              </td>
+                          </tr>
+                          <tr>
+                              <th scope="row">Google+</th>
+                              <td class="form-group">
+                                  <input type="url" class="form-control" placeholder="Google+ link" formControlName="googlep">
+                              </td>
+                          </tr>
+                          <tr>
+                              <th scope="row">Facebook</th>
+                              <td class="form-group">
+                                  <input type="url" class="form-control" placeholder="Facebook link" formControlName="facebook">
+                              </td>
+                          </tr>
+                          <tr>
+                              <th scope="row">Twitter</th>
+                              <td class="form-group">
+                                  <input type="url" class="form-control" placeholder="Twitter link" formControlName="twitter">
+                              </td>
+                          </tr>
+                          <tr>
+                              <th scope="row">Linkedin</th>
+                              <td class="form-group">
+                                  <input type="url" class="form-control" placeholder="Linkedin link" formControlName="linkedin">
+                              </td>
+                          </tr>
+                          <tr>
+                              <th scope="row">Instagram</th>
+                              <td class="form-group">
+                                  <input type="url" class="form-control" placeholder="Instagram link" formControlName="instagram">
+                              </td>
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+        </div>
+    </div>
+        <div formGroupName="pg4">
+          <div formGroupName="speakers">
+            <div class="form-group">
+                <label for="sname">Speaker name</label>
+                <input type="text" id="sname" class="form-control" placeholder="Speaker's Name" formControlName="name">
+            </div>
+
+            <div class="form-group" >
+                <label for="description">Description</label>
+                <input type="text" id="description" class="form-control" placeholder="A little about the speaker" formControlName="description">
+            </div>
 
             <div class="form-group">
-                <label for="rlink">Registration Link</label>
-                <input type="text" id="rlink" class="form-control" placeholder="e.g google form" formControlName="register">
+                <label for="avatar">Speaker's Photo</label>
+                <input type="url" class="form-control-text" id="avatar" aria-describedby="fileHelp" formControlName="avatar">
             </div>
+            <div formGroupName="links">
 
-            <div class="d-flex mx-3 px-3">
-                <p style="width: 20%;">Profile Links</p>
-                <div style="width: 80%">
-                    <table class="table table-hover">
-                        <tr>
-                            <th scope="row">Github</th>
-                            <td class="form-group">
-                                <input type="text" class="form-control" placeholder="Github link" formControlName="github">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Google+</th>
-                            <td class="form-group">
-                                <input type="text" class="form-control" placeholder="Google+ link" formControlName="googlep">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Facebook</th>
-                            <td class="form-group">
-                                <input type="text" class="form-control" placeholder="Facebook link" formControlName="facebook">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Twitter</th>
-                            <td class="form-group">
-                                <input type="text" class="form-control" placeholder="Twitter link" formControlName="twitter">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Linkedin</th>
-                            <td class="form-group">
-                                <input type="text" class="form-control" placeholder="Linkedin link" formControlName="linkedin">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Instagram</th>
-                            <td class="form-group">
-                                <input type="text" class="form-control" placeholder="Instagram link" formControlName="instagram">
-                            </td>
-                        </tr>
-                    </table>
+                <div class="d-flex mx-3 px-3">
+                    <p style="width: 20%;">Profile Links</p>
+                    <div style="width: 80%">
+                        <table class="table table-hover">
+                            <tr>
+                                <th scope="row">Github</th>
+                                <td class="form-group">
+                                    <input type="url" class="form-control" placeholder="Github link" formControlName="github">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Google+</th>
+                                <td class="form-group">
+                                    <input type="url" class="form-control" placeholder="Google+ link" formControlName="googlep">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Facebook</th>
+                                <td class="form-group">
+                                    <input type="url" class="form-control" placeholder="Facebook link" formControlName="facebook">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Twitter</th>
+                                <td class="form-group">
+                                    <input type="url" class="form-control" placeholder="Twitter link" formControlName="twitter">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Linkedin</th>
+                                <td class="form-group">
+                                    <input type="url" class="form-control" placeholder="Linkedin link" formControlName="linkedin">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Instagram</th>
+                                <td class="form-group">
+                                    <input type="url" class="form-control" placeholder="Instagram link" formControlName="instagram">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
+          </div>
+        </div>
+    </div>
+        <div formGroupName="pg5">
+          <div formGroupName="sponsors">
+            <div class="form-group">
+                <label for="logo">Sponsor's Logo</label>
+                <input type="url" class="form-control" id="logo" aria-describedby="fileHelp" formControlName="logo">
             </div>
-
+            <div class="form-group">
+                <label for="link">Link to sponsor's website</label>
+                <input type="url" class="form-control" id="link" aria-describedby="fileHelp" formControlName="link">
+            </div>
+          </div>
         </div>
 
         <button type="submit" class="btn btn-primary"[disabled]="!societySignupForm.valid">Submit</button>
 
     </form>
-</div>
+  </div>

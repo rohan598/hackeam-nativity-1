@@ -1,20 +1,31 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const ProfileSchema = require('./profile-link');
+
+const ContactSchema = new Schema({
+  address: String,
+  telephone:[String]
+});
+const SpeakerSchema = new Schema({
+  avatar: String,
+  name: String,
+  designation:String,
+  description:String,
+  profile:[ProfileSchema]
+});
+
+const SponsorSchema = new Schema({
+  logo: String,
+  link: String
+});
 
 const EventSchema = new Schema({
   name:String,
-  // date: Date,
-  // time: String,
-  duration: {
-    from:Date,
-    to:Date
-  },
+  from:String,
+  to:String,
   venue: String,
   decription: String,
-  logo: String,
-  background: String,
-  quote: String,
-  topics: [String]
+  topics: String
 });
 
  const DayEventSchema = new Schema({
@@ -23,12 +34,14 @@ const EventSchema = new Schema({
  });
  const MainEventSchema = new Schema({
    name:String,
-   duration:{
-     from:Date,
-     to:Date
-   },
+   from:String,
+   to:String,
+   background: String,
    description:String,
    days:[DayEventSchema],
+   speakers:[SpeakerSchema],
+   sponsors:[SponsorSchema],
+   contacts:[ContactSchema],
    society: {type: Schema.Types.ObjectId}
  });
 

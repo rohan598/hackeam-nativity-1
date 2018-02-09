@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,ElementRef,ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/auth.service';
@@ -25,6 +25,7 @@ export class SignupUserComponent implements OnInit {
   passwordVal: boolean= false;
 
 
+  @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(private authService:AuthService,private router:Router,private toggle: ToggleService) { }
 
@@ -34,7 +35,8 @@ export class SignupUserComponent implements OnInit {
         'username': new FormControl(null, Validators.required),
         'email': new FormControl(null,[Validators.required,Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')]),
         'password': new FormControl(null,Validators.required)
-      })
+      }),
+      'avatar': new FormControl(null)
     });
 
     this.userSignupForm.get('important.username').statusChanges.subscribe((status) => {
@@ -84,7 +86,8 @@ export class SignupUserComponent implements OnInit {
     const user = new User(
       this.userSignupForm.get('important.username').value,
       this.userSignupForm.get('important.email').value,
-      this.userSignupForm.get('important.password').value
+      this.userSignupForm.get('important.password').value,
+      this.userSignupForm.get('avatar').value
     );
     console.log(this.userSignupForm + "\n");
     this.authService.signupUser(user)
@@ -98,4 +101,20 @@ export class SignupUserComponent implements OnInit {
   goBack(){
       this.router.navigate(['/signup']);
   }
+
+  onFileChange(event) {
+    let reader = new FileReader();
+    if(event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.userSignupForm.get('avatar').setValue({
+          filename: file.name,
+          filetype: file.type,
+          value: reader.result.split(',')[1]
+        })
+      };
+    }
+  }
+
 }

@@ -10,7 +10,7 @@
           <div class="container-fluid">
               <ul class="navbar-nav mainMenu justify-content-left">
 
-                  <li class="nav-item">
+                  <li class="nav-item" *ngIf="object === 'society'">
                       <a class="nav-link" [routerLink]="['/'+object+'/create']" >Create</a>
                   </li>
                   <li class="nav-item">
@@ -19,12 +19,12 @@
                   <li class="nav-item ">
                       <a class="nav-link" [routerLink]="['/'+object+'/upcomingevents']">Upcoming Events</a>
                   </li>
-                  <li class="nav-item" *ngIf="object === 'user'">
+                  <!-- <li class="nav-item" *ngIf="object === 'user'">
                       <a class="nav-link" [routerLink]="['/user','/mysocities']">My Societies</a>
                   </li>
                   <li class="nav-item" *ngIf="object === 'society'">
                       <a class="nav-link" [routerLink]="['/society','/mymembers']">My Members</a>
-                  </li>
+                  </li> -->
                   <li class="nav-item ">
                       <a class="nav-link"(click)="onLogout()">Sign out<span><i class="fas fa-sign-out-alt"></i></span></a>
                   </li>
