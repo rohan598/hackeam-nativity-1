@@ -9,7 +9,11 @@ const UserSchema = new Schema({
   username:String,
   email:{type:String,unique:true},
   password:String,
-  avatar:String,
+  avatar: {
+  filename: String,
+  filetype:String,
+  value:String
+},
   profile:[ProfileSchema],
   societies: [{type: Schema.Types.ObjectId}]
 });

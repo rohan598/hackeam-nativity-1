@@ -2,9 +2,13 @@ const mongoose = require('mongoose');
 const mongooseUniqueValidator = require('mongoose-unique-validator');
 
 const user = require("./user");
-const contact = require('./contact-details');
 
 const Schema = mongoose.Schema;
+
+const ContactSchema = new Schema({
+  address: String,
+  telephone:[String]
+});
 
 const SocietySchema = new Schema({
   societyname:String,
@@ -12,7 +16,7 @@ const SocietySchema = new Schema({
   password:String,
   description:String,
   logo:String,
-  contact: [contact.contactSchema],
+  contact: [ContactSchema],
   users: [{type: Schema.Types.ObjectId}],
   websites:[{type: Schema.Types.ObjectId}]
 });

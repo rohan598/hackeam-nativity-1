@@ -5,7 +5,7 @@ import { AgmCoreModule } from '@agm/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-
+import { DatePipe } from '@angular/common';
 //main
 import { AppComponent } from './app.component';
 
@@ -52,6 +52,9 @@ import {AppRoutingModule } from './app-routes.module';
 import { AuthService } from './shared/auth.service';
 import { ToggleService } from './shared/toggle.service';
 
+// validation
+import { CustomFormsModule } from 'ng2-validation';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +84,7 @@ import { ToggleService } from './shared/toggle.service';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    CustomFormsModule,
     HttpModule,
     FormsModule,
     AppRoutingModule,
@@ -89,7 +93,7 @@ import { ToggleService } from './shared/toggle.service';
       libraries:["places"]
     })
   ],
-  providers: [AuthService,ToggleService],
+  providers: [AuthService,ToggleService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
