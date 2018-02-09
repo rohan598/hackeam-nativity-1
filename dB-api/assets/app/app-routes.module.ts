@@ -15,6 +15,7 @@ import { HowToUseComponent } from './howtouse/howtouse.component';
 import { AboutUsComponent } from './aboutus/aboutus.component';
 import { CreateComponent } from './shared/create/create.component';
 import { UpcomingEventsComponent } from './shared/upcoming-events/upcoming-events.component';
+import { EventsComponent } from './shared/upcoming-events/events/events.component';
 
 // user
 import { UserComponent } from './user/user.component';
@@ -67,7 +68,7 @@ const appRoutes :Routes = [
     { path: 'society' , component:SigninSocietyComponent},
     { path: 'user' , component:SigninUserComponent}
   ]},
-
+  {path: 'events', component: EventsComponent},
 ];
 
 @NgModule({
