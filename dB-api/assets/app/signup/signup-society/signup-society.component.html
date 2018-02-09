@@ -6,58 +6,64 @@
 
         <div formGroupName="important">
 
-          <div class="form-group" [ngClass]="{'has-success':usernameIsValid,'has-danger':!usernameIsValid}">
-            <label for="inputSuccess1">Society username</label>
-            <input type="text" class="form-control" id="inputSuccess1" placeholder="Pick a username" formControlName="username">
-            <p class="help-block" *ngIf="societySignupForm.get('important.username').touched && !usernameVal">
-                  This field cannot be left empty
+          <div class="form-group" [ngClass]="{'has-success':societynameVal,'has-danger':!societynameVal}">
+            <label for="inputSuccess1">Society Name</label>
+            <input type="text" class="form-control" id="inputSuccess1" placeholder="Pick a societyname" formControlName="societyname">
+            <p class="help-block" *ngIf="societySignupForm.get('important.societyname').touched && !societynameVal">
+              This field cannot be left empty!
             </p>
           </div>
 
           <div class="form-group" [ngClass]="{'has-success':emailIsValid,'has-danger':!emailIsValid}">
             <label for="exampleInputEmail1">Primary Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="events@example.com" formControlName="email">
-            <p class="help-block" *ngIf="societySignupForm.get('important.email').touched && !emailIsValid">
-              <span *ngIf="emailVal ; else elsePart">
-                  This field cannot be left empty
+            <p class="help-block" *ngIf="societySignupForm.get('important.email').touched">
+              <span *ngIf="!emailVal">
+                  This field cannot be left empty!
                 </span>
-              <ng-template #elsePart>
-                <span *ngIf="societySignupForm.get('important.email').errors.pattern">
-                                Please enter a valid email address
+                <span *ngIf="!emailIsValid && emailVal">
+                Please enter a valid email address!
                   </span>
-              </ng-template>
             </p>
           </div>
 
-          <div class="form-group" [ngClass]="{'has-success':passwordIsValid,'has-danger':!passwordIsValid}">
+          <div class="form-group" [ngClass]="{'has-success':passwordVal,'has-danger':!passwordVal}">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password">
             <p class="help-block" *ngIf="societySignupForm.get('important.password').touched && !passwordVal">
               <!-- <span *ngIf="passwordVal"> -->
-                  This field cannot be left empty
-                <!-- </span> -->
+              This field cannot be left empty!
+              <!-- </span> -->
             </p>
           </div>
         </div>
 
         <div formGroupName="additional">
 
-          <div class="form-group" [ngClass]="{'has-success':nameIsValid,'has-danger':!nameIsValid}">
+          <!-- <div class="form-group" [ngClass]="{'has-success':nameIsValid,'has-danger':!nameIsValid}">
             <label for="">Society name</label>
             <input type="text" class="form-control" placeholder="Tell us your name" formControlName="name">
             <p class="help-block" *ngIf="societySignupForm.get('additional.name').touched && !nameVal">
-              <!-- <span *ngIf="nameVal"> -->
                   This field cannot be left empty
-                <!-- </span> -->
+            </p>
+          </div> -->
+
+
+          <div class="form-group"[ngClass]="{'has-success':descriptionVal,'has-warning':!descriptionVal}">
+            <label for="exampleTextarea">Description</label>
+            <textarea class="form-control" id="exampleTextarea" rows="5" placeholder="A little something about you" formControlName="description"></textarea>
+            <p class="help-block" *ngIf="societySignupForm.get('additional.description').touched && !descriptionVal">
+              <!-- <span *ngIf="passwordVal"> -->
+              You may want to fill in this field!
+              <!-- </span> -->
             </p>
           </div>
 
+          <!-- <div class="form-group">
+            <label for="exampleInputFile">Society Logo</label>
+            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" formControlName="logo">
+          </div> -->
 
-          <div class="form-group">
-            <label for="exampleTextarea">Description</label>
-            <textarea class="form-control" id="exampleTextarea" rows="5" formControlName="description"></textarea>
-            <small id="fileHelp" class="form-text text-muted">A little something about you.</small>
-          </div>
         </div>
 
         <!-- <div formGroupName="contactDetails">
@@ -70,8 +76,8 @@
           <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
             <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
           </agm-map> -->
-          <!-- not below -->
-          <!--
+        <!-- not below -->
+        <!--
                 <div class="form-group">
                   <label for="inputAddress">Address 1</label>
                   <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"
@@ -107,7 +113,7 @@
 
                 </div> -->
 
-          <!-- <div class="form-group row">
+        <!-- <div class="form-group row">
             <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
             <div class="col-10">
               <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input" formControlName="telephone">
@@ -116,23 +122,18 @@
 
         </div> -->
 
-        <div class="form-group">
-          <label for="exampleInputFile">Society Logo</label>
-          <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" formControlName="logo">
-        </div>
-
-
         <!-- <div id="googleMap" style="width:500px;height:380px;"></div> -->
 
-        <button type="submit" class="btn btn-primary"[disabled]="!societySignupForm.valid">Submit</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!societySignupForm.valid">Submit</button>
 
       </form>
+      <button class="btn btn-primary" type="button" (click)="toggle.falsifyUp()">Back</button>
     </div>
   </div>
 </div>
 
 <!--
-<span *ngIf="societySignupForm.get('important.username').value !== ''; else #elsePart">
+<span *ngIf="societySignupForm.get('important.societyname').value !== ''; else #elsePart">
   Help text here.
 </span>
 <ng-template #elsePart>

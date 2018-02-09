@@ -6,41 +6,77 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
+//main
 import { AppComponent } from './app.component';
+
+//navbar
 import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarInComponent } from './navbar/navbar-in/navbar-in.component';
+import { NavbarOutComponent } from './navbar/navbar-out/navbar-out.component';
+
+//common
 import { OverviewComponent } from './overview/overview.component';
 import { HowToUseComponent } from './howtouse/howtouse.component';
 import { AboutUsComponent } from './aboutus/aboutus.component';
+import { CreateComponent } from './shared/create/create.component';
+import { UpcomingEventsComponent } from './shared/upcoming-events/upcoming-events.component';
+
+// user
+import { UserComponent } from './user/user.component';
+import { MyEventsUserComponent } from './user/my-events-user/my-events-user.component';
+import { MySocitiesComponent} from './user/my-societies/my-societies.component';
+import { SideBarUserComponent } from './user/side-bar-user/side-bar-user.component';
+
+//society
+import { SocietyComponent } from './society/society.component';
+import { MyEventsSocietyComponent } from './society/my-events-society/my-events-society.component';
+import { MyMembersComponent } from './society/my-members/my-members.component';
+import { SideBarSocietyComponent } from './society/side-bar-society/side-bar-society.component';
+
+//signup
 import { SignupComponent } from './signup/signup.component';
 import { SignupUserComponent } from './signup/signup-user/signup-user.component';
 import { SignupSocietyComponent } from './signup/signup-society/signup-society.component';
+
+//signin
 import { SigninComponent } from './signin/signin.component';
 import { SigninUserComponent } from './signin/signin-user/signin-user.component';
 import { SigninSocietyComponent } from './signin/signin-society/signin-society.component';
-import { CreateFormComponent } from './create-form/create-form.component';
 
+
+//google maps
 import {} from '@types/googlemaps';
 import {AppRoutingModule } from './app-routes.module';
-import { UserComponent } from './user/user.component';
-import { SocietyComponent } from './society/society.component';
+
+//services
 import { AuthService } from './shared/auth.service';
+import { ToggleService } from './shared/toggle.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    NavbarInComponent,
+    NavbarOutComponent,
     AboutUsComponent,
     HowToUseComponent,
     OverviewComponent,
+    CreateComponent,
+    UserComponent,
+    MySocitiesComponent,
+    SideBarUserComponent,
+    MyEventsUserComponent,
+    SocietyComponent,
+    MyMembersComponent,
+    SideBarSocietyComponent,
+    MyEventsSocietyComponent,
+    UpcomingEventsComponent,
     SignupComponent,
     SignupUserComponent,
     SignupSocietyComponent,
     SigninComponent,
     SigninUserComponent,
-    SigninSocietyComponent,
-    CreateFormComponent,
-    UserComponent,
-    SocietyComponent
+    SigninSocietyComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +89,7 @@ import { AuthService } from './shared/auth.service';
       libraries:["places"]
     })
   ],
-  providers: [AuthService],
+  providers: [AuthService,ToggleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

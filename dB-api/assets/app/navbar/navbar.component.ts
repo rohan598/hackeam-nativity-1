@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,6 +8,8 @@ import { Component} from '@angular/core';
 })
 export class NavbarComponent {
 
-  constructor() { }
-
+  constructor(private authService:AuthService) { }
+  isLoggedIn(){
+      return this.authService.isLoggedIn();
+  }
 }

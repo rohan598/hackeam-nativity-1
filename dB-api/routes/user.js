@@ -2,6 +2,21 @@ var express = require('express');
 var router = express.Router();
 var user = require('../models/user');
 var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
+
+
+// router.use('/',function(req,res,next){
+//   jwt.verify(req.query.token,'secret',function(err,decoded){
+//     if(err){
+//       return res.status(401).json({
+//         title: 'NOt Authenticated',
+//         error: err
+//       });
+//     }
+//     next();
+//   });
+// });
+
 router.post('/', function (req, res, next) {
     var newUser = new user.user({
       name:req.body.username,
@@ -22,5 +37,6 @@ router.post('/', function (req, res, next) {
       }
     });
 });
+
 
 module.exports = router;

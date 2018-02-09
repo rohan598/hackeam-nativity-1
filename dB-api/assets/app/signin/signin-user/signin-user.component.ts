@@ -1,5 +1,11 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router} from '@angular/router';
+
+import { ToggleService } from '../../shared/toggle.service';
+import { AuthService } from '../../shared/auth.service';
+import { User } from '../../user/users.model';
+
 @Component({
   selector: 'app-signin-user',
   templateUrl: './signin-user.component.html',
@@ -15,7 +21,7 @@ export class SigninUserComponent implements OnInit {
   passwordVal: boolean;
 
 
-  constructor() { }
+  constructor(private authService: AuthService,private router: Router,private toggle: ToggleService) { }
 
   ngOnInit() {
     this.userSigninForm = new FormGroup({
@@ -48,5 +54,28 @@ export class SigninUserComponent implements OnInit {
     });
 
   }
+  onSubmit() {
+          console.log('here4');
+    const user = new User(
+      '',
+      this.userSigninForm.get('email').value,
+      this.userSigninForm.get('password').value
+    );
+    console.log(this.userSigninForm + "\n");
+    this.authService.signinUser(user)
+      .subscribe(
+        (data) => {
+        localStorage.setItem('token',data.token);
+        localStorage.setItem('userId',data.userId);
+        this.router.navigateByUrl('/user');
+        },
+        error => console.error(error),
+        ()=> {this.authService.truthyUser();}
+      );
+    this.userSigninForm.reset();
+  }
 
+      goBack(){
+          this.router.navigate(['/signin']);
+      }
 }

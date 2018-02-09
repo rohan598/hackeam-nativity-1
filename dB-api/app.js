@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var appRoutes = require('./routes/app');
 var userRoutes = require('./routes/user');
 var societyRoutes = require('./routes/society');
+var signinRoutes = require('./routes/signin');
 
 var app = express();
 
@@ -34,6 +35,8 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
     next();
 });
+
+app.use('/signin',signinRoutes);
 app.use('/user',userRoutes);
 app.use('/society',societyRoutes);
 app.use('/', appRoutes);

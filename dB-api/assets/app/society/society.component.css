@@ -1,0 +1,11 @@
+/* Profile container */
+.profile {
+  margin: 20px 0;
+}
+
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 460px;
+}

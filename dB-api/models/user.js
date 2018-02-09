@@ -1,17 +1,20 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongooseUniqueValidator = require('mongoose-unique-validator');
+
 const ProfileSchema = require('./profile-link');
+
+const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
   username:String,
-  email:String,
+  email:{type:String,unique:true},
   password:String,
-  imgsrc:String,
-  profile:[ProfileSchema]
+  avatar:String,
+  profile:[ProfileSchema],
+  societies: [{type: Schema.Types.ObjectId}]
 });
 
-// const user = mongoose.model('user',UserSchema);
-
+UserSchema.plugin(mongooseUniqueValidator);
 module.exports =
 {
   user:mongoose.model('user',UserSchema),

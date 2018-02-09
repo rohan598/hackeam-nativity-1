@@ -28,7 +28,8 @@ const EventSchema = new Schema({
      to:Date
    },
    description:String,
-   days:[DayEventSchema]
+   days:[DayEventSchema],
+   society: {type: Schema.Types.ObjectId}
  });
 
  const mainevent = mongoose.model('mainevent',MainEventSchema);
