@@ -1,4 +1,4 @@
-<app-navbar-in *ngIf="!isLoggedIn(); else elsePart"></app-navbar-in>
+<app-navbar-in *ngIf="!authService.isAuthenticated(); else elsePart"></app-navbar-in>
 <ng-template #elsePart>
   <app-navbar-out></app-navbar-out>
 </ng-template>

@@ -70,12 +70,14 @@ export class SigninSocietyComponent implements OnInit {
         (data) => {
         localStorage.setItem('token',data.token);
         localStorage.setItem('societyId',data.societyId);
-        this.router.navigate(['/society']);
         },
         error => console.error(error),
-        ()=> {this.authService.truthySociety();}
+        ()=>  {
+            this.societySigninForm.reset();
+            this.authService.truthySociety();
+          }
       );
-    this.societySigninForm.reset();
+    this.router.navigate(['/society']);
   }
 
       goBack(){

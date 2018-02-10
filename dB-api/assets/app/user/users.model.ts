@@ -3,9 +3,14 @@ export class User{
     public username:string,
     public email:string,
     public password:string,
-    public avatar: {
-    filename: string,
-    filetype:string,
-    value:string
-  }) { }
+    public avatar: string,
+    public profile:{
+      github:string,
+      linkedin:string,
+      facebook:string,
+      googleplus:string,
+      twitter:string,
+      instagram:string
+    }
+) { }
 }

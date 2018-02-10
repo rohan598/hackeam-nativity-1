@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { UserService } from '../../shared/user.service';
+import { User } from '../users.model';
 
 @Component({
   selector: 'app-side-bar-user',
@@ -6,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-bar-user.component.css']
 })
 export class SideBarUserComponent implements OnInit {
-
-  constructor() { }
+  @Input('user') user:User;
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
-  }
+      console.log(this.user.email);
+      }
 
 }

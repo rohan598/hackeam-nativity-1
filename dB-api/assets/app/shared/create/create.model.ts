@@ -39,6 +39,10 @@ export class Create{
     public sponsors:[{
       logo:string,
       link:string
-    }]
+    }],
+    public phone1:string,
+    public phone2:string,
+    public address:string,
+    public id:string
   ){}
 }
