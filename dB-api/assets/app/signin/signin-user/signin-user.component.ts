@@ -5,7 +5,7 @@ import { Router} from '@angular/router';
 import { ToggleService } from '../../shared/toggle.service';
 import { AuthService } from '../../shared/auth.service';
 import { User } from '../../user/users.model';
-
+import { UserService } from '../../shared/user.service';
 @Component({
   selector: 'app-signin-user',
   templateUrl: './signin-user.component.html',
@@ -19,9 +19,16 @@ export class SigninUserComponent implements OnInit {
   emailVal: boolean;
   passwordIsValid: boolean;
   passwordVal: boolean;
+  profile:{
+    github:'',
+    linkedin:'',
+    facebook:'',
+    googleplus:'',
+    twitter:'',
+    instagram:''
+  };
 
-
-  constructor(private authService: AuthService,private router: Router,private toggle: ToggleService) { }
+  constructor(private authService: AuthService,private router: Router,private toggle: ToggleService,private userService:UserService) { }
 
   ngOnInit() {
     this.userSigninForm = new FormGroup({
@@ -59,20 +66,25 @@ export class SigninUserComponent implements OnInit {
     const user = new User(
       '',
       this.userSigninForm.get('email').value,
-      this.userSigninForm.get('password').value
+      this.userSigninForm.get('password').value,
+      '',
+    this.profile
     );
-    console.log(this.userSigninForm + "\n");
+    console.log(this.userSigninForm.value + "\n");
     this.authService.signinUser(user)
       .subscribe(
         (data) => {
         localStorage.setItem('token',data.token);
         localStorage.setItem('userId',data.userId);
-        this.router.navigateByUrl('/user');
         },
         error => console.error(error),
-        ()=> {this.authService.truthyUser();}
-      );
-    this.userSigninForm.reset();
+        ()=>{
+          this.authService.truthyUser();
+          this.userSigninForm.reset();
+          console.log('here');
+        }
+        )
+        this.router.navigate(['/user']);
   }
 
       goBack(){

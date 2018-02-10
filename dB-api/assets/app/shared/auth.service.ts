@@ -5,12 +5,15 @@ import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../user/users.model';
 import { Society } from '../society/societies.model';
+import {tokenNotExpired } from "angular2-jwt"
 
 @Injectable()
 export class AuthService {
-
+  token:string;
   isUser: boolean =false;
   isSociety: boolean=false;
+  obj:string ='';
+  // jwtHelper: JwtHelper = new JwtHelper();
   constructor(private http: Http){ }
 
   signupUser(user :User){
@@ -49,9 +52,18 @@ export class AuthService {
       this.isUser = false;
       this.isSociety = false;
   }
-  isLoggedIn(){
-      return (localStorage.getItem('token') !== null);
-  }
+
+  public getToken(): string {
+  return localStorage.getItem('token');
+}
+public isAuthenticated(): boolean {
+ // get the token
+ // const token = this.getToken();
+ // return a boolean reflecting
+ // whether or not the token is expired
+ return localStorage.getItem('token')!=null;
+}
+
   truthyUser(){
     this.isUser = true;
   }
@@ -60,8 +72,11 @@ export class AuthService {
   }
   object(){
     if(this.isUser){
-      return 'user';
+      this.obj="user";
+    }else if(this.isSociety){
+        this.obj="society";
     }
-    return 'society';
+    return this.obj;
+
   }
 }

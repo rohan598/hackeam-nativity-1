@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row profile">
 		<div class="col-md-3">
-      <app-side-bar-user></app-side-bar-user>
+      <app-side-bar-user [user]="user" *ngIf="loaded" ></app-side-bar-user>
     </div>
 		<div class="col-md-9">
       <router-outlet></router-outlet>

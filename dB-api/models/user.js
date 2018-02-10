@@ -9,13 +9,10 @@ const UserSchema = new Schema({
   username:String,
   email:{type:String,unique:true},
   password:String,
-  avatar: {
-  filename: String,
-  filetype:String,
-  value:String
-},
+  avatar: String,
   profile:[ProfileSchema],
-  societies: [{type: Schema.Types.ObjectId}]
+  events:[{type: Schema.Types.ObjectId}]
+  // societies: [{type: Schema.Types.ObjectId}]
 });
 
 UserSchema.plugin(mongooseUniqueValidator);

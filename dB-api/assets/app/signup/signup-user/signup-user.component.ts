@@ -23,7 +23,14 @@ export class SignupUserComponent implements OnInit {
   emailVal: boolean= false;
   passwordIsValid: boolean;
   passwordVal: boolean= false;
-
+  profile: {
+    github:string,
+    linkedin:string,
+    facebook:string,
+    googleplus:string,
+    twitter:string,
+    instagram:string
+  } ;
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
@@ -87,7 +94,8 @@ export class SignupUserComponent implements OnInit {
       this.userSignupForm.get('important.username').value,
       this.userSignupForm.get('important.email').value,
       this.userSignupForm.get('important.password').value,
-      this.userSignupForm.get('avatar').value
+      this.userSignupForm.get('avatar').value,
+      this.profile
     );
     console.log(this.userSignupForm + "\n");
     this.authService.signupUser(user)
@@ -102,19 +110,19 @@ export class SignupUserComponent implements OnInit {
       this.router.navigate(['/signup']);
   }
 
-  onFileChange(event) {
-    let reader = new FileReader();
-    if(event.target.files && event.target.files.length > 0) {
-      let file = event.target.files[0];
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.userSignupForm.get('avatar').setValue({
-          filename: file.name,
-          filetype: file.type,
-          value: reader.result.split(',')[1]
-        })
-      };
-    }
-  }
+  // onFileChange(event) {
+  //   let reader = new FileReader();
+  //   if(event.target.files && event.target.files.length > 0) {
+  //     let file = event.target.files[0];
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => {
+  //       this.userSignupForm.get('avatar').setValue({
+  //         filename: file.name,
+  //         filetype: file.type,
+  //         value: reader.result.split(',')[1]
+  //       })
+  //     };
+  //   }
+  // }
 
 }

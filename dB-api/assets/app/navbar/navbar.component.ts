@@ -9,7 +9,4 @@ import { AuthService } from '../shared/auth.service';
 export class NavbarComponent {
 
   constructor(private authService:AuthService) { }
-  isLoggedIn(){
-      return this.authService.isLoggedIn();
-  }
 }

@@ -3,8 +3,12 @@ import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core'
 import { FormControl, FormGroup, Validators, FormArray ,FormBuilder} from '@angular/forms'
 import { CustomValidators } from 'ng2-validation';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 import { CreateService } from '../create.service';
 import { Create } from './create.model';
+import { MapsAPILoader } from '@agm/core';
+import { } from '@types/googlemaps';
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -27,7 +31,25 @@ export class CreateComponent implements OnInit {
   min: string;
   max: string;
   date: Date;
-  constructor(private datePipe: DatePipe,private fb:FormBuilder,private createService:CreateService) { }
+
+
+  public latitude: number;
+  public longitude: number;
+  public searchControl: FormControl;
+  public zoom: number;
+  // autocomplete: any;
+
+  @ViewChild("search")
+  public searchElementRef: ElementRef;
+
+
+  constructor(private datePipe: DatePipe,private fb:FormBuilder,private createService:CreateService,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone,
+    private router:Router
+  ) { }
+
+
   // transformDate(date) {
   //   this.date = new Date(Date.now());
   //   this.date.setDate(this.date.getDate() + 7);
@@ -35,6 +57,15 @@ export class CreateComponent implements OnInit {
   //   this.date.setDate(this.date.getDate() + 113);
   //   this.max = this.datePipe.transform(Date.now(), 'yyyy-MM-dd');
   // }
+  private setCurrentPosition() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        this.zoom = 12;
+      });
+    }
+  }
   ngOnInit() {
 
     this.createForm = this.fb.group({
@@ -69,7 +100,44 @@ export class CreateComponent implements OnInit {
       }),
       'pg5': this.fb.group({
           'sponsors': this.fb.array([])
+      }),
+      'pg6':this.fb.group({
+          'phone1':[''],
+          'phone2':[''],
+          'address':['']
       })
+  });
+  //set google maps defaults
+  this.zoom = 4;
+  this.latitude = 39.8282;
+  this.longitude = -98.5795;
+
+  this.searchControl = new FormControl();
+
+  //set current position
+  this.setCurrentPosition();
+
+  //load Places Autocomplete
+  this.mapsAPILoader.load().then(() => {
+    let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+      types: ["address"]
+    });
+    autocomplete.addListener("place_changed", () => {
+      this.ngZone.run(() => {
+        //get the place result
+        let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+        //verify result
+        if (place.geometry === undefined || place.geometry === null) {
+          return;
+        }
+
+        //set latitude, longitude and zoom
+        this.latitude = place.geometry.location.lat();
+        this.longitude = place.geometry.location.lng();
+        this.zoom = 12;
+      });
+    });
   });
 
     this.createForm.get('pg1.eventName').statusChanges.subscribe((status) => {
@@ -145,7 +213,10 @@ export class CreateComponent implements OnInit {
       this.createForm.get('pg3.register').value,
       this.createForm.get('pg3.links').value,
       (<FormArray>this.createForm.get('pg4.speakers')).value,
-      (<FormArray>this.createForm.get('pg5.sponsors')).value
+      (<FormArray>this.createForm.get('pg5.sponsors')).value,
+      this.createForm.get('pg6.phone1').value,
+      this.createForm.get('pg6.phone2').value,
+      this.createForm.get('pg6.address').value
     );
     console.log(this.createForm.value + "\n");
     this.createService.createEvent(create)

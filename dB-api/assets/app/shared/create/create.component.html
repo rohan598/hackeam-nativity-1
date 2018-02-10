@@ -215,8 +215,8 @@
           <div formArrayName="sponsors">
             <h3>Sponsors</h3>
             <button class="btn btn-primary" type="button"(click)="onAddSponsors()">Add event</button>
-                <div class="form-group"  *ngFor="let sponsorGroup of createForm.get('pg5.sponsors').controls; let i = index">
-                  <div [formGroupName]="i">
+        <div class="form-group"  *ngFor="let sponsorGroup of createForm.get('pg5.sponsors').controls; let i = index">
+          <div [formGroupName]="i">
             <div class="form-group">
                 <label for="logo">Sponsor's Logo</label>
                 <input type="url" class="form-control" id="logo" aria-describedby="fileHelp" formControlName="logo">
@@ -228,8 +228,32 @@
           </div>
         </div>
         </div>
-</div>
+      </div>
+        <div formGroupName="pg6">
+
+        <div class="form-group row">
+            <label for="example-tel-input" class="col-2 col-form-label">Phone - 1</label>
+            <div class="col-10">
+              <input class="form-control" type="tel" value="+91936922221" id="example-tel-input" formControlName="phone1">
+            </div>
+            <label for="example-tel-input" class="col-2 col-form-label">Phone - 2</label>
+            <div class="col-10">
+              <input class="form-control" type="tel" value="+91936922221" id="example-tel-input" formControlName="phone2">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="maps">Address</label>
+            <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search formControl="address" id="maps">
+          </div>
+
+          <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+          </agm-map>
+
+          <div id="googleMap" style="width:500px;height:380px;"></div>
+        </div>
+
         <button type="submit" class="btn btn-primary"[disabled]="!createForm.valid">Submit</button>
 
     </form>
-  </div>
+</div>

@@ -9,26 +9,40 @@
       <div class="collapse navbar-collapse" id="navbarNav">
           <div class="container-fluid">
               <ul class="navbar-nav mainMenu justify-content-left">
+                  <div *ngIf="authService.object() === 'society'">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/society' +'/create']" >Create</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/society'+'/myeventssociety']">My Events</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" [routerLink]="['/society'+'/upcomingevents']">Upcoming Events</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link"(click)="onLogout()">Sign out<span><i class="fas fa-sign-out-alt"></i></span></a>
+                    </li>
+                  </div>
+                  <div *ngIf="authService.object() === 'user'">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/user'+'/myeventsuser']">My Events</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" [routerLink]="['/user'+'/upcomingevents']">Upcoming Events</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link"(click)="onLogout()">Sign out<span><i class="fas fa-sign-out-alt"></i></span></a>
+                    </li>
+                  </div>
 
-                  <li class="nav-item" *ngIf="object === 'society'">
-                      <a class="nav-link" [routerLink]="['/'+object+'/create']" >Create</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" [routerLink]="['/'+object+'/myevents']">My Events</a>
-                  </li>
-                  <li class="nav-item ">
-                      <a class="nav-link" [routerLink]="['/'+object+'/upcomingevents']">Upcoming Events</a>
-                  </li>
-                  <!-- <li class="nav-item" *ngIf="object === 'user'">
-                      <a class="nav-link" [routerLink]="['/user','/mysocities']">My Societies</a>
-                  </li>
-                  <li class="nav-item" *ngIf="object === 'society'">
-                      <a class="nav-link" [routerLink]="['/society','/mymembers']">My Members</a>
-                  </li> -->
-                  <li class="nav-item ">
-                      <a class="nav-link"(click)="onLogout()">Sign out<span><i class="fas fa-sign-out-alt"></i></span></a>
-                  </li>
                 </ul>
           </div>
       </div>
   </nav>
+
+  <!-- <li class="nav-item" *ngIf="object === 'user'">
+      <a class="nav-link" [routerLink]="['/user','/mysocities']">My Societies</a>
+  </li>
+  <li class="nav-item" *ngIf="object === 'society'">
+      <a class="nav-link" [routerLink]="['/society','/mymembers']">My Members</a>
+  </li> -->

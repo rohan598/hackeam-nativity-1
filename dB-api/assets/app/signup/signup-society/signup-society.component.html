@@ -40,14 +40,6 @@
 
         <div formGroupName="additional">
 
-          <!-- <div class="form-group" [ngClass]="{'has-success':nameIsValid,'has-danger':!nameIsValid}">
-            <label for="">Society name</label>
-            <input type="text" class="form-control" placeholder="Tell us your name" formControlName="name">
-            <p class="help-block" *ngIf="societySignupForm.get('additional.name').touched && !nameVal">
-                  This field cannot be left empty
-            </p>
-          </div> -->
-
 
           <div class="form-group"[ngClass]="{'has-success':descriptionVal,'has-warning':!descriptionVal}">
             <label for="exampleTextarea">Description</label>
@@ -58,71 +50,8 @@
               <!-- </span> -->
             </p>
           </div>
-
-          <!-- <div class="form-group">
-            <label for="exampleInputFile">Society Logo</label>
-            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" formControlName="logo">
-          </div> -->
-
         </div>
 
-        <!-- <div formGroupName="contactDetails">
-
-          <div class="form-group">
-            <label for="maps">Address</label>
-            <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search formControl="address" id="maps">
-          </div>
-
-          <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
-            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-          </agm-map> -->
-        <!-- not below -->
-        <!--
-                <div class="form-group">
-                  <label for="inputAddress">Address 1</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"
-                  formControlName = "address1">
-                </div>
-
-                <div class="form-group">
-                  <label for="inputAddress2">Address 2</label>
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"
-                  formControlName = "address2">
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="inputCity">City</label>
-                    <input type="text" class="form-control" id="inputCity"
-                    formControlName = "city">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputState">State</label>
-                    <select id="inputState" class="form-control"
-                    formControlName = "state">
-                      <option selected>Choose...</option>
-                      <option>...</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group col-md-2">
-                    <label for="inputZip">Zip</label>
-                    <input type="text" class="form-control" id="inputZip"
-                    formControlName = "zip">
-                  </div>
-
-                </div> -->
-
-        <!-- <div class="form-group row">
-            <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
-            <div class="col-10">
-              <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input" formControlName="telephone">
-            </div>
-          </div>
-
-        </div> -->
-
-        <!-- <div id="googleMap" style="width:500px;height:380px;"></div> -->
 
         <button type="submit" class="btn btn-primary" [disabled]="!societySignupForm.valid">Submit</button>
 
@@ -131,11 +60,3 @@
     </div>
   </div>
 </div>
-
-<!--
-<span *ngIf="societySignupForm.get('important.societyname').value !== ''; else #elsePart">
-  Help text here.
-</span>
-<ng-template #elsePart>
-
-</ng-template> -->
