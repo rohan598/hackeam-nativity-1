@@ -10,6 +10,7 @@ var event = require('./models/event');
 var appRoutes = require('./routes/app');
 var userRoutes = require('./routes/user');
 var societyRoutes = require('./routes/society').router;
+var geocoder = require('geocoder');
 
 var signinRoutes = require('./routes/signin');
 
@@ -60,7 +61,11 @@ app.use('/getdata', (req,res)=>{
             console.log(d2);
             eventData['logo']=d2.logo;
             eventData['societyname']=d2.name;
-            res.send(eventData);
+            geocoder.geocode(eventData.address, (e,add)=>{
+              eventData['lat']=add.results.geometry.lat;
+              eventData['lng']=add.results.geometry.lng;
+              res.send(eventData);
+            });
           });
     }).sort({_id:-1}).limit(1);
 });

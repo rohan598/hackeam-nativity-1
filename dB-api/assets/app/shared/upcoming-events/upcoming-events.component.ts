@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { EventService } from '../event.service';
+import { Create } from '../create/create.model';
+// import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-upcoming-events',
   templateUrl: './upcoming-events.component.html',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpcomingEventsComponent implements OnInit {
 
-  constructor() { }
+  creates: Create[];
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
+    this.eventService.getEventData()
+      .subscribe((creates: Create[])=>{
+        this.creates = creates;
+      });
   }
 
 }
