@@ -6,19 +6,20 @@ const user = require("./user");
 const Schema = mongoose.Schema;
 
 const ContactSchema = new Schema({
-  address: String,
-  telephone:[String]
+  phone1:String,
+  phone2:String,
+  address: String
 });
 
 const SocietySchema = new Schema({
-  societyname:String,
+  name:String,
   email:{type:String,unique:true},
   password:String,
   description:String,
   logo:String,
   contact: [ContactSchema],
-  users: [{type: Schema.Types.ObjectId}],
-  websites:[{type: Schema.Types.ObjectId}]
+  // users: [{type: Schema.Types.ObjectId}],
+  websites:[{type: Schema.Types.ObjectId,ref:'mainevents'}]
 });
 
 const society = mongoose.model('society',SocietySchema);

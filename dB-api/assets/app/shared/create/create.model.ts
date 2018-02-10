@@ -42,6 +42,7 @@ export class Create{
     }],
     public phone1:string,
     public phone2:string,
-    public address:string
+    public address:string,
+    public id:string
   ){}
 }

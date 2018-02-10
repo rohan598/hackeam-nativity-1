@@ -8,6 +8,7 @@ import { CreateService } from '../create.service';
 import { Create } from './create.model';
 import { MapsAPILoader } from '@agm/core';
 import { } from '@types/googlemaps';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-create',
@@ -46,7 +47,8 @@ export class CreateComponent implements OnInit {
   constructor(private datePipe: DatePipe,private fb:FormBuilder,private createService:CreateService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
-    private router:Router
+    private router:Router,
+    private authService:AuthService
   ) { }
 
 
@@ -216,9 +218,10 @@ export class CreateComponent implements OnInit {
       (<FormArray>this.createForm.get('pg5.sponsors')).value,
       this.createForm.get('pg6.phone1').value,
       this.createForm.get('pg6.phone2').value,
-      this.createForm.get('pg6.address').value
+      this.createForm.get('pg6.address').value,
+      localStorage.getItem('societyId')
     );
-    console.log(this.createForm.value + "\n");
+    console.log(this.createForm.value + "\n" +create);
     this.createService.createEvent(create)
       .subscribe(
         data => console.log(data),

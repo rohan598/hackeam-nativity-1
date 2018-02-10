@@ -21,7 +21,8 @@ router.post('/create', function (req, res, next) {
       sponsors:req.body.sponsors,
       phone1:req.body.phone1,
       phone2:req.body.phone2,
-      address:req.body.address
+      address:req.body.address,
+      id:req.body.id
     });
     newEvent.save((error,result)=>{
       if(error){

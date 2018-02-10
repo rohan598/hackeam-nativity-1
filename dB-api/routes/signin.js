@@ -63,7 +63,7 @@ router.post('/user', function (req, res, next) {
         res.status(200).json({
           message: 'successfully logged in',
           token: token,
-          societyId: society._id
+          societyId: society._id,
         });
       });
     });
