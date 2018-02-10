@@ -28,20 +28,23 @@ const EventSchema = new Schema({
   topics: String
 });
 
- const DayEventSchema = new Schema({
-   date: String,
-   events: [EventSchema]
- });
+ // const DayEventSchema = new Schema({
+ //   date: String,
+ //   events: [EventSchema]
+ // });
  const MainEventSchema = new Schema({
    name:String,
    from:String,
    to:String,
    background: String,
    description:String,
-   days:[DayEventSchema],
+   hashtags:String,
+  events: [EventSchema],
+   register:String,
+   profile:[ProfileSchema],
    speakers:[SpeakerSchema],
    sponsors:[SponsorSchema],
-   contacts:[ContactSchema],
+   // contacts:[ContactSchema],
    society: {type: Schema.Types.ObjectId}
  });
 

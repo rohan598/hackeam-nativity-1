@@ -52,7 +52,7 @@ import {AppRoutingModule } from './app-routes.module';
 //services
 import { AuthService } from './shared/auth.service';
 import { ToggleService } from './shared/toggle.service';
-
+import { CreateService } from './shared/create.service';
 // validation
 import { CustomFormsModule } from 'ng2-validation';
 
@@ -95,7 +95,7 @@ import { CustomFormsModule } from 'ng2-validation';
       libraries:["places"]
     })
   ],
-  providers: [AuthService,ToggleService,DatePipe],
+  providers: [AuthService,ToggleService,DatePipe,CreateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

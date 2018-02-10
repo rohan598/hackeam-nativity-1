@@ -41,6 +41,7 @@ import { SigninSocietyComponent } from './signin/signin-society/signin-society.c
 
 
 
+
 const appRoutes :Routes = [
   { path: '' , redirectTo:'/overview', pathMatch: 'full'},
    // {path: '' , outlet: "NavbarComponent", component: NavbarComponent},
