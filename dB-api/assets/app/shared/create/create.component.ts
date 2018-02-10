@@ -18,7 +18,7 @@ import { AuthService } from '../auth.service';
 
 export class CreateComponent implements OnInit {
 
-  pageNum: number;
+  pageNum: number = 1;
 
   createForm: FormGroup;
   eventNameIsValid: boolean;
@@ -228,5 +228,11 @@ export class CreateComponent implements OnInit {
         error => console.error(error)
       );
     this.createForm.reset();
+  }
+  nextPage(){
+    this.pageNum++;
+  }
+  lastPage(){
+    this.pageNum--;
   }
 }
