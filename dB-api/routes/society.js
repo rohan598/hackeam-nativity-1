@@ -4,21 +4,10 @@ var society = require('../models/society');
 var bcrypt = require('bcryptjs');
 var event = require('../models/event');
 
-
-router.use('/',function(req,res,next){
-  jwt.verify(req.query.token,'secret',function(err,decoded){
-    if(err){
-      return res.status(401).json({
-        title: 'Not Authenticated',
-        error: err
-      });
-    }
-    next();
-  });
-});
+let newEvent;
 
 router.post('/create', function (req, res, next) {
-    var newEvent = new event({
+    newEvent = new event({
       name:req.body.eventName,
       from:req.body.from,
       to:req.body.to,
@@ -72,4 +61,7 @@ router.post('/', function (req, res, next) {
     });
 });
 
-module.exports = router;
+module.exports = {
+    'router' : router,
+    'eventData' : newEvent
+};
