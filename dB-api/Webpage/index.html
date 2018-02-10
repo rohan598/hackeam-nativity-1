@@ -268,6 +268,21 @@
         color: gray;
     }
 
+    /*============================SPONSORS============================*/
+    #sponsors{
+        background-color: rgba(255,255,255,0.8);
+    }
+    .sponsorhead{
+        font-family: 'Quicksand', sans-serif;
+        font-size: 2rem;
+        font-weight: bold;
+        color: gray;
+    }
+    .sponsorimg{
+        width: 210px;
+        height: 140px;
+    }
+
     /*============================CONTACT US============================*/
     #contact{
         background-color: transparent;
@@ -334,7 +349,7 @@
         .event{
             width: 400px;
         }
-        .eventname, .abouthead, .schedulehead, .speakerhead, .teamhead{
+        .eventname, .abouthead, .schedulehead, .speakerhead, .teamhead, .sponsorhead{
             font-size: 2.5rem;
         }
         .eventdate{
@@ -368,6 +383,17 @@
         .speakerstatus, .speakerinfo, .memberstatus{
             font-size: 0.9rem;
         }
+        .sponsorslist{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .sponsor{
+            width: 50%;
+        }
+        .sponsorimg{
+            width: 150px;
+            height: 100px;
+        }
     }
     @media only screen and (min-width: 768px){
         .navbar-nav{
@@ -398,7 +424,7 @@
         .event{
             width: 500px;
         }
-        .eventname, .abouthead, .schedulehead, .speakerhead, .teamhead{
+        .eventname, .abouthead, .schedulehead, .speakerhead, .teamhead, .sponsorhead{
             font-size: 3rem;
         }
         .eventdate{
@@ -454,6 +480,13 @@
             margin-right: 0px;
             margin-left: 0px;
         }
+        .sponsor{
+            width: 33.33%;
+        }
+        .sponsorimg{
+            width: 180px;
+            height: 120px;
+        }
     }
     @media only screen and (min-width: 1020px){
         .mainMenu > li{
@@ -475,7 +508,7 @@
         .event{
             width: 600px;
         }
-        .eventname, .abouthead, .schedulehead, .speakerhead, .teamhead{
+        .eventname, .abouthead, .schedulehead, .speakerhead, .teamhead, .sponsorhead{
             font-size: 3.5rem;
         }
         .eventdate{
@@ -532,16 +565,27 @@
         .memberstatus{
             font-size: 0.8rem;
         }
+        .sponsor{
+            width: 25%;
+        }
+        .sponsorimg{
+            width: 210px;
+            height: 180px;
+        }
     }
     @media only screen and (min-width: 1200px){
         .teammember{
             width: 25%;
+        }
+        .sponsor{
+            width: 20%;
         }
     }
   </style>
   <script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 </head>
 <body>
     <!--============================BACKGROUND============================-->
@@ -573,6 +617,9 @@
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#" onclick="scrollto('team')">Team</a>
                     </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="scrollto('sponsors')">Sponsors</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="scrollto('contact')">Contact</a>
                     </li>
@@ -625,8 +672,8 @@
     	</div>
 
         <!--============================SPEAKERS============================-->
-        <div class="container-fluid mt-5 mb-5 pt-2 pb-2" id="speakers">
-            <div class="container text-center mt-3 mb-5 speakerhead">SPEAKERS</div>
+        <div class="container-fluid mt-5 pt-2 pb-2" id="speakers">
+            <div class="container text-center mt-3 mb-5 speakerhead">Speakers</div>
 
         </div>
 
@@ -664,162 +711,19 @@
                     <p class="container memberstatus">Cloud Native Computing Foundation</p>
                 </div>
             </div>
-            <div class="container mt-3 mb-3 pt-1 pb-1 teammember text-center">
-                <div class="memberimg memberimg2" style="position: relative;">
-                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
-                    <div class="container-fluid memberoverlay memberoverlay2">
-                        <ul class="memberlinks float-center" style="padding:0; margin:auto">
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="container-fluid memberinfo">
-                    <div class="container membername">Chris Aniszczyk</div>
-                    <p class="container memberstatus">Cloud Native Computing Foundation</p>
-                </div>
-            </div>
-            <div class="container mt-3 mb-3 pt-1 pb-1 teammember text-center">
-                <div class="memberimg memberimg3" style="position: relative;">
-                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
-                    <div class="container-fluid memberoverlay memberoverlay3">
-                        <ul class="memberlinks float-center" style="padding:0; margin:auto">
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="container-fluid memberinfo">
-                    <div class="container membername">Chris Aniszczyk</div>
-                    <p class="container memberstatus">Cloud Native Computing Foundation</p>
-                </div>
-            </div>
-            <div class="container mt-3 mb-3 pt-1 pb-1 teammember text-center">
-                <div class="memberimg memberimg4" style="position: relative;">
-                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
-                    <div class="container-fluid memberoverlay memberoverlay4">
-                        <ul class="memberlinks float-center" style="padding:0; margin:auto">
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="container-fluid memberinfo">
-                    <div class="container membername">Chris Aniszczyk</div>
-                    <p class="container memberstatus">Cloud Native Computing Foundation</p>
-                </div>
-            </div>
-            <div class="container mt-3 mb-3 pt-1 pb-1 teammember text-center">
-                <div class="memberimg memberimg5" style="position: relative;">
-                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
-                    <div class="container-fluid memberoverlay memberoverlay5">
-                        <ul class="memberlinks float-center" style="padding:0; margin:auto">
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="container-fluid memberinfo">
-                    <div class="container membername">Chris Aniszczyk</div>
-                    <p class="container memberstatus">Cloud Native Computing Foundation</p>
-                </div>
-            </div>
-            <div class="container mt-3 mb-3 pt-1 pb-1 teammember text-center">
-                <div class="memberimg memberimg6" style="position: relative;">
-                    <img src="speaker.jpg" style="height: 270px; width: 270px;" style="position: relative;">
-                    <div class="container-fluid memberoverlay memberoverlay6">
-                        <ul class="memberlinks float-center" style="padding:0; margin:auto">
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="container-fluid memberinfo">
-                    <div class="container membername">Chris Aniszczyk</div>
-                    <p class="container memberstatus">Cloud Native Computing Foundation</p>
-                </div>
-            </div>
         </div> -->
+
+        <!--============================SPONSORS============================-->
+        <div class="container-fluid mb-5 pt-2 pb-2" id="sponsors">
+            <div class="container text-center mt-3 mb-5 sponsorhead">Sponsors</div>
+            <div class="container sponsorslist mt-3 mb-3 text-center">
+                <!-- <div class="container sponsor mt-2 mb-2 pt-2 pb-2">
+                    <a href="">
+                        <img src="https://image.ibb.co/dgR9Ln/speaker.jpg" class="sponsorimg">
+                    </a>
+                </div> -->
+            </div>
+        </div>
 
         <!--============================CONTACT US============================-->
         <div class="container-fluid mt-1 pt-5 pb-1" id="contact">
@@ -834,12 +738,12 @@
         		<div class="container bottom2">
         			<div class="container-fluid text-center" style="padding: 0px">
         				<p class="card-text h3 bottom1head" style="color: gray; font-weight: bold; margin: 0 5px 10px 5px;">Contact Us</p>
-                        <p style="margin: 10px 5px 10px 5px;"><a href="" target="_blank"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></a></p>
+                        <p style="margin: 10px 5px 10px 5px;"><a href="" class="addresslink" target="_blank"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></a></p>
                         <div class="container-fluid">
         		            <p class="card-text h3 bottom1text" style="color: dimgray;">
-                                <span>Azad Hind Fauz Marg, Sector 3, Dwarka, New Delhi, Delhi 110078</span>
+                                <span class="address"></span>
                             </p>
-                            <p class="card-text h3 bottom1text" style="color: dimgray;">Contact No. : 123456789, 987654321</p>
+                            <p class="card-text h3 bottom1text phone" style="color: dimgray;"></p>
                         </div>
                     </div>
         		</div>
@@ -847,22 +751,22 @@
             <div class="container bottom2text mt-5" style="padding: 0px;">
                 <ul class="footlinks float-center" style="padding: 0px;">
                     <li>
-                        <a href="" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
+                        <a href="" class="gitlink" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
+                        <a href="" class="googlelink" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
+                        <a href="" class="fblink" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
+                        <a href="" class="twitterlink" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
+                        <a href="" class="lilink" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
+                        <a href="" class="instalink" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
                     </li>
                 </ul>
             </div>
@@ -876,12 +780,14 @@
 
     <script type="text/javascript" src="javascript.js"></script>
     <script>
-        window.scrollTo(0,0);
         function scrollto(id) {
             $('html, body').stop().animate({
                 scrollTop: $('#'+id).offset().top-70
             }, 500);
         }
+        $(document).ready(function(){
+            window.scrollTo(0,0);
+        });
         $(document).on('scroll', function () {
             $('.navbar').css('background-color', `rgba(0, 0, 0, ${$(document).scrollTop() / 800})`);
             let a = $(document).scrollTop() + $(window).height();
@@ -900,6 +806,15 @@
                     $('.memberoverlay'+i).slideUp(300);
             });
         }
+        window.sr = new ScrollReveal({delay: 300, mobile:true});
+        sr.reveal('.event', {duration:1000, scale:0.1})
+        sr.reveal('.bar1', {duration:1000,origin:'left',distance:'100%'});
+        sr.reveal('.bar2', {duration:1000,origin:'left',distance:'100%'});
+        sr.reveal('.bar3', {duration:1000,origin:'left',distance:'100%'});
+        sr.reveal('.bar4', {duration:1000,origin:'left',distance:'100%'});
+        sr.reveal('.bar5', {duration:1000,origin:'left',distance:'100%'});
+        sr.reveal('.schedulehead', {duration:1000});
+        sr.reveal('.speakerhead', {duration:1000, scale:0.5});
     </script>
 </body>
 </html>

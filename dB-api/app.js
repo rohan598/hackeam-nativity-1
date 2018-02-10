@@ -43,7 +43,19 @@ app.use('/society',societyRoutes);
 app.use('/', appRoutes);
 
 app.use('/getdata', (req,res)=>{
-    res.send(eventData);
+    //getting data about society
+    const sid = eventData.id;
+    society.findById(sid,(err,d)=>{
+        if(err) throw err;
+        console.log("data using id :-");
+        console.log(d);
+        eventData.set('logo':d.logo);
+        eventData.set('societyname':d.name);
+        eventData.set('address':d.address);
+        eventData.set('phone1':d.phone1);
+        eventData.set('phone2':d.phone2);
+        res.send(eventData);
+    });
 });
 
 // catch 404 and forward to error handler
