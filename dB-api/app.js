@@ -8,7 +8,8 @@ var mongoose = require('mongoose');
 
 var appRoutes = require('./routes/app');
 var userRoutes = require('./routes/user');
-var societyRoutes = require('./routes/society');
+var societyRoutes = require('./routes/society').router;
+const eventData = require('./routes/society').eventData;
 var signinRoutes = require('./routes/signin');
 
 var app = express();
@@ -40,6 +41,10 @@ app.use('/signin',signinRoutes);
 app.use('/user',userRoutes);
 app.use('/society',societyRoutes);
 app.use('/', appRoutes);
+
+app.use('/getdata', (req,res)=>{
+    res.send(eventData);
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

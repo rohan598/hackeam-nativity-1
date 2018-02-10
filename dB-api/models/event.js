@@ -24,8 +24,7 @@ const EventSchema = new Schema({
   from:String,
   to:String,
   venue: String,
-  decription: String,
-  topics: String
+  decription: String
 });
 
  // const DayEventSchema = new Schema({
