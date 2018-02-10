@@ -1,7 +1,7 @@
 let Data={};
-
+        console.log("throw error here1");
 $(document).ready(function(){
-    $.ajax({url:'/getdata',success: function(data){
+    $.ajax({method:'get',url:'/getdata',success: function(data){
         console.log(data);
         Data = data;
         console.log(Data);
@@ -153,29 +153,29 @@ function setWebpage(){
                     sr.reveal('.dot', {duration:1000,origin:'left',distance:'100%'});
                 </script>`;
     $('#timelist').append(t);
-    for(let i=0; i<Data.speaker.length; i++){
+    for(let i=0; i<Data.speakers.length; i++){
         const temp = `<div class="container mt-3 mb-3 pt-1 pb-1 speaker text-center">
                         <div class="speakerimg speakerimg${i}" style="position: relative;">
-                            <img src="${Data.speaker[i].avatar}" style="height: 270px; width: 270px;" style="position: relative;" onError="this.onerror=null; this.src='https://image.ibb.co/gXgqbS/placeholder_avatar.png';" />
+                            <img src="${Data.speakers[i].avatar}" style="height: 270px; width: 270px;" style="position: relative;" onError="this.onerror=null; this.src='https://image.ibb.co/gXgqbS/placeholder_avatar.png';" />
                             <div class="container-fluid speakeroverlay speakeroverlay${i}">
                                 <ul class="speakerlinks float-center" style="padding:0; margin:auto">
                                     <li>
-                                        <a href="${Data.speaker[i].profile.github}" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
+                                        <a href="${Data.speakers[i].profile.github}" target="_blank"><i class="fab fa-github" style="color: darkgray;" aria-hidden="true"></i></a>
                                     </li>
                                     <li>
-                                        <a href="${Data.speaker[i].profile.googleplus}" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
+                                        <a href="${Data.speakers[i].profile.googleplus}" target="_blank"><i class="fab fa-google-plus-g" style="color: red;" aria-hidden="true"></i></a>
                                     </li>
                                     <li>
-                                        <a href="${Data.speaker[i].profile.facebook}" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
+                                        <a href="${Data.speakers[i].profile.facebook}" target="_blank"><i class="fab fa-facebook" style="color: #3b5998;" aria-hidden="true"></i></a>
                                     </li>
                                     <li>
-                                        <a href="${Data.speaker[i].profile.twitter}" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
+                                        <a href="${Data.speakers[i].profile.twitter}" target="_blank"><i class="fab fa-twitter" style="color: #1da1f2;" aria-hidden="true"></i></a>
                                     </li>
                                     <li>
-                                        <a href="${Data.speaker[i].profile.linkedin}" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
+                                        <a href="${Data.speakers[i].profile.linkedin}" target="_blank"><i class="fab fa-linkedin-in" style="color: darkblue;" aria-hidden="true"></i></a>
                                     </li>
                                     <li>
-                                        <a href="${Data.speaker[i].profile.instagram}" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
+                                        <a href="${Data.speakers[i].profile.instagram}" target="_blank"><i class="fab fa-instagram" style="color: red;" aria-hidden="true"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -190,9 +190,9 @@ function setWebpage(){
                             sr.reveal('.speaker', {duration:1000,origin:'left',distance:'100%'});
                         </script>
                         <div class="container-fluid speakerinfo">
-                            <div class="container speakername">${Data.speaker[i].name}</div>
-                            <p class="container speakerstatus">${Data.speaker[i].designation}</p>
-                            <p class="container-fluid speakerabout">${Data.speaker[i].description}</p>
+                            <div class="container speakername">${Data.speakers[i].name}</div>
+                            <p class="container speakerstatus">${Data.speakers[i].designation}</p>
+                            <p class="container-fluid speakerabout">${Data.speakers[i].description}</p>
                         </div>
                     </div>`;
         $('#speakers').append(temp);

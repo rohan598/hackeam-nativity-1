@@ -5,7 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+var society = require('./models/society');
+var event = require('./models/event');
 var appRoutes = require('./routes/app');
 var userRoutes = require('./routes/user');
 var societyRoutes = require('./routes/society').router;
@@ -43,21 +44,25 @@ app.use('/society',societyRoutes);
 app.use('/webpage',express.static('Webpage'));
 app.use('/', appRoutes);
 
-
-var eventData = {};
-
+// let id = require('./routes/society').id;
+var eventData= {};
 app.use('/getdata', (req,res)=>{
     //getting data about society
-    eventData = require('./routes/society').eventData;
-    const sid = eventData.id;
-    society.findById(sid,(err,d)=>{
+  event.find((err,d)=>{
         if(err) throw err;
         console.log("data using id :-");
-        console.log(d);
-        eventData['logo']=d.logo;
-        eventData['societyname']=d.name;
-        res.send(eventData);
-    });
+        console.log(d[0]);
+        eventData = d[0];
+        const sid = eventData.id;
+        society.findById(sid,(err,d2)=>{
+            if(err) throw err;
+            console.log("data using id :-");
+            console.log(d2);
+            eventData['logo']=d2.logo;
+            eventData['societyname']=d2.name;
+            res.send(eventData);
+          });
+    }).sort({_id:-1}).limit(1);
 });
 
 // catch 404 and forward to error handler

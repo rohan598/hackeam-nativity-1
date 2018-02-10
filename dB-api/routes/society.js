@@ -5,7 +5,7 @@ var bcrypt = require('bcryptjs');
 var event = require('../models/event');
 
 let newEvent = {};
-
+let newEventId;
 router.post('/create', function (req, res, next) {
     newEvent = new event({
       name:req.body.eventName,
@@ -31,6 +31,7 @@ router.post('/create', function (req, res, next) {
           error: error
         });
       }else{
+        newEventId = result._id;
         res.status(201).json({
           message:'User successfully saved to db',
           obj: result
@@ -64,5 +65,6 @@ router.post('/', function (req, res, next) {
 
 module.exports = {
     'router' : router,
-    'eventData' : newEvent
+    'eventData' : newEvent,
+    'id':newEventId
 };
