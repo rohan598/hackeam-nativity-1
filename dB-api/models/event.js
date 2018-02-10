@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ProfileSchema = require('./profile-link');
-
-const ContactSchema = new Schema({
-  address: String,
-  telephone:[String]
-});
+// const society = require('./society');
 const SpeakerSchema = new Schema({
   avatar: String,
   name: String,
@@ -43,8 +39,10 @@ const EventSchema = new Schema({
    profile:[ProfileSchema],
    speakers:[SpeakerSchema],
    sponsors:[SponsorSchema],
-   // contacts:[ContactSchema],
-   society: {type: Schema.Types.ObjectId}
+   phone1:String,
+   phone2:String,
+   address:String,
+   id: {type: Schema.Types.ObjectId,ref:'societies'}
  });
 
  const mainevent = mongoose.model('mainevent',MainEventSchema);

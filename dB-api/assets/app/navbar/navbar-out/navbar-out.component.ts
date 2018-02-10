@@ -13,7 +13,7 @@ export class NavbarOutComponent {
   object: string;
   constructor(private authService:AuthService,private router:Router) { }
   ngOnInit(){
-    this.object = this.authService.object();
+    // this.object = this.authService.object();
   }
   onLogout(){
     this.authService.logout();

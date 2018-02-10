@@ -4,7 +4,7 @@ var society = require('../models/society');
 var bcrypt = require('bcryptjs');
 var event = require('../models/event');
 
-const newEvent = {};
+let newEvent = {};
 
 router.post('/create', function (req, res, next) {
     newEvent = new event({
@@ -18,7 +18,11 @@ router.post('/create', function (req, res, next) {
       register:req.body.register,
       profile:req.body.links,
       speakers:req.body.speakers,
-      sponsors:req.body.sponsors
+      sponsors:req.body.sponsors,
+      phone1:req.body.phone1,
+      phone2:req.body.phone2,
+      address:req.body.address,
+      id:req.body.id
     });
     newEvent.save((error,result)=>{
       if(error){

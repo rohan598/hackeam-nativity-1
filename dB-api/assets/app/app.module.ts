@@ -5,7 +5,11 @@ import { AgmCoreModule } from '@agm/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+
 //main
 import { AppComponent } from './app.component';
 
@@ -25,13 +29,13 @@ import { EventsComponent } from './shared/upcoming-events/events/events.componen
 // user
 import { UserComponent } from './user/user.component';
 import { MyEventsUserComponent } from './user/my-events-user/my-events-user.component';
-import { MySocitiesComponent} from './user/my-societies/my-societies.component';
+// import { MySocitiesComponent} from './user/my-societies/my-societies.component';
 import { SideBarUserComponent } from './user/side-bar-user/side-bar-user.component';
 
 //society
 import { SocietyComponent } from './society/society.component';
 import { MyEventsSocietyComponent } from './society/my-events-society/my-events-society.component';
-import { MyMembersComponent } from './society/my-members/my-members.component';
+// import { MyMembersComponent } from './society/my-members/my-members.component';
 import { SideBarSocietyComponent } from './society/side-bar-society/side-bar-society.component';
 
 //signup
@@ -53,6 +57,11 @@ import {AppRoutingModule } from './app-routes.module';
 import { AuthService } from './shared/auth.service';
 import { ToggleService } from './shared/toggle.service';
 import { CreateService } from './shared/create.service';
+import { SocietyService } from './shared/society.service';
+import { UserService } from './shared/user.service';
+import { AuthGuard } from './shared/auth-guard.service';
+import { TokenInterceptor } from './shared/token.interceptor';
+// import { JwtInterceptor } from './shared/jwt.interceptor';
 // validation
 import { CustomFormsModule } from 'ng2-validation';
 
@@ -67,11 +76,11 @@ import { CustomFormsModule } from 'ng2-validation';
     OverviewComponent,
     CreateComponent,
     UserComponent,
-    MySocitiesComponent,
+    // MySocitiesComponent,
     SideBarUserComponent,
     MyEventsUserComponent,
     SocietyComponent,
-    MyMembersComponent,
+    // MyMembersComponent,
     SideBarSocietyComponent,
     MyEventsSocietyComponent,
     UpcomingEventsComponent,
@@ -87,15 +96,21 @@ import { CustomFormsModule } from 'ng2-validation';
     BrowserModule,
     ReactiveFormsModule,
     CustomFormsModule,
+    HttpClientModule,
     HttpModule,
     FormsModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey:'#',
+      apiKey:'AIzaSyAuTFz2m3mOkCEom6alCedPumQmQcxwgFw',
       libraries:["places"]
     })
   ],
-  providers: [AuthService,ToggleService,DatePipe,CreateService],
+  providers: [AuthService,ToggleService,DatePipe,UserService,SocietyService,CreateService,AuthGuard,
+    {
+  provide: HTTP_INTERCEPTORS,
+  useClass: TokenInterceptor,
+  multi: true
+}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

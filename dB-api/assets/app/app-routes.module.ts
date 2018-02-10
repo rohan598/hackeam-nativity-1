@@ -20,13 +20,13 @@ import { EventsComponent } from './shared/upcoming-events/events/events.componen
 // user
 import { UserComponent } from './user/user.component';
 import { MyEventsUserComponent } from './user/my-events-user/my-events-user.component';
-import { MySocitiesComponent} from './user/my-societies/my-societies.component';
+// import { MySocitiesComponent} from './user/my-societies/my-societies.component';
 import { SideBarUserComponent } from './user/side-bar-user/side-bar-user.component';
 
 //society
 import { SocietyComponent } from './society/society.component';
 import { MyEventsSocietyComponent } from './society/my-events-society/my-events-society.component';
-import { MyMembersComponent } from './society/my-members/my-members.component';
+// import { MyMembersComponent } from './society/my-members/my-members.component';
 import { SideBarSocietyComponent } from './society/side-bar-society/side-bar-society.component';
 
 //signup
@@ -38,7 +38,8 @@ import { SignupSocietyComponent } from './signup/signup-society/signup-society.c
 import { SigninComponent } from './signin/signin.component';
 import { SigninUserComponent } from './signin/signin-user/signin-user.component';
 import { SigninSocietyComponent } from './signin/signin-society/signin-society.component';
-
+//auth-guard
+import { AuthGuard } from './shared/auth-guard.service';
 
 
 
@@ -52,23 +53,22 @@ const appRoutes :Routes = [
     { path: 'society' , component:SignupSocietyComponent},
     { path: 'user' , component:SignupUserComponent}
   ]},
-  { path: 'user' , component:UserComponent,children:[
-    { path: 'myevents',component:MyEventsUserComponent},
+  { path: 'user' ,component:UserComponent,children:[
+    { path: 'myeventsuser',component:MyEventsUserComponent},
     { path: 'upcomingevents', component:UpcomingEventsComponent },
-    { path: 'mysocities',component:MySocitiesComponent},
-      { path: 'create', component:CreateComponent }
+    // { path: 'mysocities',component:MySocitiesComponent},
   ]},
   { path: 'society' , component:SocietyComponent,children:[
-    { path: 'myevents',component:MyEventsSocietyComponent},
+    { path: 'myeventssociety',component:MyEventsSocietyComponent},
     { path: 'upcomingevents', component:UpcomingEventsComponent },
-    { path: 'mymembers',component:MyMembersComponent},
+    // { path: 'mymembers',component:MyMembersComponent},
       { path: 'create', component:CreateComponent }
   ]},
   { path: 'signin',component:SigninComponent, children:[
     { path: 'society' , component:SigninSocietyComponent},
     { path: 'user' , component:SigninUserComponent}
   ]},
-  {path: 'events', component: EventsComponent},
+  // {path: 'events', component: EventsComponent},
 ];
 
 @NgModule({
