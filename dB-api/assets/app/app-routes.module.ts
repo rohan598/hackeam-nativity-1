@@ -49,6 +49,7 @@ const appRoutes :Routes = [
   { path: 'overview', component:OverviewComponent},
   { path: 'howtouse', component:HowToUseComponent },
   { path: 'aboutus',component:AboutUsComponent},
+
   { path: 'signup',component:SignupComponent, children:[
     { path: 'society' , component:SignupSocietyComponent},
     { path: 'user' , component:SignupUserComponent}
@@ -67,7 +68,10 @@ const appRoutes :Routes = [
   { path: 'signin',component:SigninComponent, children:[
     { path: 'society' , component:SigninSocietyComponent},
     { path: 'user' , component:SigninUserComponent}
-  ]},
+  ]}
+  // {
+  //   path:'events',component:UpcomingEventsComponent
+  // }
   // {path: 'events', component: EventsComponent},
 ];
 

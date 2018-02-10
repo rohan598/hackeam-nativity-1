@@ -216,4 +216,5 @@ function setWebpage(){
     $('.twitterlink').attr({'href':`${Data.profile.twitter}`});
     $('.lilink').attr({'href':`${Data.profile.linkedin}`});
     $('.instalink').attr({'href':`${Data.profile.instagram}`});
+    $('.address').attr({'href':`http://maps.google.com/maps?z=17&q=${Data.lat},${Data.lng}`});
 }

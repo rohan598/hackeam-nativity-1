@@ -1,5 +1,5 @@
 
-import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, NgZone,OnChanges, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray ,FormBuilder} from '@angular/forms'
 import { CustomValidators } from 'ng2-validation';
 import { DatePipe } from '@angular/common';
@@ -18,7 +18,7 @@ import { AuthService } from '../auth.service';
 
 export class CreateComponent implements OnInit {
 
-  pageNum: number;
+  pageNum: number = 1;
 
   createForm: FormGroup;
   eventNameIsValid: boolean;
@@ -158,7 +158,11 @@ export class CreateComponent implements OnInit {
     this.createForm.get('pg1.description').valueChanges.subscribe((value) => {
       this.descriptionVal = (value === '' || value === null) ? false : true;
     });
-
+    this.createForm.get('pg6.address').valueChanges.subscribe((value:string) => {
+      this.createForm.patchValue({
+        'pg6.address':value
+      })
+    });
   }
 
 
@@ -228,5 +232,11 @@ export class CreateComponent implements OnInit {
         error => console.error(error)
       );
     this.createForm.reset();
+  }
+  nextPage(){
+    this.pageNum++;
+  }
+  prevPage(){
+    this.pageNum--;
   }
 }

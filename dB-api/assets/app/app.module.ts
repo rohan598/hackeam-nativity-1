@@ -61,6 +61,7 @@ import { SocietyService } from './shared/society.service';
 import { UserService } from './shared/user.service';
 import { AuthGuard } from './shared/auth-guard.service';
 import { TokenInterceptor } from './shared/token.interceptor';
+import { EventService } from './shared/event.service';
 // import { JwtInterceptor } from './shared/jwt.interceptor';
 // validation
 import { CustomFormsModule } from 'ng2-validation';
@@ -105,7 +106,7 @@ import { CustomFormsModule } from 'ng2-validation';
       libraries:["places"]
     })
   ],
-  providers: [AuthService,ToggleService,DatePipe,UserService,SocietyService,CreateService,AuthGuard,
+  providers: [AuthService,ToggleService,DatePipe,UserService,SocietyService,CreateService,EventService,AuthGuard,
     {
   provide: HTTP_INTERCEPTORS,
   useClass: TokenInterceptor,
