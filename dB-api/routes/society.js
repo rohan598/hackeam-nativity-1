@@ -4,8 +4,10 @@ var society = require('../models/society');
 var bcrypt = require('bcryptjs');
 var event = require('../models/event');
 
+const newEvent;
+
 router.post('/create', function (req, res, next) {
-    var newEvent = new event({
+    newEvent = new event({
       name:req.body.eventName,
       from:req.body.from,
       to:req.body.to,
@@ -56,4 +58,7 @@ router.post('/', function (req, res, next) {
     });
 });
 
-module.exports = router;
+module.exports = {
+    'router' : router,
+    'eventData' : newEvent
+};
