@@ -4,7 +4,7 @@ var society = require('../models/society');
 var bcrypt = require('bcryptjs');
 var event = require('../models/event');
 
-let newEvent;
+let newEvent = {};
 
 router.post('/create', function (req, res, next) {
     newEvent = new event({

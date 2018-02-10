@@ -81,7 +81,7 @@ $(document).ready(function(){
                     'facebook' : '',
                     'twitter' : '',
                     'linkedin' : '',
-                    'instagram' : '',
+                    'instagram' : ''
                 },
                 'name' : 'Chris Yao',
                 'designation' : 'director',
@@ -90,6 +90,31 @@ $(document).ready(function(){
                 advising and investing in open source and infrastructure focused startups.`
             }
         ],
+        'sponsors' : [
+            {
+                'logo' : 'https://image.ibb.co/dgR9Ln/speaker.jpg',
+                'link' : ''
+            },
+            {
+                'logo' : 'https://image.ibb.co/dgR9Ln/speaker.jpg',
+                'link' : ''
+            },
+            {
+                'logo' : 'https://image.ibb.co/dgR9Ln/speaker.jpg',
+                'link' : ''
+            }
+        ],
+        'address' : 'Azad Hind Fauz Marg, Sector 3, Dwarka, New Delhi, Delhi 110078',
+        'phone1' : '7451268930',
+        'phone2' : '4126895320',
+        'profile' : {
+            'github' : '',
+            'googleplus' : '',
+            'facebook' : '',
+            'twitter' : '',
+            'linkedin' : '',
+            'instagram' : ''
+        }
     }
     setWebpage();
 });
@@ -110,7 +135,7 @@ function setWebpage(){
     $('.register').attr({'onclick':`window.location='${Data.register}'`});
     $('.abouttext').html(Data.description);
     for(let i=0; i<Data.events.length; i++){
-        const temp = `<li class="container mt-5 pt-2 pb-2 mb-5 d-flex">
+        const temp = `<li class="container mt-5 pt-2 pb-2 mb-5 d-flex eventschedule">
                             <div class="container-fluid p-0 dot">
                             <i class="fa fa-circle" style="color: #5bc0de" aria-hidden="true"></i>
                             </div>
@@ -123,6 +148,11 @@ function setWebpage(){
                         </li>`;
         $('#timelist').append(temp);
     }
+    const t=`<script type="text/javascript">
+                    sr.reveal('.listitem',{duration:1000, origin:'top', distance:'100%'});
+                    sr.reveal('.dot', {duration:1000,origin:'left',distance:'100%'});
+                </script>`;
+    $('#timelist').append(t);
     for(let i=0; i<Data.speaker.length; i++){
         const temp = `<div class="container mt-3 mb-3 pt-1 pb-1 speaker text-center">
                         <div class="speakerimg speakerimg${i}" style="position: relative;">
@@ -157,6 +187,7 @@ function setWebpage(){
                                 .mouseleave(function(){
                                     $('.speakeroverlay'+${i}).slideUp(300);
                                 });
+                            sr.reveal('.speaker', {duration:1000,origin:'left',distance:'100%'});
                         </script>
                         <div class="container-fluid speakerinfo">
                             <div class="container speakername">${Data.speaker[i].name}</div>
@@ -166,4 +197,23 @@ function setWebpage(){
                     </div>`;
         $('#speakers').append(temp);
     }
+    for(let i=0; i<Data.sponsors.length; i++){
+        const temp = `<div class="container sponsor mt-2 mb-2 pt-2 pb-2">
+                        <a href="${Data.sponsors[i].link}">
+                            <img src="${Data.sponsors[i].logo}" class="sponsorimg">
+                        </a>
+                    </div>
+                    <script type='text/javascript'>
+                        sr.reveal('.sponsor', {duration:1000,distance:'100%',scale:'0.5'});
+                    </script>`;
+        $('.sponsorslist').append(temp);
+    }
+    $('.address').html(Data.address);
+    $('.phone').html(`Contact No. - ${Data.phone1}, ${Data.phone2}`);
+    $('.gitlink').attr({'href':`${Data.profile.github}`});
+    $('.googlelink').attr({'href':`${Data.profile.googleplus}`});
+    $('.fblink').attr({'href':`${Data.profile.facebook}`});
+    $('.twitterlink').attr({'href':`${Data.profile.twitter}`});
+    $('.lilink').attr({'href':`${Data.profile.linkedin}`});
+    $('.instalink').attr({'href':`${Data.profile.instagram}`});
 }
