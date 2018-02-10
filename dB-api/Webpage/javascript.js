@@ -1,122 +1,122 @@
 let Data={};
 
 $(document).ready(function(){
-    // $.ajax({url:'/getdata',success: function(data){
-    //     console.log(data);
-    //     Data = data;
-    //     console.log(Data);
-    //     setWebpage();
-    // }});
-    Data = {
-        'societyname' : 'CSI',
-        'background' : 'https://preview.ibb.co/fzdaAn/bg.jpg',
-        'logo' : 'https://image.ibb.co/meXkAn/csi.png',
-        'name' : 'Code n play',
-        'from' : '2018-02-26',
-        'to' : '2018-02-28',
-        'hashtags' : '#codenplay #win #prizes #2018 #comeall',
-        'register' : 'www.google.co.in',
-        'description' : `This will include text about the event like rules or motive. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the       release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-        'events' : [
-            {
-                'name' : 'Start',
-                'venue' : 'Here',
-                'from' : '8:30',
-                'to' : '9:30',
-                'description' : 'starting the event'
-            },
-            {
-                'name' : 'Mid',
-                'venue' : 'There',
-                'from' : '1:30',
-                'to' : '2:00',
-                'description' : 'doing event'
-            },
-            {
-                'name' : 'End',
-                'venue' : 'Where',
-                'from' : '3:00',
-                'to' : '4:00',
-                'description' : 'end of event'
-            }
-        ],
-        'speaker' : [
-            {
-                'avatar' : 'https://image.ibb.co/dgR9Ln/speaker.jpg',
-                'profile' : {
-                    'github' : '',
-                    'googleplus' : '',
-                    'facebook' : '',
-                    'twitter' : '',
-                    'linkedin' : '',
-                    'instagram' : '',
-                },
-                'name' : 'You know me',
-                'designation' : 'this too',
-                'description' : `Chris is currently a VP at the Linux Foundation focused on developer relations and running the Open Container
-                Initiative (OCI) / Cloud Native Computing Foundation (CNCF). Furthermore, he's a partner at Capital Factory where he focuses on mentoring,
-                advising and investing in open source and infrastructure focused startups.`
-            },
-            {
-                'avatar' : '',
-                'profile' : {
-                    'github' : '',
-                    'googleplus' : '',
-                    'facebook' : '',
-                    'twitter' : '',
-                    'linkedin' : '',
-                    'instagram' : '',
-                },
-                'name' : 'Michael',
-                'designation' : 'manager',
-                'description' : `Chris is currently a VP at the Linux Foundation focused on developer relations and running the Open Container
-                Initiative (OCI) / Cloud Native Computing Foundation (CNCF). Furthermore, he's a partner at Capital Factory where he focuses on mentoring,
-                advising and investing in open source and infrastructure focused startups.`
-            },
-            {
-                'avatar' : 'https://image.ibb.co/dgR9Ln/speaker.jpg',
-                'profile' : {
-                    'github' : '',
-                    'googleplus' : '',
-                    'facebook' : '',
-                    'twitter' : '',
-                    'linkedin' : '',
-                    'instagram' : ''
-                },
-                'name' : 'Chris Yao',
-                'designation' : 'director',
-                'description' : `Chris is currently a VP at the Linux Foundation focused on developer relations and running the Open Container
-                Initiative (OCI) / Cloud Native Computing Foundation (CNCF). Furthermore, he's a partner at Capital Factory where he focuses on mentoring,
-                advising and investing in open source and infrastructure focused startups.`
-            }
-        ],
-        'sponsors' : [
-            {
-                'logo' : 'https://image.ibb.co/dgR9Ln/speaker.jpg',
-                'link' : ''
-            },
-            {
-                'logo' : 'https://image.ibb.co/dgR9Ln/speaker.jpg',
-                'link' : ''
-            },
-            {
-                'logo' : 'https://image.ibb.co/dgR9Ln/speaker.jpg',
-                'link' : ''
-            }
-        ],
-        'address' : 'Azad Hind Fauz Marg, Sector 3, Dwarka, New Delhi, Delhi 110078',
-        'phone1' : '7451268930',
-        'phone2' : '4126895320',
-        'profile' : {
-            'github' : '',
-            'googleplus' : '',
-            'facebook' : '',
-            'twitter' : '',
-            'linkedin' : '',
-            'instagram' : ''
-        }
-    }
-    setWebpage();
+    $.ajax({url:'/getdata',success: function(data){
+        console.log(data);
+        Data = data;
+        console.log(Data);
+        setWebpage();
+    }});
+    // Data = {
+    //     'societyname' : 'CSI',
+    //     'background' : 'https://preview.ibb.co/fzdaAn/bg.jpg',
+    //     'logo' : 'https://image.ibb.co/meXkAn/csi.png',
+    //     'name' : 'Code n play',
+    //     'from' : '2018-02-26',
+    //     'to' : '2018-02-28',
+    //     'hashtags' : '#codenplay #win #prizes #2018 #comeall',
+    //     'register' : 'www.google.co.in',
+    //     'description' : `This will include text about the event like rules or motive. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the       release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
+    //     'events' : [
+    //         {
+    //             'name' : 'Start',
+    //             'venue' : 'Here',
+    //             'from' : '8:30',
+    //             'to' : '9:30',
+    //             'description' : 'starting the event'
+    //         },
+    //         {
+    //             'name' : 'Mid',
+    //             'venue' : 'There',
+    //             'from' : '1:30',
+    //             'to' : '2:00',
+    //             'description' : 'doing event'
+    //         },
+    //         {
+    //             'name' : 'End',
+    //             'venue' : 'Where',
+    //             'from' : '3:00',
+    //             'to' : '4:00',
+    //             'description' : 'end of event'
+    //         }
+    //     ],
+    //     'speaker' : [
+    //         {
+    //             'avatar' : 'https://image.ibb.co/dgR9Ln/speaker.jpg',
+    //             'profile' : {
+    //                 'github' : '',
+    //                 'googleplus' : '',
+    //                 'facebook' : '',
+    //                 'twitter' : '',
+    //                 'linkedin' : '',
+    //                 'instagram' : '',
+    //             },
+    //             'name' : 'You know me',
+    //             'designation' : 'this too',
+    //             'description' : `Chris is currently a VP at the Linux Foundation focused on developer relations and running the Open Container
+    //             Initiative (OCI) / Cloud Native Computing Foundation (CNCF). Furthermore, he's a partner at Capital Factory where he focuses on mentoring,
+    //             advising and investing in open source and infrastructure focused startups.`
+    //         },
+    //         {
+    //             'avatar' : '',
+    //             'profile' : {
+    //                 'github' : '',
+    //                 'googleplus' : '',
+    //                 'facebook' : '',
+    //                 'twitter' : '',
+    //                 'linkedin' : '',
+    //                 'instagram' : '',
+    //             },
+    //             'name' : 'Michael',
+    //             'designation' : 'manager',
+    //             'description' : `Chris is currently a VP at the Linux Foundation focused on developer relations and running the Open Container
+    //             Initiative (OCI) / Cloud Native Computing Foundation (CNCF). Furthermore, he's a partner at Capital Factory where he focuses on mentoring,
+    //             advising and investing in open source and infrastructure focused startups.`
+    //         },
+    //         {
+    //             'avatar' : 'https://image.ibb.co/dgR9Ln/speaker.jpg',
+    //             'profile' : {
+    //                 'github' : '',
+    //                 'googleplus' : '',
+    //                 'facebook' : '',
+    //                 'twitter' : '',
+    //                 'linkedin' : '',
+    //                 'instagram' : ''
+    //             },
+    //             'name' : 'Chris Yao',
+    //             'designation' : 'director',
+    //             'description' : `Chris is currently a VP at the Linux Foundation focused on developer relations and running the Open Container
+    //             Initiative (OCI) / Cloud Native Computing Foundation (CNCF). Furthermore, he's a partner at Capital Factory where he focuses on mentoring,
+    //             advising and investing in open source and infrastructure focused startups.`
+    //         }
+    //     ],
+    //     'sponsors' : [
+    //         {
+    //             'logo' : 'https://image.ibb.co/dgR9Ln/speaker.jpg',
+    //             'link' : ''
+    //         },
+    //         {
+    //             'logo' : 'https://image.ibb.co/dgR9Ln/speaker.jpg',
+    //             'link' : ''
+    //         },
+    //         {
+    //             'logo' : 'https://image.ibb.co/dgR9Ln/speaker.jpg',
+    //             'link' : ''
+    //         }
+    //     ],
+    //     'address' : 'Azad Hind Fauz Marg, Sector 3, Dwarka, New Delhi, Delhi 110078',
+    //     'phone1' : '7451268930',
+    //     'phone2' : '4126895320',
+    //     'profile' : {
+    //         'github' : '',
+    //         'googleplus' : '',
+    //         'facebook' : '',
+    //         'twitter' : '',
+    //         'linkedin' : '',
+    //         'instagram' : ''
+    //     }
+    // }
+    // setWebpage();
 });
 
 function setWebpage(){

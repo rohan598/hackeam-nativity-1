@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var appRoutes = require('./routes/app');
 var userRoutes = require('./routes/user');
 var societyRoutes = require('./routes/society').router;
-const eventData = require('./routes/society').eventData;
+
 var signinRoutes = require('./routes/signin');
 
 var app = express();
@@ -40,20 +40,22 @@ app.use(function (req, res, next) {
 app.use('/signin',signinRoutes);
 app.use('/user',userRoutes);
 app.use('/society',societyRoutes);
+app.use('/webpage',express.static('Webpage'));
 app.use('/', appRoutes);
+
+
+var eventData = {};
 
 app.use('/getdata', (req,res)=>{
     //getting data about society
+    eventData = require('./routes/society').eventData;
     const sid = eventData.id;
     society.findById(sid,(err,d)=>{
         if(err) throw err;
         console.log("data using id :-");
         console.log(d);
-        eventData.set('logo':d.logo);
-        eventData.set('societyname':d.name);
-        eventData.set('address':d.address);
-        eventData.set('phone1':d.phone1);
-        eventData.set('phone2':d.phone2);
+        eventData['logo']=d.logo;
+        eventData['societyname']=d.name;
         res.send(eventData);
     });
 });
