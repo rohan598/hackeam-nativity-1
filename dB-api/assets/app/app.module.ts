@@ -65,6 +65,9 @@ import { EventService } from './shared/event.service';
 // import { JwtInterceptor } from './shared/jwt.interceptor';
 // validation
 import { CustomFormsModule } from 'ng2-validation';
+//Error
+import {ErrorPageComponent } from './error-page/error-page.component';
+
 
 @NgModule({
   declarations: [
@@ -91,7 +94,8 @@ import { CustomFormsModule } from 'ng2-validation';
     SignupSocietyComponent,
     SigninComponent,
     SigninUserComponent,
-    SigninSocietyComponent
+    SigninSocietyComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

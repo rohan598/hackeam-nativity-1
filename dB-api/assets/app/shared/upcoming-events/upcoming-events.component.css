@@ -1,0 +1,18 @@
+.allcards{
+  display: flex;
+  flex-wrap: wrap;
+}
+.cards{
+  margin: auto;
+  width: 33.33%;
+}
+.listofcards{
+  margin: auto;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+h2{
+  margin-top:3%;
+  color: rgb(156, 167, 170);
+  text-decoration: underline;
+}

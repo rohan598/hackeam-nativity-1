@@ -1,12 +1,10 @@
-<div class="container">
-    <ul>
-        <li>
-            <img src="{{event.background}}" alt="">
-            <br>
-            Name : {{event.name}}<br>
-            From : {{event.from}}<br>
-            To : {{event.to}}<br>
-            <!-- Venue : {{event.venue}}<br><br> -->
-        </li>
-    </ul>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{event.background}}" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">Name : {{event.name}}</h4>
+    <h4 class="card-title">From : {{event.from}}</h4>
+    <h4 class="card-title">To : {{event.to}}</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
 </div>

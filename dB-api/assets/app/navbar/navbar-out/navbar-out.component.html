@@ -8,8 +8,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
           <div class="container-fluid">
-              <ul class="navbar-nav mainMenu justify-content-left">
+
                   <div *ngIf="authService.object() === 'society'">
+                    <ul class="navbar-nav mainMenu justify-content-left">
                     <li class="nav-item">
                         <a class="nav-link" [routerLink]="['/society' +'/create']" >Create</a>
                     </li>
@@ -20,10 +21,12 @@
                         <a class="nav-link" [routerLink]="['/society'+'/upcomingevents']">Upcoming Events</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link"(click)="onLogout()">Sign out<span><i class="fas fa-sign-out-alt"></i></span></a>
+                        <a class="nav-link" (click)="onLogout()">Sign out <i class="fas fa-sign-out-alt"></i></a>
                     </li>
+                  </ul>
                   </div>
                   <div *ngIf="authService.object() === 'user'">
+                    <ul class="navbar-nav mainMenu justify-content-left">
                     <li class="nav-item">
                         <a class="nav-link" [routerLink]="['/user'+'/myeventsuser']">My Events</a>
                     </li>
@@ -31,11 +34,10 @@
                         <a class="nav-link" [routerLink]="['/user'+'/upcomingevents']">Upcoming Events</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link"(click)="onLogout()">Sign out <span><i class="fas fa-sign-out-alt"></i></span></a>
+                        <a class="nav-link"(click)="onLogout()">Sign out <i class="fas fa-sign-out-alt"></i></a>
                     </li>
+                  </ul>
                   </div>
-
-                </ul>
           </div>
       </div>
   </nav>

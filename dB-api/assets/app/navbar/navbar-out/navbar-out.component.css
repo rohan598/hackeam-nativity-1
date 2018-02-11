@@ -26,10 +26,12 @@ nav{
     border-bottom: 3px solid #44b2e2;
     transition: border-bottom 1s;
 }
+@media only screen and (min-width: 420px){
+  .navbar-nav{
+      flex-direction: row;
+  }
+}
 @media only screen and (min-width: 768px){
-    .navbar-nav{
-        flex-direction: row;
-    }
     .mainMenu{
         float: right !important;
     }

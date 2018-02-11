@@ -40,7 +40,8 @@ import { SigninUserComponent } from './signin/signin-user/signin-user.component'
 import { SigninSocietyComponent } from './signin/signin-society/signin-society.component';
 //auth-guard
 import { AuthGuard } from './shared/auth-guard.service';
-
+//Error
+import {ErrorPageComponent } from './error-page/error-page.component';
 
 
 const appRoutes :Routes = [
@@ -59,19 +60,22 @@ const appRoutes :Routes = [
     { path: 'upcomingevents', component:UpcomingEventsComponent },
     // { path: 'mysocities',component:MySocitiesComponent},
   ]},
-  { path: 'society' , canActivate:[AuthGuard],component:SocietyComponent,children:[
+  { path: 'society' ,component:SocietyComponent,children:[
     { path: 'myeventssociety',component:MyEventsSocietyComponent},
     { path: 'upcomingevents', component:UpcomingEventsComponent },
     // { path: 'mymembers',component:MyMembersComponent},
       { path: 'create', component:CreateComponent }
   ]},
+
   { path: 'signin',component:SigninComponent, children:[
     { path: 'society' , component:SigninSocietyComponent},
     { path: 'user' , component:SigninUserComponent}
-  ]}
-  // {
-  //   path:'events',component:UpcomingEventsComponent
-  // }
+  ]},
+  {
+    path:'upcomingevents',component:UpcomingEventsComponent
+  },
+  // { path: 'myeventssociety',component:MyEventsSocietyComponent},
+  { path : '**' , component:ErrorPageComponent}
   // {path: 'events', component: EventsComponent},
 ];
 

@@ -10,10 +10,9 @@ var event = require('./models/event');
 var appRoutes = require('./routes/app');
 var userRoutes = require('./routes/user');
 var societyRoutes = require('./routes/society').router;
-var geocoder = require('geocoder');
-
 var signinRoutes = require('./routes/signin');
 
+var geocoder = require('geocoder');
 var app = express();
 
 mongoose.connect("mongodb://localhost/nativityDB");

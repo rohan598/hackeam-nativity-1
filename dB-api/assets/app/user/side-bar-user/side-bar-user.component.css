@@ -7,6 +7,7 @@ body {
 .profile-sidebar {
   padding: 20px 0 10px 0;
   background: #fff;
+  height: 100%;
 }
 
 .profile-userpic img {
