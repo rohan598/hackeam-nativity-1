@@ -61,12 +61,11 @@ app.use('/getdata', (req,res)=>{
             console.log(d2);
             eventData['logo']=d2.logo;
             eventData['societyname']=d2.name;
-            geocoder.geocode(eventData.address, (e,add)=>{
-              eventData['lat']=add.results.geometry.lat;
-              eventData['lng']=add.results.geometry.lng;
+            // geocoder.geocode(eventData.address, (e,add)=>{
+            //   eventData['lat']=add.results.geometry.lat;
+            //   eventData['lng']=add.results.geometry.lng;
               res.send(eventData);
             });
-          });
     }).sort({_id:-1}).limit(1);
 });
 

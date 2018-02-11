@@ -82,7 +82,7 @@ router.get('/upcomingevents', function (req, res, next) {
   });
   router.get('/myeventssociety', function (req, res, next) {
 
-      event.find({_id:req.params.id}).exec((err, data)=>{
+      event.find({id:req.params.id}).exec((err, data)=>{
             if(err){
               return res.status(500).json({
                 title: 'An error occured',

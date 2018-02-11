@@ -1,2 +1,27 @@
+
+<form class="form-inline" [formGroup]="inputForm" (submit)="onSubmit()">
+    <div class="form-group" [ngClass]="{'has-success':inputIsValid,'has-danger':!inputIsValid}">
+      <label for="inputSuccess1"></label>
+      <input type="text" class="form-control" id="inputSuccess1" placeholder="Society Name/Hashtags" formControlName="input">
+      <p class="help-block" *ngIf="inputForm.get('input').touched && !inputIsValid">
+        <!-- <span *ngIf="!usernameVal"> -->
+        This field cannot be left empty
+        <!-- </span> -->
+      </p>
+    </div>
+
+  <div class="form-row align-items-center">
+  <div class="col-auto my-1">
+    <label class="mr-sm-2" for="inlineFormCustomSelect">Options</label>
+    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+      <option selected (change)="selectChange($event)">Choose...</option>
+      <option value="1" >Society Name</option>
+      <option value="2">Hashtags</option>
+      <!-- <option value="3">Thre</option> -->
+    </select>
+  </div>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Filter</button>
+</form>
 <app-events *ngFor="let event of creates" [event]="event"></app-events>
 <p>hello</p>

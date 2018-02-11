@@ -46,9 +46,9 @@ export class EventService {
       .catch((error: Response)=>Observable.throw(error.json));
   }
 
-  getSocietyEventData(){
+  getSocietyEventData(id:string = localStorage.getItem('societyId')){
     return this.http.get('http://localhost:3000/society/myeventssociety',{observe:'response',responseType:'json',
-    params:new HttpParams().set('id',localStorage.getItem('societyId'))
+    params:new HttpParams().set('id',id)
   })
       .map((events)=>{
         let tempObj = JSON.parse((JSON.stringify(events.body)));
