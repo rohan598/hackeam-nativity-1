@@ -59,7 +59,7 @@ const appRoutes :Routes = [
     { path: 'upcomingevents', component:UpcomingEventsComponent },
     // { path: 'mysocities',component:MySocitiesComponent},
   ]},
-  { path: 'society' , component:SocietyComponent,children:[
+  { path: 'society' , canActivate:[AuthGuard],component:SocietyComponent,children:[
     { path: 'myeventssociety',component:MyEventsSocietyComponent},
     { path: 'upcomingevents', component:UpcomingEventsComponent },
     // { path: 'mymembers',component:MyMembersComponent},

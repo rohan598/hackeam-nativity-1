@@ -13,9 +13,11 @@ export class UpcomingEventsComponent implements OnInit {
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    this.eventService.getEventData()
+    this.eventService.getAllEventsData()
       .subscribe((creates: Create[])=>{
         this.creates = creates;
+        console.log("subsctibed");
+        console.log(this.creates);
       });
   }
 
