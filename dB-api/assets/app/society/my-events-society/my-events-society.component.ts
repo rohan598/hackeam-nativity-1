@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { EventService } from '../../shared/event.service';
+import { Create } from '../../shared/create/create.model';
+// import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-my-events-society',
   templateUrl: './my-events-society.component.html',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyEventsSocietyComponent implements OnInit {
 
-  constructor() { }
+  creates: Create[];
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
+    this.eventService.getSocietyEventData().subscribe((creates: Create[])=>{
+        this.creates = creates;
+        console.log("subsctibed");
+        console.log(this.creates);
+      });
   }
 
 }
