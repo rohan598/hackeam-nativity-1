@@ -1,5 +1,19 @@
 
-.fa-users,.fa-user{
+.fa-users{
 font-size: 12rem;
 cursor: pointer;
+}
+
+.fa-user{
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    font-size: 9rem;
+    margin-top: 4%;
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 768px){
+    .loginbuttons{
+        display: flex;
+    }
 }
