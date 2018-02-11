@@ -19,6 +19,7 @@ nav{
     font-family: 'Quicksand', sans-serif;
     border-bottom: 3px solid papayawhip;
     display: inline;
+    font-weight: bold;
     margin-right: 20px;
 }
 .mainMenu > li:hover{
