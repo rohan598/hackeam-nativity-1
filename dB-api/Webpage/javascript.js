@@ -5,7 +5,7 @@ $(document).ready(function(){
         console.log(data);
         Data = data;
         console.log(Data);
-        setWebpage();
+        setWebpage(downfunc);
     }});
     // Data = {
     //     'societyname' : 'CSI',
@@ -119,7 +119,7 @@ $(document).ready(function(){
     // setWebpage();
 });
 
-function setWebpage(){
+function setWebpage(callback){
     document.title = Data.societyname;
     $('.bg').attr({'src':Data.background});
     $('.logo').attr({'src':Data.logo});
@@ -217,4 +217,11 @@ function setWebpage(){
     $('.lilink').attr({'href':`${Data.profile.linkedin}`});
     $('.instalink').attr({'href':`${Data.profile.instagram}`});
     $('.address').attr({'href':`http://maps.google.com/maps?z=17&q=${Data.lat},${Data.lng}`});
+    callback();
+}
+
+function downfunc() {
+  let page = document.documentElement.innerHTML;
+  console.log(page);
+  $('#down')[0].click();
 }

@@ -74,6 +74,9 @@ const appRoutes :Routes = [
   {
     path:'upcomingevents',component:UpcomingEventsComponent
   },
+  // {
+  //   path:'webpage', redirectTo:''
+  // },
   // { path: 'myeventssociety',component:MyEventsSocietyComponent},
   { path : '**' , component:ErrorPageComponent}
   // {path: 'events', component: EventsComponent},

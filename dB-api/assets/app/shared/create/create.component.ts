@@ -59,15 +59,15 @@ export class CreateComponent implements OnInit {
   //   this.date.setDate(this.date.getDate() + 113);
   //   this.max = this.datePipe.transform(Date.now(), 'yyyy-MM-dd');
   // }
-  private setCurrentPosition() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 12;
-      });
-    }
-  }
+  // private setCurrentPosition() {
+  //   if ("geolocation" in navigator) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       this.latitude = position.coords.latitude;
+  //       this.longitude = position.coords.longitude;
+  //       this.zoom = 12;
+  //     });
+  //   }
+  // }
   ngOnInit() {
 
     this.createForm = this.fb.group({
@@ -110,37 +110,37 @@ export class CreateComponent implements OnInit {
       })
   });
   //set google maps defaults
-  this.zoom = 4;
-  this.latitude = 39.8282;
-  this.longitude = -98.5795;
-
-  this.searchControl = new FormControl();
+  // this.zoom = 4;
+  // this.latitude = 39.8282;
+  // this.longitude = -98.5795;
+  //
+  // this.searchControl = new FormControl();
 
   //set current position
-  this.setCurrentPosition();
+  // this.setCurrentPosition();
 
   //load Places Autocomplete
-  this.mapsAPILoader.load().then(() => {
-    let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-      types: ["address"]
-    });
-    autocomplete.addListener("place_changed", () => {
-      this.ngZone.run(() => {
-        //get the place result
-        let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-        //verify result
-        if (place.geometry === undefined || place.geometry === null) {
-          return;
-        }
-
-        //set latitude, longitude and zoom
-        this.latitude = place.geometry.location.lat();
-        this.longitude = place.geometry.location.lng();
-        this.zoom = 12;
-      });
-    });
-  });
+  // this.mapsAPILoader.load().then(() => {
+  //   let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+  //     types: ["address"]
+  //   });
+  //   autocomplete.addListener("place_changed", () => {
+  //     this.ngZone.run(() => {
+  //       //get the place result
+  //       let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+  //
+  //       //verify result
+  //       if (place.geometry === undefined || place.geometry === null) {
+  //         return;
+  //       }
+  //
+  //       //set latitude, longitude and zoom
+  //       this.latitude = place.geometry.location.lat();
+  //       this.longitude = place.geometry.location.lng();
+  //       this.zoom = 12;
+  //     });
+  //   });
+  // });
 
     this.createForm.get('pg1.eventName').statusChanges.subscribe((status) => {
       this.eventNameIsValid = (status === 'VALID' ? true : false);
@@ -229,9 +229,13 @@ export class CreateComponent implements OnInit {
     this.createService.createEvent(create)
       .subscribe(
         data => console.log(data),
-        error => console.error(error)
+        error => console.error(error),
+        ()=>{
+    window.open("//localhost:3000/webpage");
+        }
       );
     this.createForm.reset();
+    // this.router.navigate(['/webpage']);
   }
   nextPage(){
     this.pageNum++;
