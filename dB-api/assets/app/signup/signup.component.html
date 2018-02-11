@@ -1,10 +1,10 @@
 <div class="container-fluid">
-  <div class="row ">
-    <div class="col-xs-12">
-      <div *ngIf="!toggle.stateUp(); else elsePart">
-        <h2>Signup</h2>
+  <div class="container-fluid">
+    <div class="container-fluid">
+      <div *ngIf="!toggle.stateUp(); else elsePart" class="container-fluid text-center mt-4 mb-4">
+        <p class="display-4" style="font-family: 'Quicksand', sans-serif; font-weight:bold;">Sign Up</p>
         <form method="get">
-          <div class="form-group">
+          <div class="form-group mt-4 pt-4 text-center loginbuttons">
 
             <div class="col-md-6" (click)="onSelect(false)">
               <i class="fas fa-user"></i>
