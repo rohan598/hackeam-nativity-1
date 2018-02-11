@@ -1,0 +1,29 @@
+.wave{
+    height: 200px;
+    width: 200px;
+}
+.head{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+.fullover{
+    background-color: cornsilk;
+    box-shadow: 0 0px 8px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media only screen and (min-width: 420px){
+    .head{
+        font-size: 2rem;
+    }
+}
+@media only screen and (min-width: 768px){
+    .head{
+        font-size: 4rem;
+    }
+}
+@media only screen and (min-width: 1020px){
+    .head{
+        font-size: 5rem;
+    }
+}
