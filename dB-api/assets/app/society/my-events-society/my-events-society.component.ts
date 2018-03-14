@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../../shared/event.service';
-import { Create } from '../../shared/create/create.model';
+import { EventService } from '../../shared/services/event.service';
+import { Events } from '../../shared/models/events.model';
 // import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-my-events-society',
@@ -9,14 +9,39 @@ import { Create } from '../../shared/create/create.model';
 })
 export class MyEventsSocietyComponent implements OnInit {
 
-  creates: Create[];
+  events: Events[];
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    this.eventService.getSocietyEventData().subscribe((creates: Create[])=>{
-        this.creates = creates;
-        console.log("subsctibed");
-        console.log(this.creates);
+    this.eventService.getEventsDataSociety()
+    .subscribe((events)=>{
+        console.log("in map");
+        let tempObj = JSON.parse((JSON.stringify(events.body)));
+        let temp = Array.prototype.slice.call(tempObj.obj);
+        console.log(JSON.parse(JSON.stringify(temp)));
+                let arr = [];
+        temp.forEach((event)=>{
+          console.log("in each");
+            arr.push({
+              name:event.name,
+               from:event.from,
+               to:event.to,
+               description:event.description,
+               background:event.background ,
+               hashtags:event.hashtags,
+               events:event.events,
+               register:event.register,
+               links: event.profile,
+               speakers:event.speakers,
+               sponsors:event.sponsors,
+               phone1:event.phone1,
+               phone2:event.phone2,
+               address:event.address,
+               id:event.id
+            });
+            console.log('loop');
+        });
+            this.events = arr;
       });
   }
 

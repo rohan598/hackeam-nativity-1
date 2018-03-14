@@ -12,13 +12,13 @@
                   <div *ngIf="authService.object() === 'society'">
                     <ul class="navbar-nav mainMenu justify-content-left">
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/society' +'/create']" >Create</a>
+                        <a class="nav-link" [routerLink]="['/show','society',societyId,'event','new']" >Create</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/society'+'/myeventssociety']">My Events</a>
+                        <a class="nav-link" [routerLink]="['/show','society',societyId ,'myevents']">My Events</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" [routerLink]="['/society'+'/upcomingevents']">Upcoming Events</a>
+                        <a class="nav-link" [routerLink]="['/show','upcomingevents']">Upcoming Events</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" (click)="onLogout()">Sign out <i class="fas fa-sign-out-alt"></i></a>

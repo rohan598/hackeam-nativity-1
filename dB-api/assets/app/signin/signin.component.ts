@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { ToggleService } from '../shared/toggle.service';
+import { ToggleService } from '../shared/services/toggle.service';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',

@@ -1,9 +1,10 @@
 import { Component,OnInit,ElementRef,ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../shared/auth.service';
-import { ToggleService } from '../../shared/toggle.service';
-import { User } from '../../user/users.model';
+
+import { AuthService } from '../../shared/services/auth.service';
+import { ToggleService } from '../../shared/services/toggle.service';
+import { User } from '../../shared/models/users.model';
 // import { } from 'googlemaps';
 // import { MapsAPILoader } from '@agm/core';
 
@@ -104,10 +105,11 @@ export class SignupUserComponent implements OnInit {
         error => console.error(error)
       );
     this.userSignupForm.reset();
+    this.router.navigate(['/auth']);
   }
 
   goBack(){
-      this.router.navigate(['/signup']);
+      this.router.navigate(['/register']);
   }
 
   // onFileChange(event) {

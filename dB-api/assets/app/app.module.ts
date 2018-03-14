@@ -22,19 +22,21 @@ import { NavbarOutComponent } from './navbar/navbar-out/navbar-out.component';
 import { OverviewComponent } from './overview/overview.component';
 import { HowToUseComponent } from './howtouse/howtouse.component';
 import { AboutUsComponent } from './aboutus/aboutus.component';
-import { CreateComponent } from './shared/create/create.component';
+import { CreateEventsComponent } from './shared/create-events/create-events.component';
 import { UpcomingEventsComponent } from './shared/upcoming-events/upcoming-events.component';
 import { EventsComponent } from './shared/upcoming-events/events/events.component';
 
 // user
 import { UserComponent } from './user/user.component';
 import { MyEventsUserComponent } from './user/my-events-user/my-events-user.component';
+import { EventsUserComponent } from './user/my-events-user/events-user/events-user.component';
 // import { MySocitiesComponent} from './user/my-societies/my-societies.component';
 import { SideBarUserComponent } from './user/side-bar-user/side-bar-user.component';
 
 //society
 import { SocietyComponent } from './society/society.component';
 import { MyEventsSocietyComponent } from './society/my-events-society/my-events-society.component';
+import { EventsSocietyComponent } from './society/my-events-society/events-society/events-society.component';
 // import { MyMembersComponent } from './society/my-members/my-members.component';
 import { SideBarSocietyComponent } from './society/side-bar-society/side-bar-society.component';
 
@@ -50,23 +52,25 @@ import { SigninSocietyComponent } from './signin/signin-society/signin-society.c
 
 
 //google maps
-import {} from '@types/googlemaps';
-import {AppRoutingModule } from './app-routes.module';
+import { } from '@types/googlemaps';
+import { AppRoutingModule } from './app-routes.module';
 
 //services
-import { AuthService } from './shared/auth.service';
-import { ToggleService } from './shared/toggle.service';
-import { CreateService } from './shared/create.service';
-import { SocietyService } from './shared/society.service';
-import { UserService } from './shared/user.service';
-import { AuthGuard } from './shared/auth-guard.service';
-import { TokenInterceptor } from './shared/token.interceptor';
-import { EventService } from './shared/event.service';
+import { AuthService } from './shared/services/auth.service';
+import { ToggleService } from './shared/services/toggle.service';
+import { CreateEventsService } from './shared/services/create-events.service';
+import { SocietyService } from './shared/services/society.service';
+import { UserService } from './shared/services/user.service';
+import { AuthGuard } from './shared/services/auth-guard.service';
+import { EventService } from './shared/services/event.service';
+
+//interceptors
+import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 // import { JwtInterceptor } from './shared/jwt.interceptor';
 // validation
 import { CustomFormsModule } from 'ng2-validation';
 //Error
-import {ErrorPageComponent } from './error-page/error-page.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 @NgModule({
@@ -78,7 +82,7 @@ import {ErrorPageComponent } from './error-page/error-page.component';
     AboutUsComponent,
     HowToUseComponent,
     OverviewComponent,
-    CreateComponent,
+    EventsComponent,
     UserComponent,
     // MySocitiesComponent,
     SideBarUserComponent,
@@ -88,7 +92,7 @@ import {ErrorPageComponent } from './error-page/error-page.component';
     SideBarSocietyComponent,
     MyEventsSocietyComponent,
     UpcomingEventsComponent,
-    EventsComponent,
+    CreateEventsComponent,
     SignupComponent,
     SignupUserComponent,
     SignupSocietyComponent,
@@ -106,16 +110,17 @@ import {ErrorPageComponent } from './error-page/error-page.component';
     FormsModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey:'AIzaSyAuTFz2m3mOkCEom6alCedPumQmQcxwgFw',
-      libraries:["places"]
+      apiKey: 'AIzaSyAuTFz2m3mOkCEom6alCedPumQmQcxwgFw',
+      libraries: ["places"]
     })
   ],
-  providers: [AuthService,ToggleService,DatePipe,UserService,SocietyService,CreateService,EventService,AuthGuard,
+  providers: [AuthService, ToggleService, DatePipe, UserService, SocietyService, CreateEventsService,
+    EventService, AuthGuard,
     {
-  provide: HTTP_INTERCEPTORS,
-  useClass: TokenInterceptor,
-  multi: true
-}],
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

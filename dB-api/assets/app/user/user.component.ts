@@ -1,7 +1,7 @@
 import { Component, OnInit,AfterViewInit } from '@angular/core';
-import { AuthService } from '../shared/auth.service';
-import { UserService } from '../shared/user.service';
-import { User} from './users.model';
+import { AuthService } from '../shared/services/auth.service';
+import { UserService } from '../shared/services/user.service';
+import { User} from '../shared/models/users.model';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',

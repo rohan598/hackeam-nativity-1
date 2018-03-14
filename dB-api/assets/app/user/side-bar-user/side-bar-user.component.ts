@@ -1,7 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { UserService } from '../../shared/user.service';
-import { User } from '../users.model';
+import { UserService } from '../../shared/services/user.service';
+import { User } from '../../shared/models/users.model';
 
 @Component({
   selector: 'app-side-bar-user',

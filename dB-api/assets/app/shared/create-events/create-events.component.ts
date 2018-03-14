@@ -4,23 +4,23 @@ import { FormControl, FormGroup, Validators, FormArray ,FormBuilder} from '@angu
 import { CustomValidators } from 'ng2-validation';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { CreateService } from '../create.service';
-import { Create } from './create.model';
+import { CreateEventsService } from '../services/create-events.service';
+import { Events } from '../models/events.model';
 import { MapsAPILoader } from '@agm/core';
 import { } from '@types/googlemaps';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  selector: 'app-create-events',
+  templateUrl: './create-events.component.html',
+  styleUrls: ['./create-events.component.css']
 })
 
-export class CreateComponent implements OnInit {
+export class CreateEventsComponent implements OnInit {
 
   pageNum: number = 1;
 
-  createForm: FormGroup;
+  eventsForm: FormGroup;
   eventNameIsValid: boolean;
   eventNameVal: boolean;
   eventDateFromIsValid: boolean;
@@ -44,7 +44,7 @@ export class CreateComponent implements OnInit {
   public searchElementRef: ElementRef;
 
 
-  constructor(private datePipe: DatePipe,private fb:FormBuilder,private createService:CreateService,
+  constructor(private datePipe: DatePipe,private fb:FormBuilder,private createEventsService:CreateEventsService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private router:Router,
@@ -70,7 +70,7 @@ export class CreateComponent implements OnInit {
   // }
   ngOnInit() {
 
-    this.createForm = this.fb.group({
+    this.eventsForm = this.fb.group({
       'pg1': this.fb.group({
 
         'eventName': ['', Validators.required],
@@ -142,27 +142,27 @@ export class CreateComponent implements OnInit {
   //   });
   // });
 
-    this.createForm.get('pg1.eventName').statusChanges.subscribe((status) => {
+    this.eventsForm.get('pg1.eventName').statusChanges.subscribe((status) => {
       this.eventNameIsValid = (status === 'VALID' ? true : false);
     });
 
-    this.createForm.get('pg1.eventName').valueChanges.subscribe((value) => {
+    this.eventsForm.get('pg1.eventName').valueChanges.subscribe((value) => {
       this.eventNameVal = (value === '' || value === null) ? false : true;
     });
-    this.createForm.get('pg1.eventDateFrom').valueChanges.subscribe((value) => {
+    this.eventsForm.get('pg1.eventDateFrom').valueChanges.subscribe((value) => {
       this.eventDateFromVal = (value === '' || value === null) ? false : true;
     });
-    this.createForm.get('pg1.eventDateTo').valueChanges.subscribe((value) => {
+    this.eventsForm.get('pg1.eventDateTo').valueChanges.subscribe((value) => {
       this.eventDateToVal = (value === '' || value === null) ? false : true;
     });
-    this.createForm.get('pg1.description').valueChanges.subscribe((value) => {
+    this.eventsForm.get('pg1.description').valueChanges.subscribe((value) => {
       this.descriptionVal = (value === '' || value === null) ? false : true;
     });
-    this.createForm.get('pg6.address').valueChanges.subscribe((value:string) => {
-      this.createForm.patchValue({
-        'pg6.address':value
-      })
-    });
+    // this.eventsForm.get('pg6.address').valueChanges.subscribe((value:string) => {
+    //   this.eventsForm.patchValue({
+    //     'pg6.address':value
+    //   })
+    // });
   }
 
 
@@ -174,7 +174,7 @@ export class CreateComponent implements OnInit {
       'venue': ['',Validators.required],
       'description': ['',Validators.required]
     });
-    (<FormArray>this.createForm.get('pg2.events')).push(group);
+    (<FormArray>this.eventsForm.get('pg2.events')).push(group);
   }
 
   onAddSpeakers(){
@@ -192,7 +192,7 @@ export class CreateComponent implements OnInit {
           'instagram': ['',CustomValidators.url]
         })
       });
-      (<FormArray>this.createForm.get('pg4.speakers')).push(group);
+      (<FormArray>this.eventsForm.get('pg4.speakers')).push(group);
   }
 
   onAddSponsors(){
@@ -200,7 +200,7 @@ export class CreateComponent implements OnInit {
         'logo': ['',CustomValidators.url],
         'link': ['',CustomValidators.url]
       });
-      (<FormArray>this.createForm.get('pg5.sponsors')).push(group);
+      (<FormArray>this.eventsForm.get('pg5.sponsors')).push(group);
   }
 
   toggleNext(){
@@ -208,25 +208,25 @@ export class CreateComponent implements OnInit {
   }
 
   onSubmit() {
-    const create = new Create(
-      this.createForm.get('pg1.eventName').value,
-      this.createForm.get('pg1.eventDateFrom').value,
-      this.createForm.get('pg1.eventDateTo').value,
-      this.createForm.get('pg1.description').value,
-      this.createForm.get('pg1.background').value,
-      this.createForm.get('pg2.hashtags').value,
-      (<FormArray>this.createForm.get('pg2.events')).value,
-      this.createForm.get('pg3.register').value,
-      this.createForm.get('pg3.links').value,
-      (<FormArray>this.createForm.get('pg4.speakers')).value,
-      (<FormArray>this.createForm.get('pg5.sponsors')).value,
-      this.createForm.get('pg6.phone1').value,
-      this.createForm.get('pg6.phone2').value,
-      this.createForm.get('pg6.address').value,
+    const events = new Events(
+      this.eventsForm.get('pg1.eventName').value,
+      this.eventsForm.get('pg1.eventDateFrom').value,
+      this.eventsForm.get('pg1.eventDateTo').value,
+      this.eventsForm.get('pg1.description').value,
+      this.eventsForm.get('pg1.background').value,
+      this.eventsForm.get('pg2.hashtags').value,
+      (<FormArray>this.eventsForm.get('pg2.events')).value,
+      this.eventsForm.get('pg3.register').value,
+      this.eventsForm.get('pg3.links').value,
+      (<FormArray>this.eventsForm.get('pg4.speakers')).value,
+      (<FormArray>this.eventsForm.get('pg5.sponsors')).value,
+      this.eventsForm.get('pg6.phone1').value,
+      this.eventsForm.get('pg6.phone2').value,
+      this.eventsForm.get('pg6.address').value,
       localStorage.getItem('societyId')
     );
-    console.log(this.createForm.value + "\n" +create);
-    this.createService.createEvent(create)
+    console.log(this.eventsForm.value + "\n" +events);
+    this.createEventsService.createEvent(events)
       .subscribe(
         data => console.log(data),
         error => console.error(error),
@@ -234,7 +234,7 @@ export class CreateComponent implements OnInit {
     window.open("//localhost:3000/webpage");
         }
       );
-    this.createForm.reset();
+    this.eventsForm.reset();
     // this.router.navigate(['/webpage']);
   }
   nextPage(){

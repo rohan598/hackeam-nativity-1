@@ -1,5 +1,5 @@
 
-export class Create{
+export class Events{
   constructor(
     public name:string,
     public from:string,

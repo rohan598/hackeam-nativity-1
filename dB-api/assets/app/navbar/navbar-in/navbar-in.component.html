@@ -19,13 +19,13 @@
                       <a class="nav-link" [routerLink]="['aboutus']">About Us</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" [routerLink]="['/upcomingevents']">UpcomingEvents</a>
+                      <a class="nav-link" [routerLink]="['/show','upcomingevents']">UpcomingEvents</a>
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link" [routerLink]="['/signup']" (click)="toggle.falsifyUp()">Sign up <span><i class="fas fa-user-plus"></i></span></a>
+                      <a class="nav-link" [routerLink]="['new']" (click)="toggle.falsifyUp()">Sign up <span><i class="fas fa-user-plus"></i></span></a>
                   </li>
                   <li class="nav-item ">
-                      <a class="nav-link" [routerLink]="['/signin']" (click)="toggle.falsifyIn()">Sign in <span><i class="fas fa-sign-in-alt"></i></span></a>
+                      <a class="nav-link" [routerLink]="['auth']" (click)="toggle.falsifyIn()">Sign in <span><i class="fas fa-sign-in-alt"></i></span></a>
                   </li>
                 </ul>
           </div>

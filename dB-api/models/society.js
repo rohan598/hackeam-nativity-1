@@ -18,7 +18,6 @@ const SocietySchema = new Schema({
   description:String,
   logo:String,
   contact: [ContactSchema],
-  // users: [{type: Schema.Types.ObjectId}],
   websites:[{type: Schema.Types.ObjectId,ref:'mainevents'}]
 });
 

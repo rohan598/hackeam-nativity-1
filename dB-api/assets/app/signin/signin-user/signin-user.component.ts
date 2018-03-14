@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router} from '@angular/router';
 
-import { ToggleService } from '../../shared/toggle.service';
-import { AuthService } from '../../shared/auth.service';
-import { User } from '../../user/users.model';
-import { UserService } from '../../shared/user.service';
+import { ToggleService } from '../../shared/services/toggle.service';
+import { AuthService } from '../../shared/services/auth.service';
+import { User } from '../../shared/models/users.model';
+import { UserService } from '../../shared/services/user.service';
 @Component({
   selector: 'app-signin-user',
   templateUrl: './signin-user.component.html',
@@ -84,10 +84,10 @@ export class SigninUserComponent implements OnInit {
           console.log('here');
         }
         )
-        this.router.navigate(['/user']);
+        this.router.navigate(['show','user',localStorage.getItem('userId')]);
   }
 
       goBack(){
-          this.router.navigate(['/signin']);
+          this.router.navigate(['auth']);
       }
 }

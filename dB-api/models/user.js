@@ -12,7 +12,6 @@ const UserSchema = new Schema({
   avatar: String,
   profile:[ProfileSchema],
   events:[{type: Schema.Types.ObjectId}]
-  // societies: [{type: Schema.Types.ObjectId}]
 });
 
 UserSchema.plugin(mongooseUniqueValidator);

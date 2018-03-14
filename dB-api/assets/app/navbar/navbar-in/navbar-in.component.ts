@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { ToggleService } from '../../shared/toggle.service';
+import { ToggleService } from '../../shared/services/toggle.service';
 
 @Component({
   selector: 'app-navbar-in',

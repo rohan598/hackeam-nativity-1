@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../shared/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-navbar-out',
@@ -10,10 +10,10 @@ import { AuthService } from '../../shared/auth.service';
 })
 export class NavbarOutComponent {
 
-  object: string;
+  societyId: string;
   constructor(private authService:AuthService,private router:Router) { }
   ngOnInit(){
-    // this.object = this.authService.object();
+    this.societyId = localStorage.getItem('societyId');
   }
   onLogout(){
     this.authService.logout();

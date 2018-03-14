@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { MapsAPILoader } from '@agm/core';
 import { } from '@types/googlemaps';
 
-import { AuthService } from '../../shared/auth.service';
-import { ToggleService } from '../../shared/toggle.service';
-import { Society } from '../../society/societies.model';
+import { AuthService } from '../../shared/services/auth.service';
+import { ToggleService } from '../../shared/services/toggle.service';
+import { Society } from '../../shared/models/societies.model';
 
 @Component({
   selector: 'app-signup-society',
@@ -118,8 +118,10 @@ export class SignupSocietyComponent implements OnInit {
       error => console.error(error)
       );
     this.societySignupForm.reset();
+    this.router.navigate(['/auth']);
   }
+
   goBack(){
-      this.router.navigate(['/signup']);
-  }
+      this.router.navigate(['/register']);
+    }
 }

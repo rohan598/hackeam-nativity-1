@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ProfileSchema = require('./profile-link');
-// const society = require('./society');
 const SpeakerSchema = new Schema({
   avatar: String,
   name: String,
@@ -23,10 +22,6 @@ const EventSchema = new Schema({
   decription: String
 });
 
- // const DayEventSchema = new Schema({
- //   date: String,
- //   events: [EventSchema]
- // });
  const MainEventSchema = new Schema({
    name:String,
    from:String,

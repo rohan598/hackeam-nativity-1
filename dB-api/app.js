@@ -1,3 +1,4 @@
+/////// Including packages
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -5,32 +6,44 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var geocoder = require('geocoder');
+
+/////// Including models
 var society = require('./models/society');
 var event = require('./models/event');
+
+/////// Including routes
 var appRoutes = require('./routes/app');
-var userRoutes = require('./routes/user');
-var societyRoutes = require('./routes/society').router;
-var signinRoutes = require('./routes/signin');
+// var newRoutes = require('./routes/new');
+var registerRoutes = require('./routes/register');
+var showRoutes = require('./routes/show');
+// var editRoutes = require('./routes/edit');
+// var updateRoutes = require('./routes/update');
+var authRoutes = require('./routes/auth');
 
-var geocoder = require('geocoder');
-var app = express();
-
+/////// Mongoose setup
 mongoose.connect("mongodb://localhost/nativityDB");
 mongoose.connection.once('open',()=>{
   console.log('connection estblished');
 }).on('error',error=>console.log(error));
-// view engine setup
+
+/////// setting up app middleware
+var app = express();
+
+/////// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/////// to avois cors error
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -38,13 +51,16 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/signin',signinRoutes);
-app.use('/user',userRoutes);
-app.use('/society',societyRoutes);
+/////// Connecting routes to static HTML
+app.use('/auth',authRoutes);
+app.use('/register',registerRoutes);
+app.use('/show',showRoutes);
+// app.use('/edit',editRoutes);
+// app.use('/update',updateRoutes);
+// app.use('/delete',deleteRoutes);
 app.use('/webpage',express.static('Webpage'));
 app.use('/', appRoutes);
 
-// let id = require('./routes/society').id;
 var eventData= {};
 app.use('/getdata', (req,res)=>{
     //getting data about society

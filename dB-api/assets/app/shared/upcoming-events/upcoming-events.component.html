@@ -1,7 +1,7 @@
 <div class="container-fluid text-center">
   <h2>Upcoming Events</h2>
 </div>
-<!-- 
+<!--
 <form class="form-inline" [formGroup]="inputForm" (submit)="onSubmit()">
     <div class="form-group" [ngClass]="{'has-success':inputIsValid,'has-danger':!inputIsValid}">
       <label for="inputSuccess1"></label>
@@ -14,7 +14,7 @@
   </form> -->
 
 <div class="container allcards text-center">
-  <app-events class="listofcards" *ngFor="let event of creates" [event]="event"></app-events>
+  <app-events class="listofcards" *ngFor="let event of events" [event]="event"></app-events>
 </div>
 <!-- </div>
 
